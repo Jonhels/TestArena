@@ -1,0 +1,90 @@
+/* Temporary styles */
+
+/* Login Page Container */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--light-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading */
+.login-container h1 {
+    font-size: 1.8rem;
+    color: #4b0082; /* Indigo */
+    margin-bottom: 20px;
+}
+
+/* Form and Inputs */
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #b0c4de; /* Light Steel Blue */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: var(--button-background-color);
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+}
+
+/* Button */
+.login-container button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: var(--button-background-color);
+    color: #ffffff; /* White */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:disabled {
+    background-color: #dda0dd; /* Plum */
+    cursor: not-allowed;
+}
+
+.login-container button:hover:not(:disabled) {
+    background-color: #6a5acd; /* Slate Blue */
+}
+
+/* Messages */
+.login-container p {
+    font-size: 0.9rem;
+    color: #333333; /* Default Text */
+    margin: 10px 0;
+}
+
+.login-container p.error {
+    color: #ff0000; /* Red */
+    font-weight: bold;
+}
+
+.login-container p.success {
+    color: #32cd32; /* Lime Green */
+    font-weight: bold;
+}
+
+/* Links */
+.login-container a {
+    color: #4682b4; /* Steel Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-container a:hover {
+    color: #6a5acd; /* Slate Blue */
+}

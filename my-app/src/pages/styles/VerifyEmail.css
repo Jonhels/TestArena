@@ -1,0 +1,33 @@
+/* Container */
+.verify-email-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--light-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.verify-email-heading {
+    font-size: 2rem;
+    color: #343a40; /* Dark Gray */
+    margin-bottom: 20px;
+}
+
+/* Success Message */
+.success-message {
+    font-size: 1rem;
+    color: #28a745; /* Green */
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Error Message */
+.error-message {
+    font-size: 1rem;
+    color: #dc3545; /* Red */
+    font-weight: bold;
+    margin-top: 15px;
+}

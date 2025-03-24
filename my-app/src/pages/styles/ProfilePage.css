@@ -1,0 +1,70 @@
+/* Container */
+.profile-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--light-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.profile-heading {
+    font-size: 2rem;
+    color: #343a40; /* Dark Gray */
+    margin-bottom: 20px;
+}
+
+/* Form and Inputs */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #b0c4de; /* Light Steel Blue */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.profile-input:focus {
+    border-color: var(--button-background-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button */
+.profile-button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: var(--button-background-color);
+    color: #ffffff; /* White */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #0056b3; /* Dark Blue */
+}
+
+/* Success Message */
+.success-message {
+    font-size: 1rem;
+    color: #28a745; /* Green */
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Error Message */
+.error-message {
+    font-size: 1rem;
+    color: #dc3545; /* Red */
+    font-weight: bold;
+    margin-top: 15px;
+}

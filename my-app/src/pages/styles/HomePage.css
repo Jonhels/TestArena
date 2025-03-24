@@ -1,0 +1,385 @@
+.home__header {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+.home__content {
+  position: relative;
+  height: 1000vh;
+  /* Adjusted for 8 articles (8 x 100vh) */
+}
+
+/* Generic article styles */
+.article {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: z-index 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  background-color: var(--body-background-color);
+}
+
+.article1 h2,
+.article3 h2,
+.article5 h2,
+.article7 h2 {
+  font-size: var(--font-size-article-title);
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--dark-background-color);
+}
+
+.article1 span,
+.article3 span,
+.article5 span,
+.article7 span {
+  color: var(--font-color-gray-h2);
+}
+
+.article1,
+.article3,
+.article5,
+.article7 {
+  height: 100vh;
+  position: sticky;
+}
+
+.article2,
+.article4,
+.article6,
+.article8 {
+  background-color: var(--light-background-color);
+  height: 150vh;
+  display: block;
+  position: relative;
+}
+
+.article__content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10%;
+  padding: 5% 0;
+}
+
+.article__content_centered {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10%;
+  padding: 5% 0;
+}
+
+.article__content_flex_reverse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.article__icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 30px 0 0;
+}
+
+.article__text {
+  width: 60%;
+  margin-bottom: 5%;
+}
+
+.article__text_contact {
+  width: 100%;
+}
+
+.article__contact h3 {
+  margin-bottom: 5%;
+}
+
+.article__contact p {
+  margin-bottom: 5%;
+}
+
+.article__text_flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 30%;
+}
+
+.article__contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 0;
+}
+
+.article__contact_login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20% 0 0 0;
+  text-align: center; 
+  color: var(--font-color-dark);
+}
+
+.article__contact_login p {
+  font-size: var(--font-size-medium);
+  margin-bottom: 20px; 
+  color: var(--font-color-dark); 
+}
+
+.article__contact_login ul {
+  list-style-type: none;
+  padding: 0; 
+  margin: 0; 
+}
+
+.article__contact_login li {
+  margin: 10px 0; 
+  font-size: var(--font-size-small); 
+}
+
+.article__contact_login li a {
+  text-decoration: none; /* Remove underlines */
+  color: var(--font-color-primary); /* Use your theme's primary color */
+  font-weight: bold; /* Highlight the links */
+  transition: color 0.3s ease; /* Add smooth hover effect */
+}
+
+.article__contact_login li a:hover {
+  color: var(--font-color-gray-header); 
+}
+
+
+
+.articleContact__link {
+  background-color: var(--navigation-background-color);
+  padding: 5px;
+  border-radius: 8px;
+  width: 130px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color-light);
+  font-size: var(--font-size-medium);
+}
+
+.articleContact__link:hover {
+  color: var(--font-color-gray-header);
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.article__text h3 {
+  font-size: var(--font-size-medium);
+  margin-bottom: 1%;
+}
+
+.article__text p {
+  font-size: var(--font-size-small);
+}
+
+.article__image {
+  width: 80%;
+  height: 80%;
+}
+
+.article__image_puzzle {
+  width: 40%;
+  height: 40%;
+}
+
+
+.article2 {
+  z-index: 7;
+}
+
+.article3 {
+  z-index: 6;
+}
+
+.article4 {
+  z-index: 5;
+}
+
+.article5 {
+  z-index: 4;
+}
+
+.article6 {
+  z-index: 3;
+}
+
+.article7 {
+  z-index: 2;
+}
+
+.article8 {
+
+  /* Gold */
+  z-index: 1;
+}
+
+/* Reset baseline stacking context */
+.article {
+  z-index: 1;
+}
+
+@media (max-width: 1450px) {
+
+  .article__text h3 {
+    width: 100%;
+  }
+
+  .article__text {
+    width: 80%;
+  }
+}
+
+
+/* Responsive typography for h2 elements */
+@media (max-width: 1200px) {
+
+  .article1 h2,
+  .article3 h2,
+  .article5 h2,
+  .article7 h2 {
+    font-size: calc(var(--font-size-article-title) * 0.9);
+    /* Reduce font size slightly */
+  }
+
+  .article__text {
+    width: 80%;
+  }
+
+
+  .article__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    margin: 0 0;
+    padding: 0 0;
+  }
+
+  .article__content_centered {
+    margin: 0 0;
+    padding: 0 0;
+    width: 100%;
+  }
+
+  .article__contact p{
+    width: 80%;
+    text-align: center;
+  }
+
+  .article__text_flex {
+    margin-left: 0;
+  }
+
+
+  .article__image {
+    width: 50%;
+    height: 50%;
+  }
+
+  .article__text_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 5% 0 0 0;
+  }
+
+  .article__text_padding {
+    padding-right: 10%;
+  }
+
+
+  .article__text {
+    margin-bottom: 4%;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .article1 h2,
+  .article3 h2,
+  .article5 h2,
+  .article7 h2 {
+    font-size: calc(var(--font-size-article-title) * 0.8);
+    text-align: center;
+    /* Ensure proper alignment */
+  }
+
+  .article__text_wrapper {
+    width: 80%;
+    margin: 5% 0 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .article1 h2,
+  .article3 h2,
+  .article5 h2,
+  .article7 h2 {
+    font-size: calc(var(--font-size-article-title) * 0.7);
+    padding: 0 10%;
+    /* Add padding for smaller screens */
+  }
+
+  .article__image_puzzle {
+    width: 80%;
+    height: 80%;
+    margin: 0;
+    position: relative;
+    top: 10%;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  .article1 h2,
+  .article3 h2,
+  .article5 h2,
+  .article7 h2 {
+    font-size: calc(var(--font-size-article-title) * 0.6);
+    line-height: 1.2;
+    /* Adjust line height for readability */
+  }
+
+  .article__text_wrapper {
+    width: 100%;
+    margin: 0 0 2% 0;
+  }
+
+  .article__image {
+    width: 60%;
+    height: 60%;
+  }
+
+  .article__image_puzzle {
+    top: 14%;
+  }
+
+
+}

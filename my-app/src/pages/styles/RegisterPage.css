@@ -1,0 +1,91 @@
+
+/* temporary styles */
+
+/* Register Page Container */
+.register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--light-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading */
+.register-container h1 {
+    font-size: 1.8rem;
+    color: #1e293b; /* Dark Gray-Blue */
+    margin-bottom: 20px;
+}
+
+/* Form and Inputs */
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #b0c4de; /* Light Steel Blue */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.register-container input:focus {
+    border-color: var(--button-background-color);
+    box-shadow: 0 0 5px rgba(70, 130, 180, 0.5);
+}
+
+/* Button */
+.register-container button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: var(--button-background-color);
+    color: #ffffff; /* White */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-container button:disabled {
+    background-color: #b0c4de; /* Light Steel Blue */
+    cursor: not-allowed;
+}
+
+.register-container button:hover:not(:disabled) {
+    background-color: #1e90ff; /* Dodger Blue */
+}
+
+/* Messages */
+.register-container p {
+    font-size: 0.9rem;
+    color: #333333; /* Default Text */
+    margin: 10px 0;
+}
+
+.register-container p.error {
+    color: #ff4500; /* Orange Red */
+    font-weight: bold;
+}
+
+.register-container p.success {
+    color: #32cd32; /* Lime Green */
+    font-weight: bold;
+}
+
+/* Links */
+.register-container a {
+    color: #4682b4; /* Steel Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.register-container a:hover {
+    color: #1e90ff; /* Dodger Blue */
+}

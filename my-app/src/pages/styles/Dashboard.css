@@ -1,0 +1,33 @@
+/* Container */
+.dashboard-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--light-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.dashboard-heading {
+    font-size: 2.5rem;
+    color: #343a40; /* Dark Gray */
+    margin-bottom: 20px;
+}
+
+/* Logout Button */
+.dashboard-logout-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #dc3545; /* Red */
+    color: #ffffff; /* White */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-logout-button:hover {
+    background-color: #c82333; /* Darker Red */
+}

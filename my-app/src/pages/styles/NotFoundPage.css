@@ -1,0 +1,38 @@
+/* Container */
+.not-found-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--light-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.not-found-heading {
+    font-size: 4rem;
+    color: #dc3545; /* Red for Error */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Message */
+.not-found-message {
+    font-size: 1.2rem;
+    color: #343a40; /* Dark Gray */
+    margin-bottom: 20px;
+}
+
+/* Link */
+.not-found-link {
+    font-size: 1rem;
+    color: #4682b4; /* Steel Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.not-found-link:hover {
+    color: #0056b3; /* Darker Blue */
+}
