@@ -1,0 +1,78 @@
+.network-section {
+  text-align: center;
+  padding: 6rem 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.network-section.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.network-section__title {
+  font-size: var(--font-md);
+  color: var(--darkblue-600);
+  margin-bottom: 1rem;
+}
+
+.network-section__subtitle {
+  font-size: var(--font-2xs);
+  color: var(--darkblue-400);
+  margin-bottom: 3rem;
+}
+
+.network-section__logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem 6rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Logo lenker */
+.network-section__logo {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+  transition: transform 0.3s ease;
+}
+
+.network-section__logo img {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Når logoene er synlige */
+.network-section__logo.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover-effekt: scale */
+.network-section__logo:hover img {
+  transform: scale(1.1);
+}
+
+/* Fade-in opp animasjon */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobiltilpasning */
+@media (max-width: 768px) {
+  .network-section__logos {
+    gap: 2rem;
+  }
+
+  .network-section__logo img {
+    max-height: 50px;
+  }
+}

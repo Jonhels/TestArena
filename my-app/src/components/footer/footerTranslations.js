@@ -13,7 +13,7 @@ const footerTranslations = {
     services: "Tjenester",
     about: "Om oss",
     contactPage: "Kontakt",
-    form: "Nettskjema",
+    form: "Henvendelsesskjema",
   },
   EN: {
     contact: "Feel free to contact us",

@@ -1,0 +1,117 @@
+/* Container */
+.offer-section__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  flex-wrap: wrap;
+  padding: 6rem 6rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.offer-section__container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Boksen */
+.offer-section__card {
+  background: var(--darksalmon-50);
+  border: 1px solid var(--darksalmon-200);
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  flex: 2;
+  max-width: 650px;
+  text-align: left;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.offer-section__card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.offer-section__card h2 {
+  font-size: var(--font-md);
+  color: var(--darkblue-600);
+  margin-bottom: 1.5rem;
+}
+
+.offer-section__card p {
+  font-size: var(--font-xs);
+  color: var(--normal);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.offer-section__button {
+  background: var(--darksalmon-400);
+  color: var(--text-light);
+  padding: 0.8rem 1.8rem;
+  font-size: var(--font-2xs);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.offer-section__button:hover {
+  background: var(--lightsalmon-700);
+  transform: scale(1.05);
+}
+
+/* Bildet */
+.offer-section__image img {
+  max-width: 180px;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Når du hover på bildet */
+.offer-section__image:hover img {
+  animation: glow 4s ease-in-out infinite;
+}
+
+.offer-section__image.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Glow-effekt på lyspæren */
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(255, 200, 100, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 200, 100, 0.6));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(255, 200, 100, 0));
+  }
+}
+
+/* Responsiv */
+@media (max-width: 768px) {
+  .offer-section__container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .offer-section__card {
+    text-align: center;
+    flex: unset;
+    width: 100%;
+  }
+
+  .offer-section__image {
+    flex: unset;
+    margin-top: 2rem;
+  }
+}
