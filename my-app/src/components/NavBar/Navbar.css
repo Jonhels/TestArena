@@ -1,40 +1,33 @@
-/* Navbar base */
 .navbar {
   width: 100%;
   padding: 1.25rem 2rem;
-  background-color: var(--background, white);
+  background: var(--background, white);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 0.6s ease, transform 0.6s ease, top 0.4s ease,
-    box-shadow 0.4s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease, top 0.4s ease;
 }
 
-/* Når nav lastes ferdig */
 .navbar--loaded {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Når bruker scroller opp */
 .navbar--visible {
   top: 0;
 }
 
-/* Når bruker scroller ned */
 .navbar--hidden {
   top: -100px;
 }
 
-/* Når man har scrollet (body har .scrolled class) */
 body.scrolled .navbar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Container */
 .navbar__container {
   max-width: 1300px;
   margin: 0 auto;
@@ -43,37 +36,31 @@ body.scrolled .navbar {
   align-items: center;
 }
 
-/* Logo */
 .navbar__logo img {
   height: 42px;
 }
 
-/* Links */
+/* Link Desktop */
 .navbar__links {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  font-size: var(--font-2xs);
+  font-weight: 500;
   background-color: var(--lightsalmon-50);
   padding: 0.6rem 1.75rem;
   border-radius: 2rem;
   border: 1px solid var(--light-active);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.06);
-  font-size: var(--font-2xs);
-  font-weight: 500;
-  transition: right 0.4s ease, opacity 0.4s ease;
 }
 
-/* Link styling */
+/* Link */
 .navbar__links a,
 .navbar__links .cta-btn {
-  position: relative;
   color: var(--normal);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  position: relative;
 }
 
-/* Underline effekt */
 .navbar__links a::after,
 .navbar__links .cta-btn::after {
   content: "";
@@ -87,64 +74,26 @@ body.scrolled .navbar {
 }
 
 .navbar__links a:hover::after,
-.navbar__links a.active-link::after,
-.navbar__links .cta-btn:hover::after,
-.navbar__links .cta-btn.active-cta::after {
+.navbar__links .cta-btn:hover::after {
   width: 100%;
 }
 
-/* CTA-knapp */
+/* CTA knapp */
 .cta-btn {
   background-color: var(--darkblue-600);
   color: var(--text-light) !important;
   padding: 0.8rem 1.2rem;
   border-radius: 1.5rem;
-  text-align: center;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.3s ease;
 }
 
-/* Språkvelger */
+/* Språk */
 .navbar__lang {
-  padding-left: 1rem;
-  margin-left: 0.5rem;
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  font-size: var(--font-3xs);
+  margin-left: 1rem;
   cursor: pointer;
 }
 
-.lang-option {
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.lang-option.active {
-  font-weight: bold;
-  color: var(--normal-hover);
-}
-
-.lang-option:hover {
-  color: var(--darkblue-600);
-}
-
-/* Glow ved språkbytte */
-.glow {
-  animation: glowEffect 0.5s ease forwards;
-}
-
-@keyframes glowEffect {
-  0% {
-    text-shadow: 0 0 0px rgba(255, 255, 255, 0);
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-  }
-  100% {
-    text-shadow: 0 0 0px rgba(255, 255, 255, 0);
-  }
-}
-
-/* Burger meny */
+/* --- Burger --- */
 .navbar__toggle {
   display: none;
   flex-direction: column;
@@ -152,7 +101,10 @@ body.scrolled .navbar {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1002;
+  z-index: 1200;
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
 }
 
 .burger {
@@ -165,63 +117,35 @@ body.scrolled .navbar {
 .navbar__toggle.open .burger:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-
 .navbar__toggle.open .burger:nth-child(2) {
   opacity: 0;
 }
-
 .navbar__toggle.open .burger:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Overlay */
-.navbar__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(0px);
-  z-index: 900;
-  animation: fadeInOverlay 0.4s ease forwards;
-  transition: backdrop-filter 0.4s ease, background 0.4s ease;
-}
-
-.navbar__overlay.active {
-  backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.4);
-}
-
-/* Overlay fade inn */
-@keyframes fadeInOverlay {
-  from {
-    backdrop-filter: blur(0px);
-    background: rgba(0, 0, 0, 0);
-  }
-  to {
-    backdrop-filter: blur(4px);
-    background: rgba(0, 0, 0, 0.4);
-  }
-}
-
-/* Responsiv burger-meny */
+/* Burger vises under 1024px */
 @media (max-width: 1024px) {
+  .navbar__toggle {
+    display: flex;
+  }
+
   .navbar__links {
     position: fixed;
     top: 0;
     right: -100%;
-    height: 100%;
+    height: 100vh;
     width: 300px;
     flex-direction: column;
     align-items: flex-start;
     background-color: var(--lightsalmon-50);
-    padding: 2rem;
-    border-radius: 0;
+    padding: 6rem 2rem 2rem;
+    gap: 2rem;
     opacity: 0;
     pointer-events: none;
     transition: right 0.4s ease, opacity 0.4s ease;
-    z-index: 1001;
+    border-radius: 0;
+    z-index: 1100;
   }
 
   .navbar__links.open {
@@ -229,20 +153,15 @@ body.scrolled .navbar {
     opacity: 1;
     pointer-events: auto;
   }
-
-  .navbar__links.closing {
-    right: -100%;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .navbar__toggle {
-    display: flex;
-  }
 }
 
+/* Fullscreen for små skjermer */
 @media (max-width: 600px) {
   .navbar__links {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
