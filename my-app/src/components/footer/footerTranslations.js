@@ -1,0 +1,36 @@
+const footerTranslations = {
+  NO: {
+    contact: "Kontakt oss gjerne",
+    mail: "Mail",
+    phone: "Telefon",
+    address: "Adresse",
+    find: "Finn frem",
+    other: "Annet",
+    admin: "Admin logg inn",
+    rights: "© Testarena Innlandet 2025",
+    some: "SoMe",
+    home: "Hjem",
+    services: "Tjenester",
+    about: "Om oss",
+    contactPage: "Kontakt",
+    form: "Nettskjema",
+  },
+  EN: {
+    contact: "Feel free to contact us",
+    mail: "Email",
+    phone: "Phone",
+    address: "Address",
+    find: "Find your way",
+    other: "Other",
+    admin: "Admin login",
+    rights: "© Testarena Innlandet 2025",
+    some: "Social media",
+    home: "Home",
+    services: "Services",
+    about: "About Us",
+    contactPage: "Contact",
+    form: "Inquiry Form",
+  },
+};
+
+export default footerTranslations;

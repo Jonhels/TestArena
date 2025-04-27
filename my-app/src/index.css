@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   /* Font: Inter, skala 1.309, base 16px */
   --font-xxl: 5rem; /* 80px */
