@@ -1,6 +1,7 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import partnerTranslations from "./partnerTranslations";
+import useScrollFadeInOnce from "../../hooks/useScrollFadeInOnce";
 import "./PartnerSection.css";
 import sykehusetInnlandetLogo from "../../assets/images/sykehusetinnlandet-logo.svg";
 import helseinnLogo from "../../assets/images/helseinn-logo.svg";
@@ -8,33 +9,9 @@ import ntnuLogo from "../../assets/images/ntnu-logo.svg";
 
 function PartnerSection() {
   const { language } = useContext(LanguageContext);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const [sectionRef, isVisible] = useScrollFadeInOnce();
 
   const t = (key) => partnerTranslations[language][key] || key;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentSection = sectionRef.current;
-
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
-
-    return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
-    };
-  }, []);
 
   return (
     <section

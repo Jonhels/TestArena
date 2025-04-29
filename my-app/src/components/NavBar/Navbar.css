@@ -36,11 +36,12 @@ body.scrolled .navbar {
   align-items: center;
 }
 
+/* Logo */
 .navbar__logo img {
   height: 42px;
 }
 
-/* Link Desktop */
+/* Linkseksjon (desktop) */
 .navbar__links {
   display: flex;
   align-items: center;
@@ -53,47 +54,98 @@ body.scrolled .navbar {
   border: 1px solid var(--light-active);
 }
 
-/* Link */
-.navbar__links a,
-.navbar__links .cta-btn {
-  color: var(--normal);
-  text-decoration: none;
+/* Vanlige linker */
+.navbar__links a {
   position: relative;
+  text-decoration: none;
+  color: var(--normal);
+  font-weight: 500;
+  transition: color 0.3s ease, font-weight 0.3s ease;
 }
 
-.navbar__links a::after,
-.navbar__links .cta-btn::after {
+/* Underline for vanlige linker */
+.navbar__links a:not(.cta-btn)::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background-color: var(--normal-hover);
-  transition: width 0.3s ease;
-}
-
-.navbar__links a:hover::after,
-.navbar__links .cta-btn:hover::after {
+  bottom: -6px;
   width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, var(--normal-hover), var(--darkblue-600));
+  background-size: 400% 400%;
+  background-position: 0% 50%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+    background-position 4s ease;
 }
 
-/* CTA knapp */
+/* Hover på vanlig link */
+.navbar__links a:not(.cta-btn):hover::after {
+  transform: scaleX(1.1);
+  background-position: 100% 50%;
+}
+
+/* Aktiv vanlig link */
+.navbar__links a.active-link:not(.cta-btn) {
+  font-weight: 700;
+}
+
+.navbar__links a.active-link:not(.cta-btn)::after {
+  transform: scaleX(1);
+}
+
+/* CTA-knappen (Henvendelsesskjema) */
 .cta-btn {
   background-color: var(--darkblue-600);
   color: var(--text-light) !important;
   padding: 0.8rem 1.2rem;
   border-radius: 1.5rem;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.4s ease,
+    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Språk */
+/* CTA hover */
+.cta-btn:hover {
+  background-color: var(--darkblue-700);
+  transform: scale(1.03);
+}
+
+/* CTA aktiv */
+.cta-btn.active-link {
+  background-color: var(--darkblue-800);
+}
+
+/* Språkvelger */
 .navbar__lang {
   margin-left: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.3s ease;
 }
 
-/* --- Burger --- */
+.navbar__lang span {
+  font-weight: 400;
+  color: var(--darkblue-400);
+  transition: color 0.3s, font-weight 0.3s;
+}
+
+/* Hover på språkvelger */
+.navbar__lang:hover span {
+  color: var(--darkblue-700);
+}
+
+/* Aktivt språk */
+.navbar__lang .active {
+  font-weight: 700;
+  color: var(--darkblue-700);
+}
+
+/* Burger meny (mobil)*/
 .navbar__toggle {
   display: none;
   flex-direction: column;
@@ -114,6 +166,7 @@ body.scrolled .navbar {
   transition: all 0.4s ease;
 }
 
+/* Åpen burger animasjon */
 .navbar__toggle.open .burger:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -124,7 +177,7 @@ body.scrolled .navbar {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Burger vises under 1024px */
+/* Tablet */
 @media (max-width: 1024px) {
   .navbar__toggle {
     display: flex;
@@ -155,7 +208,7 @@ body.scrolled .navbar {
   }
 }
 
-/* Fullscreen for små skjermer */
+/* Mobil */
 @media (max-width: 600px) {
   .navbar__links {
     width: 100vw;

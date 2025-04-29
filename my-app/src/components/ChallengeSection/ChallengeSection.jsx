@@ -1,36 +1,14 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import challengeTranslations from "./challengeTranslations";
+import useScrollFadeInOnce from "../../hooks/useScrollFadeInOnce";
 import discussingImg from "../../assets/images/discussing.svg";
 import "./ChallengeSection.css";
 
 function ChallengeSection() {
   const { language } = useContext(LanguageContext);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
+  const [sectionRef, isVisible] = useScrollFadeInOnce();
   const t = (key) => challengeTranslations[language][key] || key;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentSection = sectionRef.current;
-
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
-
-    return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
-    };
-  }, []);
 
   return (
     <section

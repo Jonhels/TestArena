@@ -1,11 +1,10 @@
-/* Container */
 .offer-section__container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10rem;
+  gap: 6rem;
   flex-wrap: wrap;
-  padding: 6rem 6rem;
+  padding: 6rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -23,7 +22,7 @@
   padding: 3rem 2rem;
   border-radius: 1rem;
   flex: 2;
-  max-width: 650px;
+  max-width: 600px;
   text-align: left;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
   opacity: 0;
@@ -68,14 +67,9 @@
 
 /* Bildet */
 .offer-section__image img {
-  max-width: 180px;
+  max-width: 80%;
   height: auto;
   transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Når du hover på bildet */
-.offer-section__image:hover img {
-  animation: glow 4s ease-in-out infinite;
 }
 
 .offer-section__image.visible {
@@ -83,35 +77,40 @@
   transform: translateX(0);
 }
 
-/* Glow-effekt på lyspæren */
-@keyframes glow {
-  0% {
-    filter: drop-shadow(0 0 0px rgba(255, 200, 100, 0));
-  }
-  50% {
-    filter: drop-shadow(0 0 10px rgba(255, 200, 100, 0.6));
-  }
-  100% {
-    filter: drop-shadow(0 0 0px rgba(255, 200, 100, 0));
-  }
-}
-
-/* Responsiv */
+/* Mobil */
 @media (max-width: 768px) {
   .offer-section__container {
     flex-direction: column;
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 1.5rem;
+    gap: 0rem;
   }
 
-  .offer-section__card {
-    text-align: center;
-    flex: unset;
-    width: 100%;
+  .offer-section__image img {
+    max-width: 60%;
   }
 
   .offer-section__image {
-    flex: unset;
-    margin-top: 2rem;
+    order: -1; /* Flytter bildet over tekstboksen */
+    margin-bottom: 1.5rem;
+  }
+
+  .offer-section__card {
+    flex: none;
+    width: 100%;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .offer-section__card h2 {
+    font-size: var(--font-sm);
+  }
+
+  .offer-section__card p {
+    font-size: var(--font-2xs);
+  }
+
+  .offer-section__button {
+    font-size: var(--font-3xs);
   }
 }

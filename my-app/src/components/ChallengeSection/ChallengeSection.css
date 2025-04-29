@@ -49,20 +49,8 @@
 }
 
 .challenge-section__image img {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Flytende animasjon */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 /* Fade-in animasjoner på tekst */
@@ -92,11 +80,31 @@
 
 /* Responsivt */
 @media (max-width: 768px) {
+  .challenge-section {
+    padding: 4rem 1.5rem;
+  }
+
   .challenge-section__content {
     flex-direction: column;
+    align-items: center;
+    gap: 3rem;
   }
 
   .challenge-section__text {
     text-align: center;
+  }
+
+  .challenge-section__text h2 {
+    font-size: var(--font-sm);
+  }
+
+  .challenge-section__text p {
+    font-size: var(--font-2xs);
+    max-width: 100%;
+  }
+
+  .challenge-section__image img {
+    max-width: 70%;
+    height: auto;
   }
 }
