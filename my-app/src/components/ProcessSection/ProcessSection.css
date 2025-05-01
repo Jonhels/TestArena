@@ -1,0 +1,108 @@
+.process-section {
+  text-align: center;
+  padding: 6rem 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.process-section.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-section__title {
+  font-size: var(--font-md);
+  color: var(--darkblue-600);
+  margin-bottom: 4rem;
+  font-weight: 600;
+}
+
+/* Stegene */
+.process-section__steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Kort */
+.process-card {
+  background: #fff;
+  border: 2px solid var(--darksalmon-200);
+  border-radius: 1.75rem;
+  width: 280px;
+  padding: 2.5rem 2rem 2rem;
+  position: relative;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: fadeInUp 0.8s forwards;
+}
+
+/* Badge (sirkel) */
+.process-card__badge {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border: 2px solid var(--darkblue-400);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-3xs);
+  font-weight: 500;
+  color: var(--darkblue-600);
+  z-index: 1;
+}
+
+/* Innhold */
+.process-card__content {
+  position: relative;
+  z-index: 2;
+}
+
+.process-card__title {
+  font-size: var(--font-2xs);
+  color: var(--darkblue-600);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.process-card__text {
+  font-size: var(--font-3xs);
+  color: var(--normal);
+  line-height: 1.7;
+}
+
+/* Hover effekt */
+.process-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Fade animasjon */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsiv */
+@media (max-width: 768px) {
+  .process-section__steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .process-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}

@@ -73,7 +73,12 @@
   text-decoration: none;
 }
 
+.footer__column:nth-child(3) ul li a:hover {
+  color: var(--lightblue-100);
+}
+
 .footer__column a:hover {
+  color: var(--lightblue-100);
   text-decoration: underline;
 }
 

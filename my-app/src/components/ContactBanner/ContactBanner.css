@@ -1,0 +1,91 @@
+.contact-banner {
+  width: 100%;
+  background: linear-gradient(90deg, #cdd9e0 0%, #f9d5cc 100%);
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeUp 0.8s ease forwards;
+  margin-bottom: 6rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-banner__container {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.contact-banner__content {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-banner__content h2 {
+  font-size: var(--font-lg);
+  color: var(--darkblue-800);
+  margin-bottom: 1rem;
+}
+
+.contact-banner__content p {
+  font-size: var(--font-xs);
+  color: var(--darkblue-600);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-banner__button {
+  background-color: var(--darkblue-600);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-size: var(--font-xs);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-banner__button:hover {
+  background-color: var(--darkblue-700);
+  transform: scale(1.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-banner__image {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-banner__image img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobil */
+@media (max-width: 900px) {
+  .contact-banner__container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-banner__image img {
+    max-width: 250px;
+    margin-top: 2rem;
+  }
+}
