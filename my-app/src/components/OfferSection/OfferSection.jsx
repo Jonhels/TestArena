@@ -1,35 +1,17 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import offerTranslations from "./offerTranslations";
 import lightbulbBox from "../../assets/images/lightbulb-box.svg";
+import useScrollFadeInOnce from "../../hooks/useScrollFadeInOnce";
 import "./OfferSection.css";
 import { useNavigate } from "react-router-dom";
 
 function OfferSection() {
   const { language } = useContext(LanguageContext);
-  const navigate = useNavigate();
   const t = (key) => offerTranslations[language][key] || key;
+  const navigate = useNavigate();
 
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
+  const [sectionRef, isVisible] = useScrollFadeInOnce(0.3);
 
   const handleButtonClick = () => {
     navigate("/tjenester");

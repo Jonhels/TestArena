@@ -1,0 +1,34 @@
+.services-hero {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.services-hero__content {
+  width: 100%;
+  max-width: 1300px;
+  position: relative;
+}
+
+.services-hero__title {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: var(--font-lg);
+  color: var(--darkblue-600);
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.services-hero__image-wrapper {
+  overflow: hidden;
+  border-radius: 0.8rem;
+}
+
+.services-hero__image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}

@@ -1,0 +1,121 @@
+/* Service Collaboration Section */
+.service-collaboration {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.service-collaboration__title {
+  font-size: var(--font-lg);
+  color: var(--darkblue-600);
+  margin-bottom: 2rem;
+}
+
+.service-collaboration__description {
+  font-size: var(--font-xs);
+  color: var(--normal);
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.7;
+}
+
+.service-collaboration__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-collaboration__panel {
+  background-color: var(--darkblue-700);
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 260px;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.service-collaboration__panel.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-collaboration__panel--secondary {
+  background-color: var(--lightsalmon-500);
+}
+
+.service-collaboration__panel h3 {
+  font-size: var(--font-sm);
+  margin-bottom: 1rem;
+}
+
+.service-collaboration__panel .price {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.service-collaboration__panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-collaboration__panel ul li {
+  margin-bottom: 0.75rem;
+  font-size: var(--font-xs);
+  display: flex;
+  align-items: center;
+}
+
+.service-collaboration__panel ul li::before {
+  content: "✔";
+  color: var(--success, #2ecc71);
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.service-collaboration__info {
+  flex: 1 1 300px;
+  text-align: left;
+  max-width: 400px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.service-collaboration__info.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-collaboration__info h3 {
+  font-size: var(--font-sm);
+  margin-bottom: 1rem;
+  color: var(--darkblue-600);
+}
+
+.service-collaboration__info p {
+  font-size: var(--font-xs);
+  color: var(--normal);
+  line-height: 1.7;
+}
+
+/* Mobilvennlig */
+@media (max-width: 768px) {
+  .service-collaboration__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-collaboration__panel,
+  .service-collaboration__info {
+    width: 100%;
+    max-width: 400px;
+  }
+}

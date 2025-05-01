@@ -18,25 +18,30 @@
 }
 
 .network-section__subtitle {
-  font-size: var(--font-2xs);
+  font-size: var(--font-xs);
   color: var(--darkblue-400);
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .network-section__logos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 3rem 6rem;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Logo lenker */
+/* Logoer */
 .network-section__logo {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s forwards;
+  animation-fill-mode: both;
   transition: transform 0.3s ease;
 }
 
@@ -47,18 +52,18 @@
   transition: transform 0.3s ease;
 }
 
-/* Når logoene er synlige */
+/* Når logoer er synlige */
 .network-section__logo.fade-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Hover-effekt: scale */
+/* Hover-effekt */
 .network-section__logo:hover img {
   transform: scale(1.1);
 }
 
-/* Fade-in opp animasjon */
+/* Fade animasjon */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -66,13 +71,27 @@
   }
 }
 
-/* Mobiltilpasning */
+/* Mobil */
 @media (max-width: 768px) {
+  .network-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .network-section__title {
+    font-size: var(--font-sm);
+  }
+
+  .network-section__subtitle {
+    font-size: var(--font-2xs);
+    margin-bottom: 2rem;
+  }
+
   .network-section__logos {
+    flex-direction: column;
     gap: 2rem;
   }
 
   .network-section__logo img {
-    max-height: 50px;
+    max-height: 30px;
   }
 }

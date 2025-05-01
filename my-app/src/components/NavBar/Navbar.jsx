@@ -69,8 +69,8 @@ function Navbar() {
               to={path}
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `${isActive ? "active-link" : ""} ${
-                  key === "form" ? "cta-btn" : ""
+                `${key === "form" ? "cta-btn" : ""} ${
+                  isActive ? "active-link" : ""
                 }`
               }
             >

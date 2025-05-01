@@ -1,6 +1,7 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import networkTranslations from "./networkTranslations";
+import useScrollFadeInOnce from "../../hooks/useScrollFadeInOnce";
 import norwayHealthtechLogo from "../../assets/images/norwayhealthtech-logo.svg";
 import vaagerLogo from "../../assets/images/vaager-logo.svg";
 import ksLogo from "../../assets/images/ks-logo.svg";
@@ -10,28 +11,8 @@ import "./NetworkSection.css";
 
 function NetworkSection() {
   const { language } = useContext(LanguageContext);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
+  const [sectionRef, isVisible] = useScrollFadeInOnce(0.2);
   const t = (key) => networkTranslations[language][key] || key;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
 
   const partners = [
     {
