@@ -98,7 +98,7 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/inquiries"
+        path="/henvendelser"
         element={
           <ProtectedRoute>
             <DashboardLayout>
@@ -108,7 +108,7 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/calendar"
+        path="/kalender"
         element={
           <ProtectedRoute>
             <DashboardLayout>
@@ -118,7 +118,7 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/contacts"
+        path="/kontakter"
         element={
           <ProtectedRoute>
             <DashboardLayout>
@@ -128,7 +128,7 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/archive"
+        path="/arkiv"
         element={
           <ProtectedRoute>
             <DashboardLayout>
@@ -138,7 +138,7 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/settings"
+        path="/instillinger"
         element={
           <ProtectedRoute>
             <DashboardLayout>

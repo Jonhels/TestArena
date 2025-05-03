@@ -13,7 +13,8 @@
   color: #fff;
   text-decoration: none;
   padding: 12px 16px;
-  display: block;
+  display: flex;
+  align-items: center;
   transition: background-color 0.3s ease, border-radius 0.3s ease;
   border-radius: 8px; 
 }
@@ -34,6 +35,16 @@
 
 .nav-link{
   margin-top: 5px;
+}
+
+.nav-item {
+  
+}
+
+.icon {
+  margin-right: 10px;
+  color: #fff;
+  font-size: 20px; /* Adjust icon size as needed */
 }
 
 .nav-list-bottom {

@@ -4,7 +4,13 @@ import { NavLink } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
 import { Link } from "react-router-dom";
 import dashboardlogo from "../../assets/images/footer-logo.svg";
-
+import dashboardicon from "../../assets/images/dashboard.svg";
+import inquryicon from "../../assets/images/henvendelser.svg";
+import calendaricon from "../../assets/images/kalender.svg";
+import contacticon from "../../assets/images/kontakter.svg";
+import archiveicon from "../../assets/images/arkiv.svg";
+import settingsicon from "../../assets/images/instillinger.svg";
+import logouticon from "../../assets/images/logout.svg";
 
 const DashboardNav = () => {
   return (
@@ -16,26 +22,31 @@ const DashboardNav = () => {
         </li>
         <li className="nav-item">
           <NavLink to="/dashboard" className="nav-link">
+          <img src={dashboardicon} alt="icon" className="icon" />
             Dashboard
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/inquiries" className="nav-link">
+          <NavLink to="/henvendelser" className="nav-link">
+            <img src={inquryicon} alt="icon" className="icon" />
             Henvendelser
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/calendar" className="nav-link">
+          <NavLink to="/kalender" className="nav-link">
+          <img src={calendaricon} alt="icon" className="icon" />
             Kalender
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/contacts" className="nav-link">
+          <NavLink to="/kontakter" className="nav-link">
+            <img src={contacticon} alt="icon" className="icon" />
             Kontakter
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/archive" className="nav-link">
+          <NavLink to="/arkiv" className="nav-link">
+            <img src={archiveicon} alt="icon" className="icon" />
             Arkiv
           </NavLink>
         </li>
@@ -43,12 +54,14 @@ const DashboardNav = () => {
       </ul>
       <ul className="nav-list-bottom">
         <li>
-          <NavLink to="/settings" className="nav-link">
+          <NavLink to="/instillinger" className="nav-link">
+            <img src={settingsicon} alt="icon" className="icon" />
             Instillinger
           </NavLink>
         </li>
         <li className="nav-item">
           <Link to="/" onClick={useLogout} className="nav-link">
+            <img src={logouticon} alt="icon" className="icon" />
             Logout
           </Link>
         </li>
