@@ -13,6 +13,15 @@ import settingsicon from "../../assets/images/instillinger.svg";
 import logouticon from "../../assets/images/logout.svg";
 
 const DashboardNav = () => {
+
+  const logout = useLogout();
+
+  const handleLogout = async (e) => {
+    e.preventDefault(); 
+    await logout();     
+    window.location.href = "/"; 
+  };
+
   return (
     <nav className="dashboard-nav">
       <ul className="nav-list">
@@ -60,9 +69,9 @@ const DashboardNav = () => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <Link to="/" onClick={useLogout} className="nav-link">
+          <Link to="/" onClick={handleLogout} className="nav-link">
             <img src={logouticon} alt="icon" className="icon" />
-            Logout
+            Logg ut
           </Link>
         </li>
       </ul>
