@@ -1,0 +1,26 @@
+/* DashboardLayout.css */
+
+.dashboard-nav {
+  width: 230px;
+  background-color: #304A5E;
+}
+
+.dashboard-nav .nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-nav .nav-link:hover {
+  background-color: #253949;
+}
+
+.nav-link.active {
+  background-color: #253949;
+  font-weight: bold;
+}
+.nav-list-bottom {
+  margin-top: 20%;
+}

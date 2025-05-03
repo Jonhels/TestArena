@@ -8,6 +8,11 @@ import Contact from "../pages/Contact/Contact";
 import InquiryForm from "../pages/InquiryForm/InquiryForm";
 import NotFound from "../pages/NotFound/NotFound";
 import Loader from "../components/Loader/Loader";
+import Login from "../pages/Login/Login";
+import RegisterPage from "../pages/RegisterPage";
+import DashboardPage from "../pages/DashboardFiles/DashboardPage";
+import ProtectedRoute from "./ProtectedRoute";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const AppRoutes = () => (
   <Suspense fallback={<Loader message="Laster siden..." />}>
@@ -57,6 +62,34 @@ const AppRoutes = () => (
         element={
           <Layout>
             <NotFound />
+          </Layout>
+        }
+      />
+      <Route
+        path="/admin-login"
+        element={
+          <Layout>
+            <Login />
+          </Layout>
+        }
+      />
+      <Route
+
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <DashboardPage />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      {/* Fjern route for register, har den bare nå fordi vi kan lage brukere når vi utvikler */}
+      <Route
+        path="/register"
+        element={
+          <Layout>
+            <RegisterPage />
           </Layout>
         }
       />

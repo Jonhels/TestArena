@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import api from "../api/api";
-import AuthContext from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const useLogout = () => {
     const { setUser } = useContext(AuthContext);
