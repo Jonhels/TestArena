@@ -13,6 +13,11 @@ import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardFiles/DashboardPage";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../layout/DashboardLayout";
+import Archive from "../pages/DashboardFiles/Archive/Archive";
+import Calendar from "../pages/DashboardFiles/Calendar/Calendar";
+import Contacts from "../pages/DashboardFiles/Contacts/Contacts";
+import Inquiries from "../pages/DashboardFiles/Inquiries/Inquiries";
+import Settings from "../pages/DashboardFiles/Settings/settings";
 
 const AppRoutes = () => (
   <Suspense fallback={<Loader message="Laster siden..." />}>
@@ -73,17 +78,6 @@ const AppRoutes = () => (
           </Layout>
         }
       />
-      <Route
-
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <DashboardPage />
-            </DashboardLayout>
-          </ProtectedRoute>
-        }
-      />
       {/* Fjern route for register, har den bare nå fordi vi kan lage brukere når vi utvikler */}
       <Route
         path="/register"
@@ -93,6 +87,67 @@ const AppRoutes = () => (
           </Layout>
         }
       />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <DashboardPage />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/inquiries"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Inquiries />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/calendar"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Calendar />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/contacts"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Contacts />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/archive"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Archive />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Settings />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   </Suspense>
 );

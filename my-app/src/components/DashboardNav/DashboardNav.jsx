@@ -3,33 +3,39 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
 import { Link } from "react-router-dom";
+import dashboardlogo from "../../assets/images/footer-logo.svg";
+
 
 const DashboardNav = () => {
   return (
     <nav className="dashboard-nav">
       <ul className="nav-list">
+        <li className="nav-item dashboardLogo__container">
+          <img src={dashboardlogo} alt="Dashboard Logo" className="dashboardlogo" />
+          <h2 className="dashboardLogo__text">TestArena</h2>
+        </li>
         <li className="nav-item">
           <NavLink to="/dashboard" className="nav-link">
             Dashboard
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/dashboard/inquiries" className="nav-link">
+          <NavLink to="/inquiries" className="nav-link">
             Henvendelser
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/dashboard/calendar" className="nav-link">
+          <NavLink to="/calendar" className="nav-link">
             Kalender
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/dashboard/contacts" className="nav-link">
+          <NavLink to="/contacts" className="nav-link">
             Kontakter
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/dashboard/archive" className="nav-link">
+          <NavLink to="/archive" className="nav-link">
             Arkiv
           </NavLink>
         </li>
