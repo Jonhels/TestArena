@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AuthContext } from "../context/AuthContext";
-import Loader from "../components/Loader";
+import Loader from "../components/Loader/Loader";
 
-const ProtectedRoute = ({ children, redirectTo = "/login", requiredRole }) => {
+const ProtectedRoute = ({ children, redirectTo = "/", requiredRole }) => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {

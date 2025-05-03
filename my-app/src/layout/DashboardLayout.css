@@ -1,0 +1,13 @@
+/* DashboardLayout.css */
+
+.Dashboardlayout {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .Dashboardlayout__main {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
