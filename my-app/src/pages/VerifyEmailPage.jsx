@@ -12,7 +12,7 @@ const VerifyEmailPage = () => {
     useEffect(() => {
         const verifyEmail = async () => {
             try {
-                const response = await api.get(`/verify-email?token=${token}`);
+                const response = await api.get(`/users/verify-email?token=${token}`);
                 setSuccess(response.data.message);
                 setError(""); // Clear any previous errors
             } catch (err) {

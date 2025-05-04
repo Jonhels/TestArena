@@ -10,7 +10,7 @@ const PasswordResetRequestPage = () => {
     const handlePasswordResetRequest = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post("/password-reset-request", { email });
+            const response = await api.post("/users/password-reset-request", { email });
             setSuccess(response.data.message);
             setError(""); // Clear previous errors
         } catch (err) {

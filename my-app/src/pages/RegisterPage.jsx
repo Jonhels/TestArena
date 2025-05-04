@@ -19,7 +19,7 @@ const RegisterPage = () => {
         setSuccess("");
 
         try {
-            const response = await api.post("/register", { name, email, password });
+            const response = await api.post("/users/register", { name, email, password });
             setSuccess(response.data.message || "Registration successful! Check your email.");
             setName("");
             setEmail("");

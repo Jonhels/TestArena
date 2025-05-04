@@ -18,6 +18,7 @@ import Calendar from "../pages/DashboardFiles/Calendar/Calendar";
 import Contacts from "../pages/DashboardFiles/Contacts/Contacts";
 import Inquiries from "../pages/DashboardFiles/Inquiries/Inquiries";
 import Settings from "../pages/DashboardFiles/Settings/settings";
+import InquiriesOpen from "../pages/DashboardFiles/Inquiries/InquiriesOpen";
 
 const AppRoutes = () => (
   <Suspense fallback={<Loader message="Laster siden..." />}>
@@ -147,7 +148,16 @@ const AppRoutes = () => (
           </ProtectedRoute>
         }
       />
-
+      <Route
+        path="/henvendelser/:id"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <InquiriesOpen />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   </Suspense>
 );
