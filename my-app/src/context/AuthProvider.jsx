@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await api.get("/profile");
+        const response = await api.get("/users/profile");
         console.log("Fetched user:", response.data.user);
         setUser(response.data.user);
       } catch (err) {

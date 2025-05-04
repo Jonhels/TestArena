@@ -13,7 +13,7 @@ const ProfilePage = () => {
     const handleUpdate = async (e) => {
         e.preventDefault(); // Prevents the form from submitting and reloading the page
         try {
-            const response = await api.put("/update", { name, password });
+            const response = await api.put("/users/update", { name, password });
             setUser(response.data.user);
             setSuccess("Profile updated successfully.");
             setError(""); // Clear any previous errors
@@ -27,7 +27,7 @@ const ProfilePage = () => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to delete your account?")) {
             try {
-                const response = await api.delete("/delete");
+                const response = await api.delete("/users/delete");
                 setUser(null);
                 setSuccess("User deleted successfully.");
                 setError("");

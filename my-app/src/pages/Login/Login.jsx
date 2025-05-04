@@ -34,7 +34,7 @@ const Login = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await api.post("/login", { email, password });
+      const response = await api.post("/users/login", { email, password });
       setUser(response.data.user);
       navigate("/dashboard");
     } catch (err) {

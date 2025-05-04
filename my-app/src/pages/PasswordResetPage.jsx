@@ -13,7 +13,7 @@ const PasswordResetPage = () => {
     const handlePasswordReset = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post(`/reset-password?token=${token}`, { newPassword });
+            const response = await api.post(`/users/reset-password?token=${token}`, { newPassword });
             setSuccess(response.data.message);
             setError(""); // Clear any previous error messages
         } catch (err) {

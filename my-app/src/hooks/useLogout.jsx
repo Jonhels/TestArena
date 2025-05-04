@@ -7,7 +7,7 @@ const useLogout = () => {
 
     const logout = async () => {
         try {
-            await api.post("/logout"); // Call the backend logout route
+            await api.post("/users/logout"); // Call the backend logout route
             setUser(null); // Clear the user context
         } catch (error) {
             console.error("Logout failed:", error.response?.data || error.message);
