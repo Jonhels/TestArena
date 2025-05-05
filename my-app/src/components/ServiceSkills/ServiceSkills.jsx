@@ -1,8 +1,10 @@
-import { useContext, useRef, useState, useEffect } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import serviceSkillsTranslations from "./serviceSkillsTranslations";
 import "./ServiceSkills.css";
+import useScrollFadeInOnce from "../../hooks/useScrollFadeInOnce";
 
+// Ikoner
 import prehospitalIcon from "../../assets/images/prehospitale.svg";
 import researchIcon from "../../assets/images/forskning.svg";
 import collaborationIcon from "../../assets/images/samhandling.svg";
@@ -16,6 +18,8 @@ function ServiceSkills() {
   const { language } = useContext(LanguageContext);
   const t = (key) => serviceSkillsTranslations[language][key] || key;
 
+  const [sectionRef, isVisible] = useScrollFadeInOnce(0.2);
+
   const icons = [
     prehospitalIcon,
     researchIcon,
@@ -27,28 +31,13 @@ function ServiceSkills() {
     clinicalStudyIcon,
   ];
 
-  const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
   return (
     <section ref={sectionRef} className="service-skills">
-      <h2 className="service-skills__title">{t("title")}</h2>
+      <h2 className="service-skills__title">
+        {t("title1")} <br />
+        <span className="subtitle">{t("title2")}</span>
+      </h2>
+
       <div className="service-skills__grid">
         {t("skills").map((skill, index) => (
           <div
@@ -56,7 +45,9 @@ function ServiceSkills() {
             className={`service-skills__card ${isVisible ? "fade-up" : ""}`}
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <img src={icons[index]} alt="" />
+            <div className="service-skills__icon-wrapper">
+              <img src={icons[index]} alt="" />
+            </div>
             <p>{skill}</p>
           </div>
         ))}

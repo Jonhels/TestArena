@@ -9,7 +9,8 @@ import InquiryForm from "../pages/InquiryForm/InquiryForm";
 import NotFound from "../pages/NotFound/NotFound";
 import Loader from "../components/Loader/Loader";
 import Login from "../pages/Login/Login";
-import RegisterPage from "../pages/RegisterPage";
+import Register from "../pages/Register/Register";
+import PasswordResetRequest from "../pages/PasswordResetRequest/PasswordResetRequest";
 import DashboardPage from "../pages/DashboardFiles/DashboardPage";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../layout/DashboardLayout";
@@ -19,6 +20,7 @@ import Contacts from "../pages/DashboardFiles/Contacts/Contacts";
 import Inquiries from "../pages/DashboardFiles/Inquiries/Inquiries";
 import Settings from "../pages/DashboardFiles/Settings/settings";
 import InquiriesOpen from "../pages/DashboardFiles/Inquiries/InquiriesOpen";
+import TestCase from "../pages/TestCase/TestCase";
 
 const AppRoutes = () => (
   <Suspense fallback={<Loader message="Laster siden..." />}>
@@ -64,6 +66,14 @@ const AppRoutes = () => (
         }
       />
       <Route
+        path="/testcase"
+        element={
+          <Layout>
+            <TestCase />
+          </Layout>
+        }
+      />
+      <Route
         path="*"
         element={
           <Layout>
@@ -84,7 +94,15 @@ const AppRoutes = () => (
         path="/register"
         element={
           <Layout>
-            <RegisterPage />
+            <Register />
+          </Layout>
+        }
+      />
+      <Route
+        path="/password-reset-request"
+        element={
+          <Layout>
+            <PasswordResetRequest />
           </Layout>
         }
       />

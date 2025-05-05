@@ -19,7 +19,9 @@ function OfferSection() {
 
   return (
     <section ref={sectionRef}>
-      <div className={`offer-section__container ${isVisible ? "visible" : ""}`}>
+      <div
+        className={`offer-section__container ${isVisible ? "visible" : ""} `}
+      >
         <div
           className={`offer-section__card ${isVisible ? "visible" : ""}`}
           style={{ animationDelay: "0s" }}

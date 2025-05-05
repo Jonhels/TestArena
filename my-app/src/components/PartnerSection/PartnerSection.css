@@ -1,6 +1,6 @@
 .partners {
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   opacity: 0;
   transform: scale(0.98) translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -20,7 +20,7 @@
 .partners__logos {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
@@ -56,5 +56,9 @@
 
   .partner-card {
     width: 80%;
+  }
+
+  .partners {
+    padding: 3rem 2rem;
   }
 }

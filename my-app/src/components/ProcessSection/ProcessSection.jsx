@@ -36,7 +36,7 @@ function ProcessSection() {
   return (
     <section
       ref={sectionRef}
-      className={`process-section ${isVisible ? "fade-in-visible" : ""}`}
+      className={`process-section ${isVisible ? "fade-in-visible" : ""} `}
     >
       <h2 className="process-section__title">{t("title")}</h2>
       <div className="process-section__steps">

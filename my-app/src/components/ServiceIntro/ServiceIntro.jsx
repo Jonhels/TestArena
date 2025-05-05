@@ -1,33 +1,15 @@
-import { useContext, useRef, useState, useEffect } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import serviceIntroTranslations from "./serviceIntroTranslations";
-import lightbulbBox from "../../assets/images/lightbulb-box.svg";
+import offersImg from "../../assets/images/offers.png";
+import useScrollFadeInOnce from "../../hooks/useScrollFadeInOnce";
 import "./ServiceIntro.css";
 
 function ServiceIntro() {
   const { language } = useContext(LanguageContext);
   const t = (key) => serviceIntroTranslations[language][key] || key;
 
-  const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const currentRef = sectionRef.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
+  const [sectionRef, isVisible] = useScrollFadeInOnce(0.3);
 
   return (
     <section
@@ -39,11 +21,9 @@ function ServiceIntro() {
           <h2>{t("title")}</h2>
           <p>{t("paragraph1")}</p>
           <p>{t("paragraph2")}</p>
-          <p>{t("paragraph3")}</p>
-          <p>{t("paragraph4")}</p>
         </div>
         <div className="service-intro__image fade-right">
-          <img src={lightbulbBox} alt="Lightbulb in a box" />
+          <img src={offersImg} alt={t("imageAlt") || "Illustrasjon"} />
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   animation: fadeUp 0.8s ease forwards;
-  margin-bottom: 6rem;
+  margin: 6rem 0;
 }
 
 @keyframes fadeUp {
@@ -85,7 +85,15 @@
   }
 
   .contact-banner__image img {
-    max-width: 250px;
+    max-width: 200px;
     margin-top: 2rem;
+  }
+
+  .contact-banner__content h2 {
+    font-size: var(--font-sm);
+  }
+
+  .contact-banner {
+    padding: 4rem 2rem 0 2rem;
   }
 }

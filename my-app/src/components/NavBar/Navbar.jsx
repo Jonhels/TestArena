@@ -47,7 +47,6 @@ function Navbar() {
     { key: "home", path: "/" },
     { key: "services", path: "/tjenester" },
     { key: "about", path: "/om-oss" },
-    { key: "contact", path: "/kontakt" },
     { key: "form", path: "/henvendelsesskjema" },
   ];
 

@@ -36,7 +36,7 @@ function NetworkSection() {
 
   return (
     <section
-      className={`network-section ${isVisible ? "fade-in-visible" : ""}`}
+      className={`network-section ${isVisible ? "fade-in-visible" : ""} `}
       ref={sectionRef}
     >
       <h2 className="network-section__title">{t("title")}</h2>

@@ -1,11 +1,11 @@
 const servicesHeroTranslations = {
   NO: {
     title: "Tjenester",
-    altText: "Workshop på Testarena Innlandet",
+    alt: "Bilde fra workshop",
   },
   EN: {
     title: "Services",
-    altText: "Workshop at Testarena Innlandet",
+    alt: "Image from a workshop",
   },
 };
 

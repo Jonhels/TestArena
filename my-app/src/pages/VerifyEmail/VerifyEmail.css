@@ -1,0 +1,45 @@
+.verify-email-container {
+  max-width: 500px;
+  margin: 6rem auto;
+  padding: 3rem 2rem;
+  border: 1px solid var(--darkblue-200);
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.verify-email-heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--darkblue-600);
+}
+
+.success-message {
+  background-color: #e6ffe6;
+  color: #2e7d32;
+  padding: 1rem;
+  border: 1px solid #2e7d32;
+  border-radius: 0.5rem;
+}
+
+.error-message {
+  background-color: #ffe6e6;
+  color: #d8000c;
+  padding: 1rem;
+  border: 1px solid #d8000c;
+  border-radius: 0.5rem;
+}
+
+/* Responsivt */
+@media (max-width: 600px) {
+  .verify-email-container {
+    margin: 2rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .verify-email-heading {
+    font-size: 1.5rem;
+  }
+}

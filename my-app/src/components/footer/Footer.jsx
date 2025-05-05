@@ -70,9 +70,6 @@ function Footer() {
                 <NavLink to="/om-oss">{t("about")}</NavLink>
               </li>
               <li className="fade-item">
-                <NavLink to="/kontakt">{t("contactPage")}</NavLink>
-              </li>
-              <li className="fade-item">
                 <NavLink to="/henvendelsesskjema">{t("form")}</NavLink>
               </li>
             </ul>
