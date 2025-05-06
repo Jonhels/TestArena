@@ -1,13 +1,19 @@
 .offer-section__container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6rem;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 4rem 4rem;
+  background-color: var(--lightblue-50);
+  border: 1px solid var(--darkblue-200);
+  border-radius: 0.75rem;
+  max-width: 1300px;
   flex-wrap: wrap;
-  padding: 6rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  margin: 4rem auto;
+  box-sizing: border-box;
 }
 
 .offer-section__container.visible {
@@ -15,91 +21,74 @@
   transform: translateY(0);
 }
 
-/* Boksen */
+/* Tekstkort */
 .offer-section__card {
-  background: var(--darksalmon-50);
-  border: 1px solid var(--darksalmon-200);
-  padding: 3rem 2rem;
-  border-radius: 1rem;
-  flex: 2;
-  max-width: 600px;
-  text-align: left;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.offer-section__card.visible {
-  opacity: 1;
-  transform: translateX(0);
+  flex: 1;
+  min-width: 280px;
 }
 
 .offer-section__card h2 {
   font-size: var(--font-md);
   color: var(--darkblue-600);
+  font-weight: 700;
   margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .offer-section__card p {
   font-size: var(--font-xs);
   color: var(--normal);
+  line-height: 1.6;
+  max-width: 460px;
   margin-bottom: 2rem;
-  line-height: 1.7;
 }
 
 .offer-section__button {
-  background: var(--darksalmon-400);
-  color: var(--text-light);
-  padding: 0.8rem 1.8rem;
-  font-size: var(--font-2xs);
-  border: none;
-  border-radius: 2rem;
+  background: var(--bg-white);
+  color: var(--darkblue-600);
+  padding: 0.7rem 1.8rem;
+  font-size: var(--font-3xs);
+  border: 2px solid var(--darkblue-600);
+  border-radius: 9999px;
   cursor: pointer;
-  font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .offer-section__button:hover {
-  background: var(--lightsalmon-700);
+  background-color: var(--lightblue-100);
   transform: scale(1.05);
 }
 
-/* Bildet */
-.offer-section__image img {
-  max-width: 80%;
-  height: auto;
-  transition: transform 0.3s ease, filter 0.3s ease;
+/* Bilde */
+.offer-section__image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 220px;
 }
 
-.offer-section__image.visible {
-  opacity: 1;
-  transform: translateX(0);
+.offer-section__image img {
+  max-width: 200px;
+  height: auto;
+  display: block;
 }
 
 /* Mobil */
 @media (max-width: 768px) {
   .offer-section__container {
     flex-direction: column;
-    text-align: center;
     padding: 3rem 1.5rem;
-    gap: 0rem;
-  }
-
-  .offer-section__image img {
-    max-width: 60%;
+    text-align: center;
+    gap: 2rem;
   }
 
   .offer-section__image {
-    order: -1; /* Flytter bildet over tekstboksen */
-    margin-bottom: 1.5rem;
+    order: -1;
   }
 
-  .offer-section__card {
-    flex: none;
-    width: 100%;
-    text-align: center;
-    padding: 2rem 1.5rem;
+  .offer-section__image img {
+    max-width: 160px;
   }
 
   .offer-section__card h2 {
@@ -107,10 +96,15 @@
   }
 
   .offer-section__card p {
-    font-size: var(--font-2xs);
+    font-size: var(--font-3xs);
+    margin: 0 auto 1.5rem;
   }
 
   .offer-section__button {
     font-size: var(--font-3xs);
+  }
+
+  .offer-section__container {
+    border: none;
   }
 }

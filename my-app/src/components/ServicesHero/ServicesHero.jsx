@@ -9,14 +9,16 @@ function ServiceHero() {
   const t = (key) => servicesHeroTranslations[language][key] || key;
 
   return (
-    <section className="service-hero">
-      <img
-        src={serviceHeroImg}
-        alt={t("alt")}
-        className="service-hero__background"
-      />
-      <div className="service-hero__text-container">
-        <h1>{t("title")}</h1>
+    <section className="services-hero">
+      <div className="services-hero__content">
+        <h1 className="services-hero__title">{t("title")}</h1>
+        <div className="services-hero__image-wrapper">
+          <img
+            src={serviceHeroImg}
+            alt={t("alt")}
+            className="services-hero__image"
+          />
+        </div>
       </div>
     </section>
   );

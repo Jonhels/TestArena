@@ -16,7 +16,7 @@ function PartnerSection() {
   return (
     <section
       ref={sectionRef}
-      className={`partners ${isVisible ? "fade-in-visible" : ""}`}
+      className={`partners ${isVisible ? "fade-in-visible" : ""} `}
     >
       <p className="partners__intro">{t("intro")}</p>
       <div className="partners__logos">

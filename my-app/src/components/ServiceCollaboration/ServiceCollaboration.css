@@ -1,20 +1,22 @@
-/* Service Collaboration Section */
 .service-collaboration {
-  padding: 5rem 2rem;
+  padding: 4rem;
+  max-width: 1300px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .service-collaboration__title {
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
   color: var(--darkblue-600);
-  margin-bottom: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .service-collaboration__description {
   font-size: var(--font-xs);
   color: var(--normal);
   max-width: 800px;
-  margin: 0 auto 4rem auto;
+  margin: 0 auto 3rem;
   line-height: 1.7;
 }
 
@@ -22,100 +24,155 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 4rem;
+}
+
+.service-collaboration__panels {
+  display: flex;
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.service-collaboration__panel {
-  background-color: var(--darkblue-700);
-  color: white;
+.collab-panel {
+  background-color: var(--lightblue-100);
+  border: 1px solid var(--darkblue-200);
   border-radius: 1rem;
-  padding: 2rem;
-  width: 260px;
+  padding: 2.5rem;
+  width: 380px;
   text-align: left;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
 }
 
-.service-collaboration__panel.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+.collab-panel:hover {
+  transform: translateY(-5px);
 }
 
-.service-collaboration__panel--secondary {
-  background-color: var(--lightsalmon-500);
-}
-
-.service-collaboration__panel h3 {
+.collab-panel h3 {
   font-size: var(--font-sm);
+  text-transform: uppercase;
+  color: var(--darkblue-600);
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
-.service-collaboration__panel .price {
-  font-size: var(--font-lg);
-  font-weight: 700;
+.price {
   margin-bottom: 1.5rem;
 }
 
-.service-collaboration__panel ul {
+.price__amount {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--darkblue-600);
+}
+
+.price__small {
+  font-size: var(--font-2xs);
+  color: var(--darkblue-600);
+  margin-left: 0.25rem;
+}
+
+.collab-panel ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.service-collaboration__panel ul li {
-  margin-bottom: 0.75rem;
-  font-size: var(--font-xs);
+.collab-panel li {
+  font-size: var(--font-2xs);
+  color: var(--normal);
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.service-collaboration__panel ul li::before {
-  content: "✔";
-  color: var(--success, #2ecc71);
-  margin-right: 0.5rem;
-  font-size: 1rem;
+.checkmark {
+  background-color: var(--success, #2ecc71);
+  color: white;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
 }
 
-.service-collaboration__info {
+.collab-info {
   flex: 1 1 300px;
   text-align: left;
   max-width: 400px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.service-collaboration__info.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.service-collaboration__info h3 {
+.collab-info h4 {
   font-size: var(--font-sm);
-  margin-bottom: 1rem;
+  font-weight: 600;
   color: var(--darkblue-600);
+  margin-bottom: 1rem;
 }
 
-.service-collaboration__info p {
+.collab-info p {
   font-size: var(--font-xs);
   color: var(--normal);
   line-height: 1.7;
 }
 
-/* Mobilvennlig */
+/* Fade-in */
+.fade-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+.delay-2 {
+  animation-delay: 0.4s;
+}
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+  .service-collaboration {
+    padding: 2rem;
+  }
+
+  .service-collaboration__title {
+    font-size: var(--font-sm);
+  }
+
+  .price__amount {
+    font-size: var(--font-sm);
+  }
+
   .service-collaboration__content {
     flex-direction: column;
     align-items: center;
   }
 
-  .service-collaboration__panel,
-  .service-collaboration__info {
-    width: 100%;
-    max-width: 400px;
+  .service-collaboration__panels {
+    flex-direction: column;
+  }
+
+  .collab-panel h3 {
+    font-size: var(--font-xs);
+  }
+
+  .collab-info {
+    text-align: center;
+    max-width: 100%;
   }
 }

@@ -1,0 +1,107 @@
+.business-need {
+  padding: 4rem 6rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.business-need.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.business-need__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.business-need__text {
+  flex: 2;
+}
+
+.business-need__text h2 {
+  font-size: var(--font-md);
+  color: var(--darkblue-600);
+  margin-bottom: 2rem;
+}
+
+.business-need__text p {
+  font-size: var(--font-xs);
+  color: var(--normal);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.business-need__image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.business-need__image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.mirrored {
+  transform: scaleX(-1);
+}
+
+/* Animasjon */
+.fade-left,
+.fade-right {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-left {
+  transform: translateX(-50px);
+}
+
+.fade-right {
+  transform: translateX(50px);
+}
+
+.fade-in-visible .fade-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-visible .fade-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .business-need {
+    padding: 2rem;
+  }
+  .business-need__content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .business-need__text {
+    order: 2;
+  }
+
+  .business-need__image {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .business-need__image img {
+    max-width: 70%;
+  }
+
+  .business-need__text h2 {
+    font-size: var(--font-sm);
+  }
+}

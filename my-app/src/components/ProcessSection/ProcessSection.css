@@ -1,6 +1,6 @@
 .process-section {
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 4rem 6rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -14,79 +14,72 @@
 .process-section__title {
   font-size: var(--font-md);
   color: var(--darkblue-600);
-  margin-bottom: 4rem;
   font-weight: 600;
+  margin-bottom: 4rem;
 }
 
-/* Stegene */
+/* Flex container for kort */
 .process-section__steps {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   flex-wrap: wrap;
 }
 
-/* Kort */
+/* Enkelt kort */
 .process-card {
-  background: #fff;
-  border: 2px solid var(--darksalmon-200);
-  border-radius: 1.75rem;
-  width: 280px;
+  background-color: var(--bg-white);
+  border: 2px solid var(--darksalmon-300);
+  border-radius: 1.25rem;
+  width: 260px;
   padding: 2.5rem 2rem 2rem;
   position: relative;
   text-align: left;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
   opacity: 0;
   transform: translateY(20px) scale(0.98);
   animation: fadeInUp 0.8s forwards;
 }
 
-/* Badge (sirkel) */
+/* Sirkel med nummer */
 .process-card__badge {
   position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 48px;
-  height: 48px;
-  background: #fff;
+  top: -16px;
+  right: -16px;
+  width: 42px;
+  height: 42px;
   border: 2px solid var(--darkblue-400);
+  background-color: #fff;
   border-radius: 50%;
+  font-size: var(--font-2xs);
+  color: var(--darksalmon-600);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-3xs);
-  font-weight: 500;
-  color: var(--darkblue-600);
-  z-index: 1;
-}
-
-/* Innhold */
-.process-card__content {
-  position: relative;
+  font-weight: 600;
   z-index: 2;
 }
 
 .process-card__title {
-  font-size: var(--font-2xs);
-  color: var(--darkblue-600);
+  font-size: var(--font-xs);
   font-weight: 600;
+  color: var(--darkblue-600);
   margin-bottom: 1rem;
 }
 
 .process-card__text {
-  font-size: var(--font-3xs);
+  font-size: var(--font-2xs);
   color: var(--normal);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
-/* Hover effekt */
+/* Hover-effekt */
 .process-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Fade animasjon */
+/* Fade-in */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -94,7 +87,7 @@
   }
 }
 
-/* Responsiv */
+/* Mobil */
 @media (max-width: 768px) {
   .process-section__steps {
     flex-direction: column;
@@ -104,5 +97,18 @@
   .process-card {
     width: 100%;
     max-width: 320px;
+  }
+
+  .process-section {
+    padding: 0rem 2rem 4rem 2rem;
+  }
+
+  .process-section__title {
+    font-size: var(--font-sm);
+    margin-bottom: 2rem;
+  }
+
+  .process-section__steps {
+    gap: 2rem;
   }
 }

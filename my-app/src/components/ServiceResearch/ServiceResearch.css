@@ -1,5 +1,5 @@
 .service-research {
-  padding: 5rem 2rem;
+  padding: 4rem 6rem;
   width: 100%;
   text-align: center;
   opacity: 0;
@@ -18,7 +18,7 @@
 }
 
 .service-research__content h2 {
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
   color: var(--darkblue-600);
   margin-bottom: 2rem;
 }
@@ -47,8 +47,12 @@
 
 /* Responsivt */
 @media (max-width: 768px) {
+  .service-research {
+    padding: 4rem 2rem;
+  }
+
   .service-research__content h2 {
-    font-size: var(--font-md);
+    font-size: var(--font-sm);
   }
 
   .service-research__note {

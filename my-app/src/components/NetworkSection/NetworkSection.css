@@ -1,6 +1,6 @@
 .network-section {
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -31,7 +31,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 3rem 6rem;
+  gap: 4rem 12rem;
   max-width: 1000px;
   margin: 0 auto;
 }

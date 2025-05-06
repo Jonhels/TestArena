@@ -1,0 +1,103 @@
+.idea-support {
+  padding: 4rem 6rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.idea-support.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.idea-support__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 4rem;
+  max-width: 1300px;
+}
+
+.idea-support__image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.idea-support__image img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+/* Tekst */
+.idea-support__text {
+  flex: 2;
+}
+
+.idea-support__text h2 {
+  font-size: var(--font-md);
+  color: var(--darkblue-600);
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.idea-support__text p {
+  font-size: var(--font-xs);
+  color: var(--normal);
+  line-height: 1.7;
+}
+
+/* Fade animasjoner */
+.fade-left,
+.fade-right {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-left {
+  transform: translateX(-50px);
+}
+
+.fade-right {
+  transform: translateX(50px);
+}
+
+.fade-in-visible .fade-left,
+.fade-in-visible .fade-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .idea-support {
+    padding: 2rem;
+  }
+  .idea-support__container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .idea-support__image {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .idea-support__text {
+    order: 2;
+  }
+
+  .idea-support__text h2 {
+    font-size: var(--font-sm);
+  }
+
+  .idea-support__text p {
+    font-size: var(--font-2xs);
+  }
+
+  .idea-support__image img {
+    max-width: 220px;
+  }
+}
