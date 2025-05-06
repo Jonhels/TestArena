@@ -1,0 +1,133 @@
+.inquiry-wrapper {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .inquiry-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  
+  .inquiry-error {
+    color: red;
+  }
+  
+  .inquiry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .inquiry-header,
+  .inquiry-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .inquiry-header {
+    font-weight: bold;
+    color: #666;
+    background-color: #f9f9f9;
+  }
+  
+  .inquiry-row {
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .inquiry-row:hover {
+    background-color: #f3f3f3;
+  }
+  
+  .inquiry-avatar {
+    width: 24px;
+    height: 24px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inquiry-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .inquiry-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  /* Filter Bar */
+.filter-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  
+  .filter-group label {
+    margin-bottom: 4px;
+    color: #444;
+    font-weight: 500;
+  }
+  
+  /* Input and Select shared styling */
+  .filter-group select,
+  .filter-group input {
+    padding: 8px 14px;
+    border: 1px solid #cdd3dc;
+    border-radius: 999px; /* pill-shaped */
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    min-width: 140px;
+    transition: border 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  
+  .filter-group select:focus,
+  .filter-group input:focus {
+    border-color: #7b9acc;
+    box-shadow: 0 0 0 2px rgba(123, 154, 204, 0.2);
+  }
+  
+  /* Search field specific */
+  .filter-group.search {
+    position: relative;
+  }
+  
+  .filter-group.search input {
+    padding-right: 30px;
+  }
+  
+  /* Optional search icon (for future use) */
+  .filter-group.search::after {
+    content: "🔍";
+    position: absolute;
+    right: 12px;
+    top: 30px;
+    font-size: 14px;
+    color: #999;
+    pointer-events: none;
+  }
+  
