@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./InquiryList.css";
-import more from "../../assets/images/more-vertical.svg";
+import moreIcon from "../../assets/images/more-vertical.svg";
 
 function InquiryList({ inquiries = [], loading, error }) {
   const [filteredInquiries, setFilteredInquiries] = useState([]);
@@ -9,6 +9,7 @@ function InquiryList({ inquiries = [], loading, error }) {
   const [selectedResponsible, setSelectedResponsible] = useState("Alle");
   const [selectedCompany, setSelectedCompany] = useState("Alle");
   const [currentPage, setCurrentPage] = useState(1);
+  const [openDropdownId, setOpenDropdownId] = useState(null);
 
   const navigate = useNavigate();
   const ITEMS_PER_PAGE = 8;
@@ -102,6 +103,17 @@ function InquiryList({ inquiries = [], loading, error }) {
     }
   };
 
+  const handleArchive = async (e, inquiryId) => {
+    e.stopPropagation();
+    try {
+      await api.put(`/inquiries/archive/${inquiryId}`);
+      setInquiries((prev) => prev.filter((inq) => inq._id !== inquiryId));
+      setOpenDropdownId(null);
+    } catch (err) {
+      console.error("Failed to archive inquiry", err);
+    }
+  };
+
   return (
     <div className="inquiry-wrapper">
       <div className="filter-bar">
@@ -170,15 +182,23 @@ function InquiryList({ inquiries = [], loading, error }) {
                 </div>
                 <div className="inquiry-status">
                   {inq.status !== "ulest" && (
-                    <span
-                      className="inquiry-status-dot"
-                      style={{ backgroundColor: statusDotColor(inq.status) }}
-                    />
+                    <span className="inquiry-status-dot" style={{ backgroundColor: statusDotColor(inq.status) }} />
                   )}
                   {formatStatusLabel(inq.status)}
                 </div>
-                <div className="inquiry-options">
-                  <img src={more} alt="Mer" />
+                <div onClick={(e) => e.stopPropagation()}>
+                  <div
+                    className="menu-trigger"
+                    onClick={() => setOpenDropdownId((prev) => (prev === inq._id ? null : inq._id))}
+                  >
+                    <img src={moreIcon} alt="Mer" />
+                  </div>
+
+                  {openDropdownId === inq._id && (
+                    <div className="dropdown-menu">
+                      <p onClick={(e) => handleArchive(e, inq._id)}>Arkiver</p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
