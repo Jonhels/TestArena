@@ -1,45 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../api/api";
 import "./InquiryList.css";
 import more from "../../assets/images/more-vertical.svg";
 
-function InquiryList() {
-  const [inquiries, setInquiries] = useState([]);
+function InquiryList({ inquiries = [], loading, error }) {
   const [filteredInquiries, setFilteredInquiries] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedResponsible, setSelectedResponsible] = useState("Alle");
   const [selectedCompany, setSelectedCompany] = useState("Alle");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const navigate = useNavigate();
   const ITEMS_PER_PAGE = 8;
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    const fetchInquiries = async () => {
-      try {
-        const res = await api.get("/inquiries");
-        const data = res.data.inquiries || [];
-        setInquiries(data);
-      } catch (err) {
-        console.error("Error fetching inquiries:", err);
-        setError("Kunne ikke hente henvendelser.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchInquiries();
-  }, []);
 
   useEffect(() => {
     filterInquiries();
   }, [inquiries, searchQuery, selectedResponsible, selectedCompany]);
 
   const handleClick = (id) => {
-    navigate(`/inquiries/${id}`);
+    navigate(`/henvendelser/${id}`);
   };
 
   const formatStatusLabel = (status) => {
@@ -72,9 +51,7 @@ function InquiryList() {
     let result = [...inquiries];
 
     if (selectedResponsible !== "Alle") {
-      result = result.filter(
-        (inq) => (inq.assignedTo || "Ingen") === selectedResponsible
-      );
+      result = result.filter((inq) => (inq.assignedTo || "Ingen") === selectedResponsible);
     }
 
     if (selectedCompany !== "Alle") {
@@ -114,7 +91,6 @@ function InquiryList() {
   };
 
   const totalPages = Math.ceil(filteredInquiries.length / ITEMS_PER_PAGE);
-
   const paginatedInquiries = filteredInquiries.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
@@ -128,32 +104,20 @@ function InquiryList() {
 
   return (
     <div className="inquiry-wrapper">
-      <h2 className="inquiry-title">Henvendelser</h2>
-
       <div className="filter-bar">
         <div className="filter-group">
           <label>Ansvarlig</label>
-          <select
-            value={selectedResponsible}
-            onChange={(e) => setSelectedResponsible(e.target.value)}
-          >
+          <select value={selectedResponsible} onChange={(e) => setSelectedResponsible(e.target.value)}>
             {uniqueResponsibles.map((res, idx) => (
-              <option key={idx} value={res}>
-                {res}
-              </option>
+              <option key={idx} value={res}>{res}</option>
             ))}
           </select>
         </div>
         <div className="filter-group">
           <label>Virksomhet</label>
-          <select
-            value={selectedCompany}
-            onChange={(e) => setSelectedCompany(e.target.value)}
-          >
+          <select value={selectedCompany} onChange={(e) => setSelectedCompany(e.target.value)}>
             {uniqueCompanies.map((comp, idx) => (
-              <option key={idx} value={comp}>
-                {comp}
-              </option>
+              <option key={idx} value={comp}>{comp}</option>
             ))}
           </select>
         </div>
@@ -188,39 +152,31 @@ function InquiryList() {
 
             {paginatedInquiries.map((inq) => (
               <div
-                className={`inquiry-row ${inq.status === "ulest" ? "new-inquiry" : ""
-                  }`}
+                className={`inquiry-row ${inq.status === "ulest" ? "new-inquiry" : ""}`}
                 key={inq._id}
                 onClick={() => handleClick(inq._id)}
               >
                 <div title={inq.productTitle}>{inq.productTitle}</div>
                 <div title={inq.companyName}>{inq.companyName}</div>
                 <div title={inq.contactName}>{inq.contactName}</div>
-                <div>
-                  {inq.createdAt
-                    ? new Date(inq.createdAt).toLocaleDateString()
-                    : "–"}
-                </div>
+                <div>{inq.createdAt ? new Date(inq.createdAt).toLocaleDateString() : "–"}</div>
                 <div>{inq.caseNumber || "–"}</div>
                 <div>
-                  <div>
-                    {inq.assignedTo && (
-                      <div className="inquiry-avatar">
-                        {inq.contactName ? getInitials(inq.contactName) : "?"}
-                      </div>
-                    )}
-                  </div>
+                  {inq.assignedTo && (
+                    <div className="inquiry-avatar">
+                      {inq.contactName ? getInitials(inq.contactName) : "?"}
+                    </div>
+                  )}
                 </div>
                 <div className="inquiry-status">
                   {inq.status !== "ulest" && (
                     <span
                       className="inquiry-status-dot"
                       style={{ backgroundColor: statusDotColor(inq.status) }}
-                    ></span>
+                    />
                   )}
                   {formatStatusLabel(inq.status)}
                 </div>
-
                 <div className="inquiry-options">
                   <img src={more} alt="Mer" />
                 </div>
@@ -236,42 +192,23 @@ function InquiryList() {
           {totalPages > 1 && (
             <div className="pagination-wrapper">
               <span className="pagination-info">
-                Viser {(currentPage - 1) * ITEMS_PER_PAGE + 1} -{" "}
-                {Math.min(
-                  currentPage * ITEMS_PER_PAGE,
-                  filteredInquiries.length
-                )}{" "}
-                av {filteredInquiries.length}
+                Viser {(currentPage - 1) * ITEMS_PER_PAGE + 1} –{" "}
+                {Math.min(currentPage * ITEMS_PER_PAGE, filteredInquiries.length)} av {filteredInquiries.length}
               </span>
               <div className="pagination-controls">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                >
+                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                   &lt;
                 </button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (num) =>
-                    num === 1 ||
-                      num === totalPages ||
-                      Math.abs(num - currentPage) <= 1 ? (
-                      <button
-                        key={num}
-                        onClick={() => handlePageChange(num)}
-                        className={num === currentPage ? "active" : ""}
-                      >
-                        {num}
-                      </button>
-                    ) : num === currentPage - 2 || num === currentPage + 2 ? (
-                      <span key={num} className="dots">
-                        …
-                      </span>
-                    ) : null
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) =>
+                  num === 1 || num === totalPages || Math.abs(num - currentPage) <= 1 ? (
+                    <button key={num} onClick={() => handlePageChange(num)} className={num === currentPage ? "active" : ""}>
+                      {num}
+                    </button>
+                  ) : num === currentPage - 2 || num === currentPage + 2 ? (
+                    <span key={num} className="dots">…</span>
+                  ) : null
                 )}
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                >
+                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                   &gt;
                 </button>
               </div>

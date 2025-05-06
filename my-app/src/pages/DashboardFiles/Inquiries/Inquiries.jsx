@@ -1,13 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../../../api/api";
 import InquiryList from "../../../components/InquiryComponents/InquiryList";
-import "./Inquiries.css";
+import InquiryHeader from "../../../components/InquiryComponents/InquiryHeader";
+
 const Inquiries = () => {
+  const [inquiries, setInquiries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchInquiries = async () => {
+      try {
+        const res = await api.get("/inquiries");
+        setInquiries(res.data.inquiries || []);
+      } catch {
+        setError("Kunne ikke hente henvendelser.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInquiries();
+  }, []);
 
   return (
     <div className="dashboard-container">
-      <InquiryList></InquiryList>
+      <InquiryHeader inquiries={inquiries} />
+      <InquiryList
+        inquiries={inquiries}
+        loading={loading}
+        error={error}
+      />
     </div>
   );
 };
