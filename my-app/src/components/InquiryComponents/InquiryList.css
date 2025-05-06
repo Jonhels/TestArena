@@ -95,7 +95,6 @@
 }
 
 .filter-group.search::after {
-  content: "🔍";
   position: absolute;
   right: 12px;
   top: 30px;
