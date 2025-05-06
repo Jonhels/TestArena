@@ -2,25 +2,29 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import "./InquiryList.css";
+import more from "../../assets/images/more-vertical.svg";
 
 function InquiryList() {
   const [inquiries, setInquiries] = useState([]);
   const [filteredInquiries, setFilteredInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedResponsible, setSelectedResponsible] = useState("Alle");
   const [selectedCompany, setSelectedCompany] = useState("Alle");
 
   const navigate = useNavigate();
+  const ITEMS_PER_PAGE = 8;
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
         const res = await api.get("/inquiries");
-        setInquiries(res.data.inquiries || []);
+        const data = res.data.inquiries || [];
+        setInquiries(data);
       } catch (err) {
+        console.error("Error fetching inquiries:", err);
         setError("Kunne ikke hente henvendelser.");
       } finally {
         setLoading(false);
@@ -69,43 +73,63 @@ function InquiryList() {
 
     if (selectedResponsible !== "Alle") {
       result = result.filter(
-        (inq) => inq.responsible === selectedResponsible
+        (inq) => (inq.assignedTo || "Ingen") === selectedResponsible
       );
     }
 
     if (selectedCompany !== "Alle") {
-      result = result.filter((inq) => inq.company === selectedCompany);
+      result = result.filter((inq) => inq.companyName === selectedCompany);
     }
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       result = result.filter(
         (inq) =>
-          inq.title.toLowerCase().includes(q) ||
-          inq.company.toLowerCase().includes(q) ||
-          inq.contactPerson.toLowerCase().includes(q)
+          inq.productTitle?.toLowerCase().includes(q) ||
+          inq.companyName?.toLowerCase().includes(q) ||
+          inq.contactName?.toLowerCase().includes(q)
       );
     }
 
     setFilteredInquiries(result);
+    setCurrentPage(1);
   };
 
-  // Get unique values for filters
   const uniqueResponsibles = [
     "Alle",
-    ...new Set(inquiries.map((i) => i.responsible).filter(Boolean)),
+    ...new Set(inquiries.map((i) => i.assignedTo || "Ingen").filter(Boolean)),
   ];
 
   const uniqueCompanies = [
     "Alle",
-    ...new Set(inquiries.map((i) => i.company).filter(Boolean)),
+    ...new Set(inquiries.map((i) => i.companyName).filter(Boolean)),
   ];
+
+  const getInitials = (name) => {
+    if (!name) return "?";
+    const parts = name.trim().split(" ");
+    const first = parts[0]?.[0] || "";
+    const last = parts[parts.length - 1]?.[0] || "";
+    return (first + last).toUpperCase();
+  };
+
+  const totalPages = Math.ceil(filteredInquiries.length / ITEMS_PER_PAGE);
+
+  const paginatedInquiries = filteredInquiries.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   return (
     <div className="inquiry-wrapper">
       <h2 className="inquiry-title">Henvendelser</h2>
 
-      {/* Filter bar */}
       <div className="filter-bar">
         <div className="filter-group">
           <label>Ansvarlig</label>
@@ -149,43 +173,111 @@ function InquiryList() {
       ) : error ? (
         <p className="inquiry-error">{error}</p>
       ) : (
-        <div className="inquiry-list">
-          <div className="inquiry-header">
-            <div>Tittel:</div>
-            <div>Virksomhet:</div>
-            <div>Kontaktperson:</div>
-            <div>Mottatt:</div>
-            <div>Case nr:</div>
-            <div>Ansvarlig:</div>
-            <div>Status:</div>
-          </div>
+        <>
+          <div className="inquiry-list">
+            <div className="inquiry-header">
+              <div>Tittel:</div>
+              <div>Virksomhet:</div>
+              <div>Kontaktperson:</div>
+              <div>Mottatt:</div>
+              <div>Case nr:</div>
+              <div>Ansvarlig:</div>
+              <div>Status:</div>
+              <div></div>
+            </div>
 
-          {filteredInquiries.map((inq) => (
-            <div
-              key={inq._id}
-              className="inquiry-row"
-              onClick={() => handleClick(inq._id)}
-            >
-              <div>{inq.title}</div>
-              <div>{inq.company}</div>
-              <div>{inq.contactPerson}</div>
-              <div>{new Date(inq.receivedDate).toLocaleDateString()}</div>
-              <div>{inq.caseNumber}</div>
-              <div>
-                <div className="inquiry-avatar">
-                  {inq.responsible?.[0]}
+            {paginatedInquiries.map((inq) => (
+              <div
+                className={`inquiry-row ${inq.status === "ulest" ? "new-inquiry" : ""
+                  }`}
+                key={inq._id}
+                onClick={() => handleClick(inq._id)}
+              >
+                <div title={inq.productTitle}>{inq.productTitle}</div>
+                <div title={inq.companyName}>{inq.companyName}</div>
+                <div title={inq.contactName}>{inq.contactName}</div>
+                <div>
+                  {inq.createdAt
+                    ? new Date(inq.createdAt).toLocaleDateString()
+                    : "–"}
+                </div>
+                <div>{inq.caseNumber || "–"}</div>
+                <div>
+                  <div>
+                    {inq.assignedTo && (
+                      <div className="inquiry-avatar">
+                        {inq.contactName ? getInitials(inq.contactName) : "?"}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="inquiry-status">
+                  {inq.status !== "ulest" && (
+                    <span
+                      className="inquiry-status-dot"
+                      style={{ backgroundColor: statusDotColor(inq.status) }}
+                    ></span>
+                  )}
+                  {formatStatusLabel(inq.status)}
+                </div>
+
+                <div className="inquiry-options">
+                  <img src={more} alt="Mer" />
                 </div>
               </div>
-              <div className="inquiry-status">
-                <span
-                  className="inquiry-status-dot"
-                  style={{ backgroundColor: statusDotColor(inq.status) }}
-                ></span>
-                {formatStatusLabel(inq.status)}
+            ))}
+          </div>
+
+          <span className="result-info">
+            Viser {(currentPage - 1) * ITEMS_PER_PAGE + 1} –{" "}
+            {Math.min(currentPage * ITEMS_PER_PAGE, filteredInquiries.length)} henvendelser
+          </span>
+
+          {totalPages > 1 && (
+            <div className="pagination-wrapper">
+              <span className="pagination-info">
+                Viser {(currentPage - 1) * ITEMS_PER_PAGE + 1} -{" "}
+                {Math.min(
+                  currentPage * ITEMS_PER_PAGE,
+                  filteredInquiries.length
+                )}{" "}
+                av {filteredInquiries.length}
+              </span>
+              <div className="pagination-controls">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  &lt;
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (num) =>
+                    num === 1 ||
+                      num === totalPages ||
+                      Math.abs(num - currentPage) <= 1 ? (
+                      <button
+                        key={num}
+                        onClick={() => handlePageChange(num)}
+                        className={num === currentPage ? "active" : ""}
+                      >
+                        {num}
+                      </button>
+                    ) : num === currentPage - 2 || num === currentPage + 2 ? (
+                      <span key={num} className="dots">
+                        …
+                      </span>
+                    ) : null
+                )}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  &gt;
+                </button>
               </div>
             </div>
-          ))}
-        </div>
+          )}
+        </>
       )}
     </div>
   );
