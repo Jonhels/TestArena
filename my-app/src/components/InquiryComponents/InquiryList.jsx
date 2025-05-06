@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./InquiryList.css";
 import moreIcon from "../../assets/images/more-vertical.svg";
+import api from "../../api/api";
 
-function InquiryList({ inquiries = [], loading, error }) {
+function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading, setError }) {
   const [filteredInquiries, setFilteredInquiries] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedResponsible, setSelectedResponsible] = useState("Alle");
   const [selectedCompany, setSelectedCompany] = useState("Alle");
   const [currentPage, setCurrentPage] = useState(1);
   const [openDropdownId, setOpenDropdownId] = useState(null);
+
 
   const navigate = useNavigate();
   const ITEMS_PER_PAGE = 8;

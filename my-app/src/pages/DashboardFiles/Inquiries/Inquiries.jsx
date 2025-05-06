@@ -30,6 +30,9 @@ const Inquiries = () => {
         inquiries={inquiries}
         loading={loading}
         error={error}
+        setInquiries={setInquiries}
+        setLoading={setLoading}
+        setError={setError}
       />
     </div>
   );
