@@ -1,0 +1,168 @@
+.form-step {
+  padding: 3rem 3rem 3rem 2rem; /* ekstra høyre-padding */
+  background: var(--bg-white);
+  border: 1px solid var(--darkblue-100);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
+
+.form-step-title {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--darkblue-100);
+  padding-bottom: 1rem;
+  color: var(--darkblue-700);
+}
+
+.form-step-grid {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: nowrap;
+}
+
+.form-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 260px;
+}
+
+.form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: var(--font-xs);
+  font-weight: 500;
+  color: var(--darkblue-800);
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--darkblue-200);
+  border-radius: 0.6rem;
+  font-size: var(--font-xs);
+  transition: border 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--darkblue-500);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 60, 120, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--darkblue-200);
+  font-size: var(--font-2xs);
+}
+
+.form-input[aria-invalid="true"] {
+  border-color: red;
+  background-color: #fff0f0;
+}
+
+.form-error {
+  color: red;
+  font-size: var(--font-3xs);
+  margin-top: 0.5rem;
+}
+
+.form-button-row {
+  display: flex;
+  justify-content: flex-end; /* <- behold høyrejustert */
+  margin-top: 2.5rem;
+}
+
+.form-next-button {
+  background-color: var(--darkblue-600);
+  color: white;
+  padding: 0.75rem 2.25rem;
+  border-radius: 9999px;
+  font-size: var(--font-xs);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-next-button:hover {
+  background-color: var(--darkblue-700);
+}
+
+/* Responsiv */
+@media (max-width: 600px) {
+  .form-step-grid {
+    flex-direction: column;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .form-column {
+    min-width: 100%;
+  }
+
+  .form-step {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .form-step-title {
+    font-size: var(--font-xs);
+  }
+
+  .form-button-row {
+    justify-content: flex-end; /* behold knapp til høyre */
+  }
+
+  .form-next-button {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.75rem;
+  }
+}
+
+.form-button-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2.5rem;
+}
+
+.form-next-button {
+  margin-left: auto;
+  background-color: var(--darkblue-600);
+  color: white;
+  padding: 0.75rem 2.25rem;
+  border-radius: 9999px;
+  font-size: var(--font-xs);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: auto; /* viktig for å hindre 100% bredde */
+  max-width: none; /* fjerner eventuell begrensning */
+}
+
+.form-next-button:hover {
+  background-color: var(--darkblue-700);
+}
+
+/* Responsiv */
+@media (max-width: 600px) {
+  .form-button-row {
+    justify-content: flex-end;
+  }
+
+  .form-next-button {
+    width: auto;
+    max-width: none;
+  }
+}
