@@ -15,8 +15,8 @@ const InquiriesOpen = () => {
         const fetchInquiry = async () => {
             try {
                 const response = await api.get(`/inquiries/${id}`);
-                setInquiryData(response.data);
-                console.log(response.data);
+                setInquiryData(response.data.inquiry);
+                console.log(response.data.inquiry);
             } catch (error) {
                 console.error("Failed to fetch inquiry:", error);
             }

@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import axios from "axios";
 import { LanguageContext } from "../../context/LanguageContext";
 import inquiryFormTranslations from "./inquiryFormTranslations";
 import StepOneContactInfo from "../../components/InquiryForm/StepOneContactInfo/StepOneContactInfo";
@@ -11,6 +10,7 @@ import FormStepsIndicator from "../../components/InquiryForm/FormStepsIndicator/
 import InquirySuccessModal from "../../components/InquiryForm/InquirySuccessModal/InquirySuccessModal";
 import Loader from "../../components/Loader/Loader";
 import "./InquiryForm.css";
+import api from "../../api/api";
 
 const InquiryForm = () => {
   const { language } = useContext(LanguageContext);
@@ -47,17 +47,13 @@ const InquiryForm = () => {
         formData.append("attachment", formValues.attachment[0]);
       }
 
-      // Send inn
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/inquiries`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      // Send forespørselen til serveren
+      await api.post("/inquiries", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
 
       setShowSuccess(true);
     } catch (error) {
