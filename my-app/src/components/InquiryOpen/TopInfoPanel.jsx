@@ -17,19 +17,28 @@ const TopInfoPanel = ({ data }) => {
 
 
     const tagInputRef = useRef(null);
+    const editButtonRef = useRef(null);
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (editMode && tagInputRef.current && !tagInputRef.current.contains(event.target)) {
-                setEditMode(false);
-            }
-        };
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [editMode]);
+   useEffect(() => {
+    const handleClickOutside = (event) => {
+        if (
+            editMode &&
+            tagInputRef.current &&
+            !tagInputRef.current.contains(event.target) &&
+            editButtonRef.current &&
+            !editButtonRef.current.contains(event.target)
+        ) {
+            setEditMode(false);
+        }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+}, [editMode]);
+
 
     if (!data) return <div>Laster henvendelse...</div>;
 
@@ -112,7 +121,7 @@ const TopInfoPanel = ({ data }) => {
                             </span>
                         ))}
 
-                        <button className="edit-icon" onClick={() => setEditMode(!editMode)}>
+                        <button ref={editButtonRef} className="edit-icon" onClick={() => setEditMode(!editMode)}>
                             <img src={pencil} alt="Edit" />
                             <p>Edit</p>
                         </button>
