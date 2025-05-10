@@ -1,0 +1,10 @@
+.back-button-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.back-button-container p {
+   font-weight: bold;
+   margin-left: 10px;
+}
