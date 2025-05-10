@@ -1,4 +1,3 @@
-// src/context/LanguageProvider.js
 import { useState, useEffect } from "react";
 import { LanguageContext } from "./LanguageContext";
 import PropTypes from "prop-types";

@@ -1,0 +1,59 @@
+.form-steps-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.form-step-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.step-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--darkblue-300);
+  background-color: var(--bg-white);
+  z-index: 1;
+}
+
+.step-circle.active {
+  background-color: var(--darkblue-600);
+  border-color: var(--darkblue-600);
+}
+
+.step-circle.completed {
+  background-color: var(--darkblue-300);
+}
+
+.step-label {
+  font-size: var(--font-xs);
+  color: var(--darkblue-400);
+  margin-left: 1.5rem;
+  margin-top: -1.2rem;
+}
+
+.step-label.active {
+  font-weight: 600;
+  color: var(--darkblue-800);
+}
+
+.step-line {
+  position: absolute;
+  left: 6px;
+  top: 14px;
+  width: 2px;
+  height: 2.5rem;
+  background-color: var(--darkblue-100);
+}
+
+/* Skjul på mobil */
+@media (max-width: 768px) {
+  .form-steps-indicator {
+    display: none;
+  }
+}
