@@ -9,9 +9,9 @@
   flex-grow: 1;
   padding: 2rem;
   overflow-y: auto;
-  overflow-x: hidden; /* ✅ prevent horizontal scroll */
+  overflow-x: hidden; 
   background-color: var(--lightblue-50);
-  max-width: calc(100vw - 230px); /* ✅ sidebar width accounted for */
+  max-width: calc(100vw - 230px); 
   box-sizing: border-box;
 }
 

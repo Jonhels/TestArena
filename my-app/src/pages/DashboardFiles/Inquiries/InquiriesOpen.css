@@ -5,6 +5,6 @@
 }
 
 .back-button-container p {
-   font-weight: bold;
    margin-left: 10px;
+   padding-bottom: 3px;
 }

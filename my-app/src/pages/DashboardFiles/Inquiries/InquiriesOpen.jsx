@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import back from "../../../assets/images/arrow-left.svg";
-import "./InquiriesOpen.css";
+import "./InquiriesOpen.css"
 import api from "../../../api/api";
-import TopInfoPanel from "../../../components/InquiryTopInfoPanel/TopInfoPanel";
+import TopInfoPanel from "../../../components/InquiryOpen/TopInfoPanel";
 
 const InquiriesOpen = () => {
 
