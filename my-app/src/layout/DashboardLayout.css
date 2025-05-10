@@ -5,10 +5,14 @@
     height: 100vh;
   }
   
-  .Dashboardlayout__main {
-    flex-grow: 1;
-    padding: 2rem;
-    overflow-y: auto;
-    background-color: var(--lightblue-50);
-  }
+ .Dashboardlayout__main {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden; /* ✅ prevent horizontal scroll */
+  background-color: var(--lightblue-50);
+  max-width: calc(100vw - 230px); /* ✅ sidebar width accounted for */
+  box-sizing: border-box;
+}
+
   
