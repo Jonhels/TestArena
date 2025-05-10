@@ -1,0 +1,268 @@
+.dropdown-menu {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-menu p {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu p:hover {
+  background-color: #f0f4ff;
+  color: #1a73e8;
+}
+
+/* === WRAPPER === */
+.inquiry-wrapper {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.inquiry-error {
+  color: red;
+}
+
+/* === TITLES === */
+.inquiry-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #222;
+}
+
+.inquiry-subtext {
+  font-size: 14px;
+  color: #555;
+}
+
+/* === FILTER BAR === */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.filter-group label {
+  margin-bottom: 4px;
+  color: #444;
+  font-weight: 500;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 8px 14px;
+  border: 1px solid #cdd3dc;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  min-width: 140px;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  border-color: #7b9acc;
+  box-shadow: 0 0 0 2px rgba(123, 154, 204, 0.2);
+}
+
+.filter-group.search input {
+  padding-right: 30px;
+}
+
+.filter-group.search::after {
+  position: absolute;
+  right: 12px;
+  top: 30px;
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+}
+
+/* === INQUIRY LIST === */
+.inquiry-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-header,
+.inquiry-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 0.7fr 1fr 0.3fr;
+  gap: 12px;
+  padding: 14px 20px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.inquiry-header {
+  font-weight: 600;
+  color: #555;
+  background-color: #f7f9fb;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.inquiry-row {
+  background-color: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #e6e6e6;
+  transition: background 0.2s;
+  overflow: visible;
+}
+
+.inquiry-row:hover {
+  background-color: #f9f9f9;
+}
+
+.inquiry-row > div,
+.inquiry-header > div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* === AVATAR === */
+.inquiry-avatar {
+  width: 28px;
+  height: 28px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+/* === STATUS === */
+.inquiry-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.inquiry-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+/* === PAGINATION === */
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pagination-info {
+  color: #555;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pagination-controls button {
+  border: 1px solid #d0d4da;
+  background: white;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 36px;
+  transition: all 0.2s ease;
+}
+
+.pagination-controls button.active {
+  background-color: #1f2d3d;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.pagination-controls .dots {
+  padding: 0 6px;
+  color: #888;
+  font-size: 18px;
+}
+
+/* === NEW INQUIRIES === */
+.inquiry-row.new-inquiry {
+  border: 1px solid #b7e8c2;
+  box-shadow: 0 0 0 2px rgba(173, 255, 181, 0.4);
+  border-radius: 6px;
+}
+
+/* === RESULT INFO === */
+.result-info {
+  font-size: 13px;
+  color: #444;
+  margin-top: 12px;
+  padding-left: 4px;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 900px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inquiry-header,
+  .inquiry-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .inquiry-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .inquiry-badge {
+    align-self: flex-end;
+  }
+}
