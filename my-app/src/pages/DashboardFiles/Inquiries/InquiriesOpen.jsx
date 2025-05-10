@@ -5,6 +5,8 @@ import back from "../../../assets/images/arrow-left.svg";
 import "./InquiriesOpen.css"
 import api from "../../../api/api";
 import TopInfoPanel from "../../../components/InquiryOpen/TopInfoPanel";
+import AiRecommendation from "../../../components/InquiryOpen/AiRecommendation";
+import InquiryDetails from "../../../components/InquiryOpen/InquiryDetails";
 
 const InquiriesOpen = () => {
 
@@ -33,6 +35,8 @@ const InquiriesOpen = () => {
             </div>
 
             <TopInfoPanel data={inquiryData} />
+            <AiRecommendation data={inquiryData} />
+            <InquiryDetails data={inquiryData} />
         </div>
     );
 };
