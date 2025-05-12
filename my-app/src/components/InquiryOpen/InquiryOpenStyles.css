@@ -1,158 +1,314 @@
 .top-info-panel {
-    background-color: var(--bg-white);
-    padding: 2%;
-    border-radius: 12px;
-    margin-top: 2%;
-    overflow-x: hidden;
-    word-break: break-word;
+  background-color: var(--bg-white);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  overflow-x: hidden;
+  word-break: break-word;
+  font-size: var(--font-xs);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+
 .top-info-panel-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    align-items: flex-start;
-    line-height: 1.5;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
+  line-height: 1.5;
+  flex-wrap: wrap;
+  font-size: var(--font-xs);
 }
 
 .boldText {
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: var(--font-sm);
 }
 
 .top-info-textbox {
-    margin-right: 10%;
-    max-width: 100%;
-}
-
-.top-info-panel-header h2 {
-    font-weight: 400;
+  margin-right: 10%;
+  max-width: 100%;
 }
 
 .BlueBorderline {
-    background-color: var(--color-blueborder);
-    width: 100%;
-    height: 1px;
-    margin: 5px 0 10px 0;
-    padding-right: 50px;
+  background-color: var(--color-blueborder);
+  width: 100%;
+  height: 1px;
+  margin: 5px 0 10px 0;
+  padding-right: 50px;
 }
 
 /* Tag input field layout */
 .tag-edit-field {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-xs);
 }
 
-.tag-input-container{
-    margin-top: 10px;
+.tag-input-container {
+  margin-top: 10px;
 }
 
 .tag-input-container input {
-    margin-right: 5px;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  margin-right: 5px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: var(--font-2xs);
 }
 
+.tag-error {
+  color: red;
+  font-size: var(--font-2xs);
+  margin-top: 4px;
+}
 
-/* Tag pill with delete button */
 .tag-pill {
-    background-color: var(--lightsalmon-200);
-    padding: 0.3rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.875rem;
-    margin-right: 0.4rem;
-    margin-top: 0.2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+  background-color: var(--lightsalmon-200);
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: var(--font-2xs);
+  margin-right: 0.4rem;
+  margin-top: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .tags-section {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .tags-section span {
-    margin: 2px;
+  margin: 2px;
 }
 
 button {
-    background-color: var(--color-blueborder);
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    font-size: 0.875rem;
-    color: var(--bg-white);
+  background-color: var(--color-blueborder);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: var(--font-2xs);
+  color: var(--bg-white);
 }
 
-
-/* Delete tag button (×) */
 .delete-tag {
-    margin-left: 4px;
-    background: none;
-    border: none;
-    color: #444;
-    cursor: pointer;
-    font-size: 1rem;
-    line-height: 1;
-    padding: 0;
+  margin-left: 4px;
+  background: none;
+  border: none;
+  color: #444;
+  cursor: pointer;
+  font-size: var(--font-2xs);
+  line-height: 1;
+  padding: 0;
 }
 
 .edit-icon {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background-color: transparent;
-    border: none;
-    color: var(--color-blueborder);
-    font-size: 0.875rem;
-    cursor: pointer;
-    margin-left: 0.5rem;
-    padding: 0.2rem 0.4rem;
-    border-radius: 6px;
-    transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  border: none;
+  color: var(--color-blueborder);
+  font-size: var(--font-2xs);
+  cursor: pointer;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
 }
 
 .edit-icon:hover {
-    background-color: var(--lightblue-100);
-    /* or a subtle gray/blue background */
+  background-color: var(--lightblue-100);
 }
 
 .edit-icon img {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
-
-/* info  */
+/* Info sections */
 .info-section {
-    margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  font-size: var(--font-md);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
 .info-block {
-    margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.info-block p {
+  font-size: var(--font-xs);
+  line-height: 1.6;
+  color: var(--normal);
 }
 
 .info-label {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: var(--font-sm);
+  margin-bottom: 0.5rem;
+  color: var(--normal);
 }
 
 .bullet-list {
-    margin: 0;
-    padding-left: 1.5rem;
+  padding-left: 1.5rem;
+  font-size: var(--font-xs);
+  margin: 0.5rem 0;
 }
 
 .bullet-list li {
-    margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+a[href*="attachment"] {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: var(--color-blueborder);
+  color: var(--bg-white);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: var(--font-2xs);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+a[href*="attachment"]:hover {
+  background-color: var(--lightblue-600);
+}
+
+/* Avatar */
+.inquiry-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-blueborder);
+  color: var(--bg-white);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-3xs);
+  margin-right: 10px;
+}
+
+/* Chevron toggle */
+.recommendation-toggle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chevron-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+/* Recommendation cards grid */
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.recommendation-card {
+  background-color: var(--lightblue-50);
+  border: 1px solid var(--darkblue-100);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.2s ease;
+}
+
+.recommendation-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: var(--font-xs);
+}
+
+.recommendation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: var(--font-2xs);
+  color: var(--normal);
+}
+
+.recommendation-details .rec-name {
+  font-weight: 600;
+  font-size: var(--font-xs);
+}
+
+.dot {
+  font-size: 1rem;
+  color: var(--darkblue-400);
+}
+
+/* Sub-blocks */
+.info-sub-block {
+  margin-bottom: 1rem;
+}
+
+.info-sub-label {
+  display: block;
+  font-weight: 600;
+  font-size: var(--font-2xs);
+  margin-bottom: 0.25rem;
+  color: var(--darkblue-500);
+}
+
+.info-sub-value {
+  font-size: var(--font-xs);
+  line-height: 1.5;
+  color: var(--normal);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .top-info-panel {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: var(--font-sm);
+  }
+
+  .info-label {
+    font-size: var(--font-xs);
+  }
+
+  .info-block p,
+  .recommendation-details p {
+    font-size: var(--font-2xs);
+  }
+
+  .recommendation-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recommendation-card {
+    flex-direction: column;
+  }
+
+  .recommendation-details .rec-name {
+    font-size: var(--font-sm);
+  }
 }
