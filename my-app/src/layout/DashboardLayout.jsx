@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
-import DashboardNav from "../components/DashboardNav/DashboardNav"
+import { useState } from "react";
+import DashboardNav from "../components/DashboardNav/DashboardNav";
 import "./DashboardLayout.css";
 
 const DashboardLayout = ({ children }) => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   return (
     <div className="Dashboardlayout">
-      <DashboardNav />
+      <DashboardNav isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
       <main className="Dashboardlayout__main">{children}</main>
     </div>
   );

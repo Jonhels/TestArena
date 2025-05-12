@@ -6,7 +6,7 @@ import api from "../../api/api";
 import arrowUp from "../../assets/images/arrow-up.svg";
 import arrowDown from "../../assets/images/arrow-down.svg";
 import filterIcon from "../../assets/images/filter.svg";
-import searchIcon from "../../assets/images/search.svg"; // optional icon path
+import searchIcon from "../../assets/images/search.svg";
 
 function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading, setError }) {
   const [filteredInquiries, setFilteredInquiries] = useState([]);
