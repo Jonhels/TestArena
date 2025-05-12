@@ -1,18 +1,37 @@
 /* === DROPDOWN === */
 .dropdown-menu {
   position: absolute;
+  right: 50px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
   padding: 4px 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   z-index: 10;
 }
 
-.dropdown-menu p {
+.deleteArchived {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: var(--font-2xs);
+  font-weight: 500;
+  color: #e53935;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-align: left;
+}
+
+.deleteArchived:hover {
+  background-color: #ffecec;
+  color: #b71c1c;
+}
+
+.handlearchive {
   margin: 0;
   padding: 10px 16px;
   font-size: var(--font-2xs);
@@ -21,7 +40,7 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.dropdown-menu p:hover {
+.handlearchive:hover {
   background-color: #f0f4ff;
   color: #1a73e8;
 }
@@ -87,6 +106,7 @@
 /* === DESKTOP INQUIRY TABLE === */
 .inquiry-list {
   display: flex;
+  min-height: 30%;
   flex-direction: column;
   border: 1px solid #e6e6e6;
   border-radius: 8px;
@@ -122,8 +142,8 @@
   background-color: #f9f9f9;
 }
 
-.inquiry-row > div,
-.inquiry-header > div {
+.inquiry-row>div,
+.inquiry-header>div {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -161,9 +181,17 @@
   background-color: #ccc;
 }
 
-.inquiry-status-badge.green .dot { background-color: #4caf50; }
-.inquiry-status-badge.orange .dot { background-color: #fb8c00; }
-.inquiry-status-badge.red .dot { background-color: #e53935; }
+.inquiry-status-badge.green .dot {
+  background-color: #4caf50;
+}
+
+.inquiry-status-badge.orange .dot {
+  background-color: #fb8c00;
+}
+
+.inquiry-status-badge.red .dot {
+  background-color: #e53935;
+}
 
 /* === NEW INQUIRY HIGHLIGHT === */
 .inquiry-row.new-inquiry,
@@ -175,6 +203,7 @@
 /* === PAGINATION === */
 .pagination-wrapper {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
   margin-top: 24px;
@@ -322,9 +351,10 @@
 }
 
 .inquiry-card-dropdown-wrapper {
-  position: relative;
+  position: absolute;
+  right: 60px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  z-index: 999;
 }
 
 .dropdown-menu.mobile-dropdown {
@@ -337,7 +367,7 @@
   padding: 4px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
   width: 120px;
-  z-index: 10;
+  z-index: 999;
 }
 
 .filter-bar-mobile {
@@ -371,10 +401,11 @@
 
 /* === RESPONSIVE === */
 @media screen and (max-width: 900px) {
- .filter-bar {
+  .filter-bar {
     display: none;
   }
 
+  
   .filter-bar-mobile {
     display: flex;
     justify-content: space-between;

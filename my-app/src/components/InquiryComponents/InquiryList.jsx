@@ -260,7 +260,7 @@ function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading,
 
                   {openDropdownId === inq._id && (
                     <div className="dropdown-menu">
-                      <p onClick={(e) => handleArchive(e, inq._id)}>Arkiver</p>
+                      <p className="handlearchive" onClick={(e) => handleArchive(e, inq._id)}>Arkiver</p>
                     </div>
                   )}
                 </div>
@@ -309,7 +309,7 @@ function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading,
                     {openDropdownId === inq._id && (
                       <div className="inquiry-card-dropdown-wrapper">
                         <div className="dropdown-menu mobile-dropdown">
-                          <p onClick={(e) => handleArchive(e, inq._id)}>Arkiver</p>
+                          <p className="handlearchive" onClick={(e) => handleArchive(e, inq._id)}>Arkiver</p>
                         </div>
                       </div>
                     )}
