@@ -1,0 +1,133 @@
+.datetime-box {
+  padding: 1.5rem;
+  background-color: var(--bg-white);
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.time {
+  font-size: var(--font-lg);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.weekday {
+  font-size: var(--font-sm);
+  color: var(--darkblue-500);
+  text-transform: capitalize;
+}
+
+.date,
+.week {
+  font-size: var(--font-xs);
+  color: var(--darkblue-500);
+  text-transform: capitalize;
+}
+
+.stats-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-box {
+  background-color: var(--bg-white);
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-title {
+  color: var(--darkblue-500);
+  font-size: var(--font-2xs);
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: var(--font-md);
+  font-weight: bold;
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .dashboard-heading {
+    font-size: var(--font-sm);
+    text-align: center;
+  }
+
+  .datetime-box {
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+  }
+
+  .stats-boxes {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-box {
+    padding: 1rem;
+  }
+
+  .stat-title {
+    font-size: var(--font-3xs);
+  }
+
+  .stat-value {
+    font-size: var(--font-md);
+  }
+}
+
+.calendar-box {
+  padding: 1.5rem;
+  background-color: var(--bg-white);
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.calendar-box h3 {
+  font-size: var(--font-sm);
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.calendar-section {
+  margin-bottom: 1rem;
+}
+
+.calendar-section strong {
+  font-weight: bold;
+  color: var(--darkblue-500);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-section ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  color: var(--normal);
+}
+
+.calendar-section li {
+  margin-bottom: 0.5rem;
+  font-size: var(--font-xs);
+}
+
+/* Responsiv justering */
+@media (max-width: 768px) {
+  .calendar-box {
+    max-width: 100%;
+  }
+}

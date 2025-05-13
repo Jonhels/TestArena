@@ -1,0 +1,16 @@
+.back-button-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.back-button-container p {
+  margin-left: 10px;
+  padding-bottom: 3px;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-container {
+    margin: 20px 0;
+  }
+}
