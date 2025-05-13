@@ -21,6 +21,7 @@ import Inquiries from "../pages/DashboardFiles/Inquiries/Inquiries";
 import Settings from "../pages/DashboardFiles/Settings/settings";
 import InquiriesOpen from "../pages/DashboardFiles/Inquiries/InquiriesOpen";
 import TestCase from "../pages/TestCase/TestCase";
+import ArchiveOpen from "../pages/DashboardFiles/Archive/ArchiveOpen";
 
 const AppRoutes = () => (
   <Suspense fallback={<Loader message="Laster siden..." />}>
@@ -172,6 +173,16 @@ const AppRoutes = () => (
           <ProtectedRoute>
             <DashboardLayout>
               <InquiriesOpen />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/arkiv/:id"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <ArchiveOpen />
             </DashboardLayout>
           </ProtectedRoute>
         }

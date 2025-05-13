@@ -1,72 +1,59 @@
-.inquiry-top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-    padding: 24px;
-    border-radius: 12px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-  
-  .inquiry-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #222;
-  }
-  
-  .inquiry-description {
-    font-size: 14px;
-    color: #555;
-    margin-top: 6px;
-  }
-  
-  .inquiry-new-counter {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .inquiry-new-counter .badge {
-    background-color: #0c9c41;
-    color: white;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-  }
-  
-  .inquiry-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
+.inquiry-header-wrapper {
+  position: relative;
+  background: var(--bg-white);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
 
-  .inquiry-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    font-size: 14px;
-  }
+.inquiry-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-2xs);
+  color: #333;
+}
 
-  .inquiry-badge-count {
-    background-color: #198754;
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-    border-radius: 999px;
-    padding: 4px 10px;
-    min-width: 24px;
-    text-align: center;
+.label-badge {
+  margin: 0;
+}
+
+.inquiry-badge-count {
+  background-color: #198754;
+  color: var(--bg-white);
+  font-size: var(--font-3xs);
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.inquiry-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inquiry-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  margin: 0;
+}
+
+.inquiry-subtext {
+  font-size: var(--font-2xs);
+  color: #555;
+  margin-top: 6px;
+}
+@media screen and (max-width: 900px) {
+  .inquiry-header-wrapper {
+    margin: 20px 0;
   }
+}

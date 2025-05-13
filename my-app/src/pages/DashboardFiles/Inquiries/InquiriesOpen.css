@@ -5,6 +5,12 @@
 }
 
 .back-button-container p {
-   font-weight: bold;
    margin-left: 10px;
+   padding-bottom: 3px;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-container {
+    margin: 20px 0;
+  }
 }

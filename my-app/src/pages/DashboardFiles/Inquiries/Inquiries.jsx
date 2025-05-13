@@ -7,6 +7,8 @@ const Inquiries = () => {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [users, setUsers] = useState([]);
+
 
   useEffect(() => {
     const fetchInquiries = async () => {
@@ -23,6 +25,7 @@ const Inquiries = () => {
     fetchInquiries();
   }, []);
 
+  
   return (
     <div className="dashboard-container">
       <InquiryHeader inquiries={inquiries} />
