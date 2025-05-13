@@ -1,0 +1,31 @@
+.contacts-header-wrapper {
+  position: relative;
+  background: var(--bg-white);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+.contacts-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contacts-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  margin: 0;
+}
+
+.contacts-subtext {
+  font-size: var(--font-2xs);
+  color: #555;
+  margin-top: 6px;
+}
+@media screen and (max-width: 900px) {
+  .contacts-header-wrapper {
+    margin: 20px 0;
+  }
+}

@@ -22,6 +22,7 @@ import Settings from "../pages/admin/Settings/Settings";
 import InquiriesOpen from "../pages/admin/Inquiries/InquiriesOpen";
 import TestCase from "../pages/site/TestCase/TestCase";
 import ArchiveOpen from "../pages/admin/Archive/ArchiveOpen";
+import ContactsOpen from "../pages/admin/Contacts/ContactsOpen";
 
 const AppRoutes = () => (
   <Suspense fallback={<Loader message="Laster siden..." />}>
@@ -183,6 +184,16 @@ const AppRoutes = () => (
           <ProtectedRoute>
             <DashboardLayout>
               <ArchiveOpen />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/kontakter/:id"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <ContactsOpen />
             </DashboardLayout>
           </ProtectedRoute>
         }
