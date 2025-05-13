@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContactsList from "../../../components/admin/Inquiry/Contacts/ContactsList";
 import api from "../../../api/api";
+import ContactsHeader from "../../../components/admin/Inquiry/Contacts/ContactsHeader";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
@@ -25,7 +26,7 @@ const Contacts = () => {
 
   return (
     <div className="dashboard-container">
-      <h1 className="dashboard-heading">Kontakter</h1>
+      <ContactsHeader />
       <ContactsList
         contacts={contacts}
         setContacts={setContacts}
