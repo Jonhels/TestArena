@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../InquiryList/InquiryList.css";
 import moreIcon from "../../../../assets/icons/more-vertical.svg";
 import filterIcon from "../../../../assets/icons/filter.svg";
@@ -24,12 +25,30 @@ function ContactsList({
     const [showMobileFilters, setShowMobileFilters] = useState(false);
     const [showAddModal, setShowAddModal] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-
+    const modalRef = useRef(null);
+    const navigate = useNavigate();
 
     const ITEMS_PER_PAGE = 8;
 
     const uniqueCompanies = ["Alle", ...new Set(contacts.map(c => c.businessName).filter(Boolean))];
     const uniquePositions = ["Alle", ...new Set(contacts.map(c => c.responsibility).filter(Boolean))];
+    const handleClick = (id) => navigate(`/kontakter/${id}`);
+
+    useEffect(() => {
+        if (!showAddModal) return;
+
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                setShowAddModal(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [showAddModal]);
+
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900);
@@ -90,12 +109,16 @@ function ContactsList({
             if (!window.confirm("Er du sikker på at du vil slette denne kontakten?")) {
                 return;
             }
-            await api.delete(`/contacts/${id}`); // call backend
+            await api.delete(`/kontakter/${id}`); // call backend
             setContacts(prev => prev.filter(c => c._id !== id));
             setOpenDropdownId(null);
         } catch (err) {
             console.error("Failed to delete contact:", err.response?.data || err.message);
         }
+    };
+
+    const handleEdit = async (e, id) => {
+        navigate(`/kontakter/${id}`);
     };
 
 
@@ -214,7 +237,7 @@ function ContactsList({
                                 </div>
                                 <div>
                                     {paginatedContacts.map((c) => (
-                                        <div key={c._id} className="mobile-inquiry-row">
+                                        <div key={c._id} className="mobile-inquiry-row" onClick={() => navigate(`/kontakter/${c._id}`)} >
                                             <div className="mobile-inquiry-avatar">
                                                 {(c.businessName?.split(" ").slice(0, 2).map(w => w[0]).join("") || "??")}
                                             </div>
@@ -242,7 +265,11 @@ function ContactsList({
                                 <div></div>
                             </div>
                             {paginatedContacts.map((c) => (
-                                <div key={c._id} className="contacts-table-row">
+                                <div
+                                    key={c._id}
+                                    className="contacts-table-row"
+                                    onClick={() => navigate(`/kontakter/${c._id}`)}
+                                >
                                     <div className="inquiry-status">
                                         <div className="contact-avatar">
                                             {c.businessName?.slice(0, 2).toUpperCase()}
@@ -265,6 +292,9 @@ function ContactsList({
                                         </div>
                                         {openDropdownId === c._id && (
                                             <div className="dropdown-menu">
+                                                <p className="handlearchive" onClick={(e) => handleEdit(e, c._id)}>
+                                                    Rediger
+                                                </p>
                                                 <p className="deleteArchived" onClick={(e) => handleDelete(e, c._id)}>
                                                     Slett
                                                 </p>
@@ -315,7 +345,7 @@ function ContactsList({
                     {/* Add Contact Modal */}
                     {showAddModal && (
                         <div className="modal-overlay">
-                            <div className="modal-content">
+                            <div className="modal-content" ref={modalRef}>
                                 <AddContactForm
                                     onClose={() => setShowAddModal(false)}
                                     onAdd={(newContact) => {
