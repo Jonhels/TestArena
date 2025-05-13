@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LanguageContext } from "../../../../context/LanguageContext";
 import testcaseTranslations from "./testcaseTranslations";
 import testcaseImg from "../../../../assets/images/meeting.png";
-import "./TestcaseSection.css";
+import "./TestCaseSection.css";
 import { useNavigate } from "react-router-dom";
 import useScrollFadeInOnce from "../../../../hooks/useScrollFadeInOnce";
 
