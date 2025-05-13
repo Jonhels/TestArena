@@ -64,16 +64,20 @@ const AiRecommendation = ({ data }) => {
           ) : recommendations.length > 0 ? (
             recommendations.map((rec, idx) => (
               <div key={idx} className="recommendation-card">
-                <div className="recommendation-header">
-                  <div className="inquiry-avatar">{getInitials(rec.name)}</div>
-                  <div className="recommendation-details">
-                    <p className="rec-name">{rec.name}</p>
-                    <p>
-                      {rec.responsibility} &nbsp; <span className="dot">•</span>{" "}
-                      &nbsp; Lokasjon: {rec.officeLocation}
-                    </p>
-                    <p>Email: {rec.email}</p>
-                    <p>Telefon: {rec.phone}</p>
+                <div className="inquiry-avatar">
+                  {getInitials(rec.name)}
+                </div>
+                <div className="recommendation-details">
+                  <div className="rec-name">{rec.name}</div>
+                  <div className="rec-info">
+                    <span>{rec.responsibility}</span>
+                    <span className="separator"></span>
+                    <span>Lokasjon: {rec.officeLocation}</span>
+                  </div>
+                  <div className="rec-info">
+                    <span className="email">Email: {rec.email}</span>
+                    <span className="separator">|</span>
+                    <span>Telefon: {rec.phone}</span>
                   </div>
                 </div>
               </div>

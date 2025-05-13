@@ -187,8 +187,8 @@ a[href*="attachment"]:hover {
 
 /* Avatar */
 .inquiry-avatar {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: var(--color-blueborder);
   color: var(--bg-white);
@@ -196,9 +196,11 @@ a[href*="attachment"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-3xs);
-  margin-right: 10px;
+  font-size: var(--font-2xs);
+  flex-shrink: 0;
+  font-size: var(--font-sm);
 }
+
 
 /* Chevron toggle */
 .recommendation-toggle-header {
@@ -216,44 +218,45 @@ a[href*="attachment"]:hover {
 
 /* Recommendation cards grid */
 .recommendation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .recommendation-card {
-  background-color: var(--lightblue-50);
-  border: 1px solid var(--darkblue-100);
-  padding: 1.25rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-  transition: box-shadow 0.2s ease;
-}
-
-.recommendation-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-}
-
-.recommendation-header {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: var(--font-xs);
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background-color: var(--bg-white);
+  flex: 1 1 300px;
+  min-width: 280px;
+  max-width: 100%;
+}
+.rec-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--font-2xs);
+  line-height: 1.4;
 }
 
 .recommendation-details {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: var(--font-2xs);
-  color: var(--normal);
+  gap: 0.5rem;
+  overflow-wrap: break-word;
+}
+.separator {
+  color: #999;
+}
+
+.email {
+  overflow-wrap: anywhere;
 }
 
 .recommendation-details .rec-name {
   font-weight: 600;
-  font-size: var(--font-xs);
 }
 
 .dot {
@@ -279,36 +282,32 @@ a[href*="attachment"]:hover {
   line-height: 1.5;
   color: var(--normal);
 }
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .top-info-panel {
-    padding: 1rem;
-  }
-
-  .section-title {
-    font-size: var(--font-sm);
-  }
-
-  .info-label {
-    font-size: var(--font-xs);
-  }
-
-  .info-block p,
-  .recommendation-details p {
-    font-size: var(--font-2xs);
-  }
-
-  .recommendation-header {
+@media (max-width: 900px) {
+  .recommendation-card {
+  flex: 1 1 100px;
+}
+  .recommendation-grid {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 0rem;
   }
 
   .recommendation-card {
-    flex-direction: column;
+    flex-direction: row; 
+    width: 100%; 
   }
 
-  .recommendation-details .rec-name {
-    font-size: var(--font-sm);
+  .inquiry-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem; 
+  }
+}
+
+@media (max-width: 900px) {
+
+
+  .inquiry-avatar {
+   display: none;
+    
   }
 }
