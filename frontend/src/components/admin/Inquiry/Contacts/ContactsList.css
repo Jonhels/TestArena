@@ -1,0 +1,108 @@
+.contacts-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.contacts-table-header,
+.contacts-table-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2.5fr 1.5fr 0.5fr;
+  gap: 12px;
+  padding: 14px 20px;
+  align-items: center;
+  font-size: var(--font-2xs);
+}
+
+.contacts-table-header {
+  font-weight: 600;
+  color: #555;
+  background-color: #f7f9fb;
+}
+
+.contacts-table-row {
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.contacts-table-row:hover {
+  background-color: #f9f9f9;
+}
+
+.contacts-table-header > div,
+.contacts-table-row > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-avatar {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-3xs);
+  font-weight: bold;
+  line-height: 1;
+  flex-shrink: 0;
+  text-transform: none;
+}
+
+
+.inquiry-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-role {
+  font-size: var(--font-2xs);
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+}
+
+.mobile-title {
+  font-weight: 600;
+  font-size: var(--font-2xs);
+  color: #222;
+}
+
+.mobile-secondarytitle {
+  font-size: var(--font-3xs);
+  color: #666;
+}
+
+
+@media screen and (max-width: 900px) {
+  .inquiry-card-status {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  @media screen and (max-width: 600px) {
+  .mobile-title {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+}
