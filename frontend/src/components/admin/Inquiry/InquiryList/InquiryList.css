@@ -470,12 +470,22 @@ textarea {
 }
 
 
+
+
 /* === RESPONSIVE === */
+
+
+
 @media screen and (max-width: 900px) {
   .filter-bar {
     display: none;
   }
-
+   .inquiry-list {
+    display: none;
+  }
+  .mobile-inquiry-list {
+    display: flex;
+  }
   
   .filter-bar-mobile {
     display: flex;
@@ -547,3 +557,11 @@ textarea {
     display: none;
   }
 }
+
+@media screen and (min-width: 901px) {
+  .inquiry-list {
+    display: flex;
+  }
+  .mobile-inquiry-list {
+    display: none;
+  }

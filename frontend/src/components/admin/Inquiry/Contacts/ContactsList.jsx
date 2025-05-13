@@ -112,248 +112,222 @@ function ContactsList({
     const toggleMobileFilter = () => setShowMobileFilters(prev => !prev);
 
     return (
-  <div className="inquiry-wrapper">
-    {/* Desktop Filter Bar */}
-    <div className="filter-bar">
-      <div className="filter-group">
-        <label>Virksomhet</label>
-        <select value={selectedCompany} onChange={(e) => setSelectedCompany(e.target.value)}>
-          {uniqueCompanies.map((company, idx) => (
-            <option key={idx} value={company}>{company}</option>
-          ))}
-        </select>
-      </div>
-      <div className="filter-group">
-        <label>Sorter alfabetisk</label>
-        <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
-          <option value="asc">A - Z</option>
-          <option value="desc">Z - A</option>
-        </select>
-      </div>
-      <div className="filter-group">
-        <label>Stilling</label>
-        <select value={selectedPosition} onChange={(e) => setSelectedPosition(e.target.value)}>
-          {uniquePositions.map((pos, idx) => (
-            <option key={idx} value={pos}>{pos}</option>
-          ))}
-        </select>
-      </div>
-      <div className="filter-group search">
-        <label>Søk</label>
-        <div className="search-input-wrapper">
-          <input
-            type="text"
-            placeholder="Søk"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <img src={searchIcon} alt="Søk" className="search-icon" />
-        </div>
-      </div>
-      <div className="filter-group">
-        <label>&nbsp;</label>
-        <button className="mobile-filter-toggle" onClick={() => setShowAddModal(true)}>
-          <img src={adduser} alt="Legg til kontakt" />
-          Legg til kontakt
-        </button>
-      </div>
-    </div>
+        <div className="inquiry-wrapper">
+            {/* Desktop Filter Bar */}
+            <div className="filter-bar">
+                <div className="filterContact-group">
+                    <label>Virksomhet</label>
+                    <select value={selectedCompany} onChange={(e) => setSelectedCompany(e.target.value)}>
+                        {uniqueCompanies.map((company, idx) => (
+                            <option key={idx} value={company}>{company}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className="filterContact-group ">
+                    <label>Sorter alfabetisk</label>
+                    <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+                        <option value="asc">A - Z</option>
+                        <option value="desc">Z - A</option>
+                    </select>
+                </div>
+                <div className="filterContact-group">
+                    <label>Stilling</label>
+                    <select value={selectedPosition} onChange={(e) => setSelectedPosition(e.target.value)}>
+                        {uniquePositions.map((pos, idx) => (
+                            <option key={idx} value={pos}>{pos}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className=" search">
+                    <label>Søk</label>
+                    <div className="search-input-wrapper">
+                        <input
+                            type="text"
+                            placeholder="Søk"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <img src={searchIcon} alt="Søk" className="search-icon" />
+                    </div>
+                </div>
+                <div className="filterContact-group">
+                    <label>&nbsp;</label>
+                    <button className="mobile-filter-toggle" onClick={() => setShowAddModal(true)}>
+                        <img src={adduser} alt="Legg til kontakt" />
+                        Legg til kontakt
+                    </button>
+                </div>
+            </div>
 
-    {/* Mobile Filters */}
-    <div className="filter-bar-mobile">
-      <div className="mobile-search-input">
-        <input
-          type="text"
-          placeholder="Søk"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <img src={searchIcon} alt="Søk" className="search-icon" />
-      </div>
-      <button className="mobile-filter-toggle" onClick={toggleMobileFilter}>
-        <span>Filtre</span>
-        <img src={filterIcon} alt="Filtre" />
-      </button>
-    </div>
+            {/* Mobile Filters */}
+            <div className="filter-bar-mobile">
+                <div className="mobile-search-input">
+                    <input
+                        type="text"
+                        placeholder="Søk"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <img src={searchIcon} alt="Søk" className="search-icon" />
+                </div>
+                <button className="mobile-filter-toggle" onClick={toggleMobileFilter}>
+                    <span>Filtre</span>
+                    <img src={filterIcon} alt="Filtre" />
+                </button>
+            </div>
 
-    {showMobileFilters && (
-      <div className="mobile-filter-panel">
-        <div className="filter-group">
-          <label>Virksomhet</label>
-          <select value={selectedCompany} onChange={(e) => setSelectedCompany(e.target.value)}>
-            {uniqueCompanies.map((company, idx) => (
-              <option key={idx} value={company}>{company}</option>
-            ))}
-          </select>
-        </div>
-        <div className="filter-group">
-          <label>Stilling</label>
-          <select value={selectedPosition} onChange={(e) => setSelectedPosition(e.target.value)}>
-            {uniquePositions.map((pos, idx) => (
-              <option key={idx} value={pos}>{pos}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-    )}
+            {showMobileFilters && (
+                <div className="mobile-filter-panel">
+                    <div className="filterContact-group">
+                        <label>Virksomhet</label>
+                        <select value={selectedCompany} onChange={(e) => setSelectedCompany(e.target.value)}>
+                            {uniqueCompanies.map((company, idx) => (
+                                <option key={idx} value={company}>{company}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="filterContact-group">
+                        <label>Stilling</label>
+                        <select value={selectedPosition} onChange={(e) => setSelectedPosition(e.target.value)}>
+                            {uniquePositions.map((pos, idx) => (
+                                <option key={idx} value={pos}>{pos}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+            )}
 
-    {/* Content */}
-    {loading ? (
-      <p>Laster inn...</p>
-    ) : error ? (
-      <p className="inquiry-error">{error}</p>
-    ) : (
-      <>
-        {isMobile ? (
-          // === MOBILE LAYOUT ===
-          <div className="mobile-inquiry-list">
-            <div className="mobile-inquiry-wrapper">
-              {paginatedContacts.map((c) => (
-                <div key={c._id} className="inquiry-card">
-                  <div className="inquiry-card-body">
-                    <div className="inquiry-card-status">
-                      <div className="mobile-row-top">
-                        <div className="inquiry-status">
-                          <div className="contact-avatar">
-                            {(c.businessName?.slice(0, 2) || "??").toUpperCase()}
-                          </div>
-                          <div>
-                            <div className="mobile-title">{c.businessName}</div>
-                            <div className="mobile-secondarytitle">{c.name}</div>
-                          </div>
+            {/* Content */}
+            {loading ? (
+                <p>Laster inn...</p>
+            ) : error ? (
+                <p className="inquiry-error">{error}</p>
+            ) : (
+                <>
+                    {isMobile ? (
+                        // === MOBILE LAYOUT ===
+                        <div className="mobile-inquiry-list">
+                        <div className="mobile-table-header">
+                                <div>Virksomhet</div>
+                                <div>Stilling</div>
+                            </div>
+                            <div>
+                                {paginatedContacts.map((c) => (
+                                    <div key={c._id} className="mobile-inquiry-row">
+                                        <div className="mobile-inquiry-avatar">
+                                            {(c.businessName?.split(" ").slice(0, 2).map(w => w[0]).join("") || "??")}
+                                        </div>
+                                        <div className="mobile-inquiry-info">
+                                            <div className="mobile-inquiry-name">
+                                                <div>{c.businessName}</div>
+                                                <div className="mobile-inquiry-sub">{c.name}</div>
+                                            </div>
+                                            <div className="mobile-inquiry-role">{c.responsibility}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="mobile-role">{c.responsibility}</div>
-                      </div>
-                    </div>
-                    <div>
-                      <div>{c.email}</div>
-                      <div>{c.phone}</div>
-                    </div>
-                    <div>
-                      <img
-                        src={moreIcon}
-                        alt="Toggle meny"
-                        className="arrow-icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setOpenDropdownId((prev) => (prev === c._id ? null : c._id));
-                        }}
-                      />
-                    </div>
-                  </div>
-                  {openDropdownId === c._id && (
-                    <div className="inquiry-card-dropdown-wrapper">
-                      <div className="dropdown-menu mobile-dropdown">
-                        <p className="deleteArchived" onClick={(e) => handleDelete(e, c._id)}>
-                          Slett
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          // === DESKTOP LAYOUT ===
-          <div className="contacts-table">
-            <div className="contacts-table-header">
-              <div>Virksomhet</div>
-              <div>Kontaktperson</div>
-              <div>Stilling</div>
-              <div>E-post</div>
-              <div>Telefon</div>
-              <div></div>
-            </div>
-            {paginatedContacts.map((c) => (
-              <div key={c._id} className="contacts-table-row">
-                <div className="inquiry-status">
-                  <div className="contact-avatar">
-                    {c.businessName?.slice(0, 2).toUpperCase()}
-                  </div>
-                  <span>{c.businessName}</span>
-                </div>
-                <div>{c.name}</div>
-                <div>{c.responsibility}</div>
-                <div>{c.email}</div>
-                <div>{c.phone}</div>
-                <div>
-                  <div
-                    className="menu-trigger"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setOpenDropdownId((prev) => (prev === c._id ? null : c._id));
-                    }}
-                  >
-                    <img src={moreIcon} alt="Mer" />
-                  </div>
-                  {openDropdownId === c._id && (
-                    <div className="dropdown-menu">
-                      <p className="deleteArchived" onClick={(e) => handleDelete(e, c._id)}>
-                        Slett
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+                    ) : (
+                        // === DESKTOP LAYOUT ===
+                        <div className="contacts-table">
+                            <div className="contacts-table-header">
+                                <div>Virksomhet</div>
+                                <div>Kontaktperson</div>
+                                <div>Stilling</div>
+                                <div>E-post</div>
+                                <div>Telefon</div>
+                                <div></div>
+                            </div>
+                            {paginatedContacts.map((c) => (
+                                <div key={c._id} className="contacts-table-row">
+                                    <div className="inquiry-status">
+                                        <div className="contact-avatar">
+                                            {c.businessName?.slice(0, 2).toUpperCase()}
+                                        </div>
+                                        <span>{c.businessName}</span>
+                                    </div>
+                                    <div>{c.name}</div>
+                                    <div>{c.responsibility}</div>
+                                    <div>{c.email}</div>
+                                    <div>{c.phone}</div>
+                                    <div>
+                                        <div
+                                            className="menu-trigger"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setOpenDropdownId((prev) => (prev === c._id ? null : c._id));
+                                            }}
+                                        >
+                                            <img src={moreIcon} alt="Mer" />
+                                        </div>
+                                        {openDropdownId === c._id && (
+                                            <div className="dropdown-menu">
+                                                <p className="deleteArchived" onClick={(e) => handleDelete(e, c._id)}>
+                                                    Slett
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
 
-        {/* Pagination Info */}
-        <span className="result-info">
-          Viser {(currentPage - 1) * ITEMS_PER_PAGE + 1} –{" "}
-          {Math.min(currentPage * ITEMS_PER_PAGE, filteredContacts.length)} av{" "}
-          {filteredContacts.length} kontakter
-        </span>
+                    {/* Pagination Info */}
+                    <span className="result-info">
+                        Viser {(currentPage - 1) * ITEMS_PER_PAGE + 1} –{" "}
+                        {Math.min(currentPage * ITEMS_PER_PAGE, filteredContacts.length)} av{" "}
+                        {filteredContacts.length} kontakter
+                    </span>
 
-        {/* Pagination Controls */}
-        {totalPages > 1 && (
-          <div className="pagination-wrapper">
-            <div className="pagination-controls">
-              <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                &lt;
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) =>
-                num === 1 ||
-                num === totalPages ||
-                Math.abs(num - currentPage) <= 1 ? (
-                  <button
-                    key={num}
-                    onClick={() => handlePageChange(num)}
-                    className={num === currentPage ? "active" : ""}
-                  >
-                    {num}
-                  </button>
-                ) : num === currentPage - 2 || num === currentPage + 2 ? (
-                  <span key={num} className="dots">…</span>
-                ) : null
-              )}
-              <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                &gt;
-              </button>
-            </div>
-          </div>
-        )}
+                    {/* Pagination Controls */}
+                    {totalPages > 1 && (
+                        <div className="pagination-wrapper">
+                            <div className="pagination-controls">
+                                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                                    &lt;
+                                </button>
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) =>
+                                    num === 1 ||
+                                        num === totalPages ||
+                                        Math.abs(num - currentPage) <= 1 ? (
+                                        <button
+                                            key={num}
+                                            onClick={() => handlePageChange(num)}
+                                            className={num === currentPage ? "active" : ""}
+                                        >
+                                            {num}
+                                        </button>
+                                    ) : num === currentPage - 2 || num === currentPage + 2 ? (
+                                        <span key={num} className="dots">…</span>
+                                    ) : null
+                                )}
+                                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                                    &gt;
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
-        {/* Add Contact Modal */}
-        {showAddModal && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <AddContactForm
-                onClose={() => setShowAddModal(false)}
-                onAdd={(newContact) => {
-                  setContacts(prev => [...prev, newContact]);
-                  setShowAddModal(false);
-                }}
-              />
-            </div>
-          </div>
-        )}
-      </>
-    )}
-  </div>
-);
+                    {/* Add Contact Modal */}
+                    {showAddModal && (
+                        <div className="modal-overlay">
+                            <div className="modal-content">
+                                <AddContactForm
+                                    onClose={() => setShowAddModal(false)}
+                                    onAdd={(newContact) => {
+                                        setContacts(prev => [...prev, newContact]);
+                                        setShowAddModal(false);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
+        </div>
+    );
 
 }
 
