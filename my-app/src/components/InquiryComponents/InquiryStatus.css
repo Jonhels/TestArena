@@ -1,0 +1,64 @@
+.inquiry-status-bar {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+  
+}
+
+.inquiry-status-group {
+  display: flex;
+  flex-direction: column;
+  
+  font-size: 14px;
+  min-width: 160px;
+}
+
+
+
+.inquiry-status-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Custom styled select with downward arrow */
+.inquiry-status-group select {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+
+  /* Remove native arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Custom arrow */
+  background-image: url("../../assets/images/arrow-down.svg"), linear-gradient(to bottom, #fff, #fff);
+  background-repeat: no-repeat, repeat;
+  background-position: right 12px center;
+  background-size: 16px, 100%;
+}
+
+.inquiry-status-group select:focus {
+  border-color: #7b9acc;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(123, 154, 204, 0.2);
+}
+
+/* Responsive for mobile */
+@media screen and (max-width: 600px) {
+  .inquiry-status-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inquiry-status-group {
+    width: 100%;
+  }
+}

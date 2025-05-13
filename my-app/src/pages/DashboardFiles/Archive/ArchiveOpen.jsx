@@ -7,6 +7,7 @@ import api from "../../../api/api";
 import TopInfoPanel from "../../../components/InquiryOpen/TopInfoPanel";
 import AiRecommendation from "../../../components/InquiryOpen/AiRecommendation";
 import InquiryDetails from "../../../components/InquiryOpen/InquiryDetails";
+import ArchiveStatus from "../../../components/ArchiveComponents/ArchiveStatus";
 
 const ArchiveOpen = () => {
 
@@ -20,12 +21,19 @@ const ArchiveOpen = () => {
                 setInquiryData(response.data.inquiry);
                 console.log(response.data.inquiry);
             } catch (error) {
-                console.error("Failed to fetch inquiry:", error);
+                console.error("Kunne ikke hente henvendelse:", error);
             }
         };
 
         fetchInquiry();
     }, [id]);
+
+    const handleLocalUpdate = (updatedFields) => {
+        setInquiryData((prev) => ({
+            ...prev,
+            ...updatedFields,
+        }));
+    };
 
     return (
         <div className="dashboard-container">
@@ -33,7 +41,13 @@ const ArchiveOpen = () => {
                 <img src={back}></img>
                 <Link to="/arkiv"><p>Tilbake til arkiv</p></Link>
             </div>
-
+            {inquiryData && (
+                <ArchiveStatus
+                    inquiryId={inquiryData._id}
+                    inquiryData={inquiryData}
+                    onUpdate={handleLocalUpdate}
+                />
+            )}
             <TopInfoPanel data={inquiryData} />
             <AiRecommendation data={inquiryData} />
             <InquiryDetails data={inquiryData} />

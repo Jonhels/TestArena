@@ -59,8 +59,9 @@ function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading,
     let result = [...inquiries];
 
     if (selectedResponsible !== "Alle") {
-      result = result.filter((inq) => (inq.assignedTo || "Ingen") === selectedResponsible);
+      result = result.filter((inq) => (inq.assignedTo?.name || "Ingen") === selectedResponsible);
     }
+
 
     if (selectedCompany !== "Alle") {
       result = result.filter((inq) => inq.companyName === selectedCompany);
@@ -82,8 +83,13 @@ function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading,
 
   const uniqueResponsibles = [
     "Alle",
-    ...new Set(inquiries.map((i) => i.assignedTo || "Ingen").filter(Boolean)),
+    ...Array.from(
+      new Set(
+        inquiries.map((i) => i.assignedTo?.name || "Ingen")
+      )
+    )
   ];
+
 
   const uniqueCompanies = [
     "Alle",
@@ -234,17 +240,11 @@ function InquiryList({ inquiries = [], loading, error, setInquiries, setLoading,
                 <div>{inq.createdAt ? new Date(inq.createdAt).toLocaleDateString("nb-NO") : "–"}</div>
                 <div>{inq.caseNumber || "–"}</div>
                 <div>
-                  {inq.assignedTo && (
-                    <div className="inquiry-avatar">{getInitials(inq.assignedTo)}</div>
+                  {inq.assignedTo?.name && (
+                    <div className="inquiry-avatar">{getInitials(inq.assignedTo.name)}</div>
                   )}
                 </div>
                 <div className="inquiry-status">
-                  {inq.status !== "ulest" && (
-                    <span
-                      className="inquiry-status-dot"
-                      style={{ backgroundColor: statusDotColor(inq.status) }}
-                    />
-                  )}
                   {formatStatusLabel(inq.status)}
                 </div>
                 <div onClick={(e) => e.stopPropagation()}>
