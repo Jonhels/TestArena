@@ -1,44 +1,44 @@
 /* FILTER GROUP */
 
 .filterContact-group {
-  display: flex;
-  flex-direction: column;
-  font-size: var(--font-2xs);
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-2xs);
 }
 
 .filterContact-group-small {
-  width: 20px;
+    width: 20px;
 }
 
 .filterContact-group label {
-  margin-bottom: 4px;
-  color: #444;
-  font-weight: 500;
+    margin-bottom: 4px;
+    color: #444;
+    font-weight: 500;
 }
 
 
 .filterContact-group select,
 .filterContact-group input {
-  padding: 8px 14px;
-  border: 1px solid #cdd3dc;
-  border-radius: 999px;
-  font-size: var(--font-2xs);
-  color: #333;
-  background-color: #fff;
-  max-width: 140px;
-  transition: border 0.2s, box-shadow 0.2s;
-  outline: none;
+    padding: 8px 14px;
+    border: 1px solid #cdd3dc;
+    border-radius: 999px;
+    font-size: var(--font-2xs);
+    color: #333;
+    background-color: #fff;
+    max-width: 140px;
+    transition: border 0.2s, box-shadow 0.2s;
+    outline: none;
 }
 
 .filterContact-group select:focus,
 .filterContact-group input:focus {
-  border-color: #7b9acc;
-  box-shadow: 0 0 0 2px rgba(123, 154, 204, 0.2);
+    border-color: #7b9acc;
+    box-shadow: 0 0 0 2px rgba(123, 154, 204, 0.2);
 }
 
 .filter-group.search input {
-  padding-right: 30px;
-  width: 200px;
+    padding-right: 30px;
+    width: 200px;
 }
 
 /* ====== DESKTOP TABLE STYLING ====== */
@@ -134,9 +134,9 @@
 }
 
 .form-error {
-  color: var(--darksalmon-500);
-  font-size: var(--font-3xs);
-  margin-top: 4px;
+    color: var(--darksalmon-500);
+    font-size: var(--font-3xs);
+    margin-top: 4px;
 }
 
 
@@ -162,7 +162,7 @@
     color: var(--darkblue-600);
 }
 
-.adduser{
+.adduser {
     font-size: var(--font-2xs);
     background-color: var(--darkblue-600);
     color: var(--text-light);
@@ -172,7 +172,7 @@
     gap: 10px;
     flex-direction: row-reverse;
     border-radius: 20px;
-  }
+}
 
 
 .form-pair input {
@@ -257,40 +257,44 @@ textarea {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
     width: 100vw;
-    background: rgba(0, 0, 0, 0.25);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999;
+    padding: 16px;
+    overflow-y: auto;
 }
 
 .modal-content {
-    background: white;
+    background-color: #fff;
     border-radius: 10px;
     padding: 24px;
-    width: 90%;
-    max-width: 700px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 .form-wrapper {
-   .form-wrapper {
-  max-width: 100%;
-  width: 100%;
-  margin: 0 auto;
-}
+    .form-wrapper {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
 
 
 
-.add-contact-form {
-  padding: 16px;
-}
+    .add-contact-form {
+        padding: 16px;
+    }
 
-.form-pair {
-  margin-bottom: 12px;
-}
+    .form-pair {
+        margin-bottom: 12px;
+    }
 
 
 }
@@ -298,19 +302,19 @@ textarea {
 /* ====== MOBILE INQUIRY LIST ====== */
 
 .mobile-contacts-wrapper {
-  border: 1px solid #e6e6e6;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  margin-top: 12px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-top: 12px;
 }
 
 .mobile-table-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 50px 12px 16px ;
+    padding: 12px 50px 12px 16px;
     background-color: var(--lightblue-50);
     font-size: var(--font-2xs);
     font-weight: 600;
@@ -321,7 +325,8 @@ textarea {
     display: flex;
     flex-direction: column;
     font-size: var(--font-2xs);
-    max-width: 160px; /* adjust as needed */
+    max-width: 160px;
+    /* adjust as needed */
     overflow: hidden;
 }
 
@@ -406,21 +411,61 @@ textarea {
 /* ====== MEDIA QUERIES ====== */
 @media screen and (max-width: 1200px) {
     .modal-content {
-        margin-left: 25%
-            /* shift to the right of the sidebar */
+        max-height: none;
+        height: auto;
     }
+
 }
 
 
 @media screen and (max-width: 900px) {
+
+
+    .mobilelabelvirksomhet,
+    .mobilelabelstilling {
+        margin-right: 5px;
+    }
+
+    .mobile-filter-panel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .mobile-filter-buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: var(--font-2xs);
+    }
+
+    .filterContact-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .adduser {
+        padding: 10px;
+        border-radius: 100%;
+    }
+
     .inquiry-card-status {
         display: flex;
         flex-direction: column;
         gap: 6px;
     }
+
     .modal-content {
-        margin-left: 0px
-            /* shift to the right of the sidebar */
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 24px;
+        margin-top: 60px;
+        max-height: 90vh;
+        overflow-y: auto;
+        width: 100%;
+        max-width: 500px;
+        box-sizing: border-box;
     }
 }
 
