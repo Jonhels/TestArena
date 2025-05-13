@@ -162,6 +162,17 @@
     color: var(--darkblue-600);
 }
 
+.adduser{
+    font-size: var(--font-2xs);
+    background-color: var(--darkblue-600);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+    border-radius: 20px;
+  }
 
 
 .form-pair input {
@@ -286,6 +297,15 @@ textarea {
 
 /* ====== MOBILE INQUIRY LIST ====== */
 
+.mobile-contacts-wrapper {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-top: 12px;
+}
+
 .mobile-table-header {
     display: flex;
     justify-content: space-between;
@@ -398,7 +418,6 @@ textarea {
         flex-direction: column;
         gap: 6px;
     }
-
     .modal-content {
         margin-left: 0px
             /* shift to the right of the sidebar */

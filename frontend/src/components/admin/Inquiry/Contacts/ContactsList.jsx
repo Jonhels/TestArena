@@ -152,8 +152,8 @@ function ContactsList({
                 </div>
                 <div className="filterContact-group">
                     <label>&nbsp;</label>
-                    <button className="mobile-filter-toggle" onClick={() => setShowAddModal(true)}>
-                        <img src={adduser} alt="Legg til kontakt" />
+                    <button className="adduser" onClick={() => setShowAddModal(true)}>
+                        <img src={adduser} />
                         Legg til kontakt
                     </button>
                 </div>
@@ -207,25 +207,27 @@ function ContactsList({
                     {isMobile ? (
                         // === MOBILE LAYOUT ===
                         <div className="mobile-inquiry-list">
-                        <div className="mobile-table-header">
-                                <div>Virksomhet</div>
-                                <div>Stilling</div>
-                            </div>
-                            <div>
-                                {paginatedContacts.map((c) => (
-                                    <div key={c._id} className="mobile-inquiry-row">
-                                        <div className="mobile-inquiry-avatar">
-                                            {(c.businessName?.split(" ").slice(0, 2).map(w => w[0]).join("") || "??")}
-                                        </div>
-                                        <div className="mobile-inquiry-info">
-                                            <div className="mobile-inquiry-name">
-                                                <div>{c.businessName}</div>
-                                                <div className="mobile-inquiry-sub">{c.name}</div>
+                            <div className="mobile-contacts-wrapper">
+                                <div className="mobile-table-header">
+                                    <div>Virksomhet</div>
+                                    <div>Stilling</div>
+                                </div>
+                                <div>
+                                    {paginatedContacts.map((c) => (
+                                        <div key={c._id} className="mobile-inquiry-row">
+                                            <div className="mobile-inquiry-avatar">
+                                                {(c.businessName?.split(" ").slice(0, 2).map(w => w[0]).join("") || "??")}
                                             </div>
-                                            <div className="mobile-inquiry-role">{c.responsibility}</div>
+                                            <div className="mobile-inquiry-info">
+                                                <div className="mobile-inquiry-name">
+                                                    <div>{c.businessName}</div>
+                                                    <div className="mobile-inquiry-sub">{c.name}</div>
+                                                </div>
+                                                <div className="mobile-inquiry-role">{c.responsibility}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     ) : (
