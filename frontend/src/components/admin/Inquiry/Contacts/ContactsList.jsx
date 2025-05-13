@@ -88,7 +88,7 @@ function ContactsList({ contacts = [], loading, error, setContacts }) {
     e.stopPropagation();
     try {
       if (!window.confirm("Er du sikker på at du vil slette denne kontakten?")) return;
-      await api.delete(`/kontakter/${id}`);
+      await api.delete(`/contacts/${id}`);
       setContacts(prev => prev.filter(c => c._id !== id));
       setOpenDropdownId(null);
     } catch (err) {
