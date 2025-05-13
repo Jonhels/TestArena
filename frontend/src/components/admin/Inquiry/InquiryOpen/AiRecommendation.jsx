@@ -64,7 +64,7 @@ const AiRecommendation = ({ data }) => {
           ) : recommendations.length > 0 ? (
             recommendations.map((rec, idx) => (
               <div key={idx} className="recommendation-card">
-                <div className="inquiry-avatar">
+                <div className="ai-avatar">
                   {getInitials(rec.name)}
                 </div>
                 <div className="recommendation-details">
