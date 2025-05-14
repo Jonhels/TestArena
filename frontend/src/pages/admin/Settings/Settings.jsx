@@ -63,6 +63,7 @@ useEffect(() => {
         updateProfile={updateProfile}
         phone={user.phone}
         role={user.role}
+        organization={user.organization}
       />
 
       <SettingsPassword updatePassword={updateProfile} />
