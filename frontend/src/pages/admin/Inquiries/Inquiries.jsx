@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../../api/api";
 import InquiryList from "../../../components/admin/Inquiry/InquiryList/InquiryList";
 import InquiryHeader from "../../../components/admin/Inquiry/InquiryHeader/InquiryHeader";
+import "../../admin/Dashboard/Dashboard.css";
 
 const Inquiries = () => {
   const [inquiries, setInquiries] = useState([]);

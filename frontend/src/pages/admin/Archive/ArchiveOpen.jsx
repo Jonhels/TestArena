@@ -8,6 +8,7 @@ import TopInfoPanel from "../../../components/admin/Inquiry/InquiryOpen/TopInfoP
 import AiRecommendation from "../../../components/admin/Inquiry/InquiryOpen/AiRecommendation";
 import InquiryDetails from "../../../components/admin/Inquiry/InquiryOpen/InquiryDetails";
 import ArchiveStatus from "../../../components/admin/Archive/ArchiveStatus";
+import "../../admin/Dashboard/Dashboard.css";
 
 const ArchiveOpen = () => {
   const { id } = useParams();

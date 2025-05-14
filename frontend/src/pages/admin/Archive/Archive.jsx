@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../../api/api";
 import ArchiveList from "../../../components/admin/Archive/ArchiveList";
 import ArchiveHeader from "../../../components/admin/Archive/ArchiveHeader";
+import "../../admin/Dashboard/Dashboard.css";
 
 const Archive = () => {
   const [archivedInquiries, setArchivedInquiries] = useState([]);
