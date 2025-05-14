@@ -1,3 +1,5 @@
+
+
 .settings-users {
   background-color: #f8fafc;
   border-radius: 12px;
@@ -105,6 +107,68 @@
   color: white;
   border: none;
   cursor: pointer;
+}
+
+
+/* Inputs and selects - soft and rounded */
+.settings-users__input,
+.settings-users__select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  color: #111827;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.settings-users__input:focus,
+.settings-users__select:focus {
+  border-color: #38bdf8;
+}
+
+/* Select dropdown styling */
+.settings-users__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='gray' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+}
+
+/* Buttons */
+.settings-users__save-btn,
+.settings-users__cancel-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Save button (dark) */
+.settings-users__save-btn {
+  background-color: #0f172a;
+  color: #fff;
+}
+
+.settings-users__save-btn:hover {
+  background-color: #1e293b;
+}
+
+/* Cancel button (light gray) */
+.settings-users__cancel-btn {
+  background-color: #e5e7eb;
+  color: #111827;
+  margin-right: 0.5rem;
+}
+
+.settings-users__cancel-btn:hover {
+  background-color: #d1d5db;
 }
 
 
