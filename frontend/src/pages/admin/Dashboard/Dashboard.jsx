@@ -3,6 +3,7 @@ import DateTimeBox from "../../../components/admin/Dashboard/DateTimeBox";
 import StatsBoxes from "../../../components/admin/Dashboard/StatsBoxes";
 import CalendarBox from "../../../components/admin/Dashboard/CalendarBox";
 import "./Dashboard.css";
+import "../../admin/Dashboard/Dashboard.css";
 
 const Dashboard = () => {
   return (

@@ -6,6 +6,7 @@ import TopInfoPanel from "../../../components/admin/Inquiry/InquiryOpen/TopInfoP
 import AiRecommendation from "../../../components/admin/Inquiry/InquiryOpen/AiRecommendation";
 import InquiryDetails from "../../../components/admin/Inquiry/InquiryOpen/InquiryDetails";
 import InquiryStatus from "../../../components/admin/Inquiry/InquiryStatus/InquiryStatus";
+import "../../admin/Dashboard/Dashboard.css";
 
 const InquiriesOpen = () => {
   const { id } = useParams();

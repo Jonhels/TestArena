@@ -1,4 +1,5 @@
 import React from "react";
+import "../../admin/Dashboard/Dashboard.css";
 
 const Calendar = () => {
   return (

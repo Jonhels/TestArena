@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ContactsList from "../../../components/admin/Inquiry/Contacts/ContactsList";
 import api from "../../../api/api";
 import ContactsHeader from "../../../components/admin/Inquiry/Contacts/ContactsHeader";
+import "../../admin/Dashboard/Dashboard.css";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
