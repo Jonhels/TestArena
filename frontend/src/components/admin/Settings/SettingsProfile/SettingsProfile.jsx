@@ -13,11 +13,17 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   const [editedPhone, setEditedPhone] = useState(phone || "");
   const [editedRole, setEditedRole] = useState(role || "guest");
   const [errors, setErrors] = useState({});
-  const [localProfileImage, setLocalProfileImage] = useState(profileImage);
+  const [localProfileImage, setLocalProfileImage] = useState("");
   const [editedOrganization, setEditedOrganization] = useState(organization || "");
   const [editedEmail, setEditedEmail] = useState(email);
   const [selectedImageFile, setSelectedImageFile] = useState(null);
 
+useEffect(() => {
+  if (!profileImage) return setLocalProfileImage("");
+  const base = api.defaults.baseURL.replace(/\/api$/, "");
+  const isAbsolute = profileImage.startsWith("http");
+  setLocalProfileImage(isAbsolute ? profileImage : `${base}${profileImage}`);
+}, [profileImage]);
 
 
 
@@ -36,6 +42,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   useEffect(() => {
     setEditedEmail(email);
   }, [email]);
+  
 
 
   const getInitials = (fullName) => {

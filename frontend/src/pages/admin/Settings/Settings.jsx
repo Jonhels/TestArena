@@ -30,6 +30,8 @@ const Settings = () => {
   }, []);
 
 
+  
+
   const updateProfile = async (updates) => {
     try {
       const res = await api.put("/users/update", updates);
