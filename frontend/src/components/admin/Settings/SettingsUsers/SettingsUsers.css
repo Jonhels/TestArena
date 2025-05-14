@@ -37,24 +37,22 @@
 
 .settings-users__row {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 0;
 }
 
-.settings-users__header-row {
-  font-weight: bold;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.settings-users__clickable {
+.settings-users__edit-icon{
+   height: 18px;
+  width: 18px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  top: 0;
+  right: 0;
 }
 
-.settings-users__clickable:hover {
-  background-color: #f1f5f9;
+.settings-users__header-row {
+  font-size: var(--font-xs);
 }
 
 .settings-users__user {
@@ -64,11 +62,11 @@
 }
 
 .settings-users__avatar {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   background-color: #334155;
   color: white;
-  font-weight: bold;
+  font-size: var(--font-xs);
   border-radius: 50%;
   display: flex;
   justify-content: center;
