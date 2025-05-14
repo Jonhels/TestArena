@@ -55,8 +55,10 @@
 
 .settings-profile__avatar-wrapper {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+  
 }
 
 .settings-profile__avatar-actions {
@@ -257,7 +259,11 @@
     text-align: center;
   }
 
- 
+  .settings-profile__edit-icon {
+    position: static;
+    margin-top: -1.5rem;
+    align-self: flex-end;
+  }
 
   .settings-profile__avatar-small {
     margin: 0 auto;

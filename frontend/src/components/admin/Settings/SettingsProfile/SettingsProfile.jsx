@@ -15,6 +15,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   const [errors, setErrors] = useState({});
   const [localProfileImage, setLocalProfileImage] = useState(profileImage);
   const [editedOrganization, setEditedOrganization] = useState(organization || "");
+  
 
 
   useEffect(() => {
@@ -183,7 +184,13 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                 </div>
                 <div className="form-group">
                   <label>E-post:</label>
-                  <input type="email" value={email} className="settings-profile__input" disabled />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEditedEmail(e.target.value)}
+                    className="settings-profile__input"
+                  />
+
                 </div>
                 <div className="form-group">
                   <label>Organisasjon:</label>
