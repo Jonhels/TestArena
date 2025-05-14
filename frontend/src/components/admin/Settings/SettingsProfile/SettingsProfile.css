@@ -58,7 +58,6 @@
 }
 
 .settings-profile__body {
-
     display: flex;
 }
 
@@ -67,8 +66,7 @@
 .settings-profile__info-left {}
 
 .settings-profile__right {
-
-    margin: 0 0 0 20px;
+    margin-left: 20px;
 }
 
 .settings-profile-icon {}
@@ -76,6 +74,49 @@
 .settings-profile-icon img {
     height: 20px;
     width: 20px;
+    cursor: pointer;
+}
+
+.settings-profile__input {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 250px;
+}
+
+.settings-profile__actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cancel-btn {
+    background-color: #e2e8f0;
+    color: #1e293b;
+    padding: 0.4rem 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #0f172a;
+    color: white;
+    padding: 0.4rem 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 2px;
 }
 
 
@@ -86,12 +127,11 @@
     gap: 1rem;
   }
 
-.settings-profile__wrapper {
+  .settings-profile__wrapper {
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-}
-
+  }
 
   .settings-profile__body {
     flex-direction: column;
@@ -127,5 +167,13 @@
 
   .settings-profile__title span {
     font-size: 0.95rem;
+  }
+
+  .settings-profile__input {
+    text-align: center;
+  }
+
+  .settings-profile__actions {
+    align-self: flex-end;
   }
 }

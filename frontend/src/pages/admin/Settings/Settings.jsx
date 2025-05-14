@@ -19,7 +19,7 @@ const Settings = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await api.get("/user/profiles");
+        const res = await api.get("/users/profiles");
         setUsers(res.data.admins);
       } catch (err) {
         console.error("Error fetching users:", err);
@@ -30,7 +30,7 @@ const Settings = () => {
 
   const updateProfile = async (updates) => {
     try {
-      const res = await api.put("/user/update", updates);
+      const res = await api.put("/users/update", updates);
       setUser(res.data.user);
     } catch (err) {
       console.error("Error updating profile:", err);
@@ -39,7 +39,7 @@ const Settings = () => {
 
   const toggleNotifications = async (value) => {
     try {
-      const res = await api.put("/user/update", {
+      const res = await api.put("/users/update", {
         emailNotifications: value,
       });
       setUser(res.data.user);
@@ -59,6 +59,8 @@ const Settings = () => {
         email={user.email}
         profileImage={user.profileImage}
         updateProfile={updateProfile}
+        phone={user.phone}
+        role={user.role}
       />
 
       <SettingsPassword updatePassword={updateProfile} />
