@@ -237,7 +237,7 @@
   }
 
     .settings-profile__avatar-wrapper {
-    justify-content: center;
+    align-items: center;
   }
 
    .settings-profile__info-block {
@@ -247,22 +247,10 @@
     flex-direction: column;
   }
 
-  .settings-profile__form-actions {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-  }
-
   .cancel-btn,
   .save-btn {
     width: 100%;
     text-align: center;
-  }
-
-  .settings-profile__edit-icon {
-    position: static;
-    margin-top: -1.5rem;
-    align-self: flex-end;
   }
 
   .settings-profile__avatar-small {

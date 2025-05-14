@@ -15,7 +15,9 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   const [errors, setErrors] = useState({});
   const [localProfileImage, setLocalProfileImage] = useState(profileImage);
   const [editedOrganization, setEditedOrganization] = useState(organization || "");
-  
+  const [editedEmail, setEditedEmail] = useState(email);
+
+
 
 
   useEffect(() => {
@@ -29,6 +31,11 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   useEffect(() => {
     setEditedRole(role);
   }, [role]);
+
+  useEffect(() => {
+    setEditedEmail(email);
+  }, [email]);
+
 
   useEffect(() => {
     setLocalProfileImage(profileImage);
@@ -52,14 +59,34 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
 
   const handleSave = async () => {
     const newErrors = {};
+
+    // Name validation
     if (!editedName.trim()) {
       newErrors.name = "Navn er påkrevd.";
     } else if (editedName.length > 50) {
       newErrors.name = "Navnet kan ikke være lengre enn 50 tegn.";
     }
-    if (!/^\d{8,15}$/.test(editedPhone)) {
-      newErrors.phone = "Telefonnummer må være 8-15 sifre.";
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!editedEmail.trim()) {
+      newErrors.email = "E-post er påkrevd.";
+    } else if (!emailRegex.test(editedEmail)) {
+      newErrors.email = "Ugyldig e-postadresse.";
     }
+
+    // Phone validation
+    if (!/^\d{8,15}$/.test(editedPhone)) {
+      newErrors.phone = "Telefonnummer må være 8 sifre.";
+    }
+
+    // Organization validation
+    if (editedOrganization && editedOrganization.length > 50) {
+      newErrors.organization = "Organisasjon kan ikke være lengre enn 50 tegn.";
+    }
+
+
+    // If errors exist, stop save
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -70,14 +97,17 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
         name: editedName.trim(),
         phone: editedPhone.trim(),
         role: editedRole,
-        organization: editedOrganization.trim()
+        organization: editedOrganization.trim(),
+        email: editedEmail.trim()
       });
       setErrors({});
       setIsEditing(false);
     } catch (error) {
       console.error("Failed to update user:", error.response?.data || error.message);
+      setErrors({ api: "Kunne ikke lagre endringer. Prøv igjen senere." });
     }
   };
+
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -118,8 +148,12 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
           src={isOpen ? arrowup : arrowdown}
           alt="Toggle"
           className="settings-profile__toggle"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            if (isOpen) setIsEditing(false);
+            setIsOpen(!isOpen);
+          }}
         />
+
       </div>
 
       {isOpen && (
@@ -166,6 +200,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                     value={editedName}
                     onChange={(e) => setEditedName(e.target.value)}
                     className="settings-profile__input"
+                    placeholder="Navn"
                     maxLength={50}
                   />
                   {errors.name && <div className="error-text">{errors.name}</div>}
@@ -176,7 +211,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                     value={editedRole}
                     onChange={(e) => setEditedRole(e.target.value)}
                     className="settings-profile__input"
-                    disabled={role !== "admin"}
+                    disabled
                   >
                     <option value="admin">Administrator</option>
                     <option value="guest">Gjesterolle</option>
@@ -186,10 +221,12 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                   <label>E-post:</label>
                   <input
                     type="email"
-                    value={email}
+                    placeholder="E-post"
+                    value={editedEmail}
                     onChange={(e) => setEditedEmail(e.target.value)}
                     className="settings-profile__input"
                   />
+                  {errors.email && <div className="error-text">{errors.email}</div>}
 
                 </div>
                 <div className="form-group">
@@ -199,8 +236,10 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                     value={editedOrganization}
                     onChange={(e) => setEditedOrganization(e.target.value)}
                     className="settings-profile__input"
+                    placeholder="Organisasjon"
                     maxLength={50}
                   />
+                  {errors.organization && <div className="error-text">{errors.organization}</div>}
                 </div>
 
                 <div className="form-group">
@@ -208,12 +247,13 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                   <input
                     type="text"
                     value={editedPhone}
+                    placeholder="Telefon"
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d{0,15}$/.test(value)) setEditedPhone(value);
                     }}
                     className="settings-profile__input"
-                    maxLength={15}
+                    maxLength={8}
                   />
                   {errors.phone && <div className="error-text">{errors.phone}</div>}
                 </div>
