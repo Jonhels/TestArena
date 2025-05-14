@@ -17,44 +17,49 @@ const SettingsProfile = ({ name, email, profileImage }) => {
 
     return (
         <section className="settings-profile">
-            <div className="profile-header">
-                <div className="profile-title">
+            <div className="settings-profile__header">
+                <div className="settings-profile__title">
                     <img src={profile} alt="Profil ikon" />
                     <span>Profil</span>
                 </div>
                 <img
                     src={isOpen ? arrowup : arrowdown}
                     alt="Toggle"
-                    className="toggle-arrow"
+                    className="settings-profile__toggle"
                     onClick={() => setIsOpen(!isOpen)}
                 />
             </div>
 
             {isOpen && (
-                <div className="profile-body">
-                    <div className="profile-avatar">
-                        {profileImage ? (
-                            <img src={profileImage} alt="Profilbilde" />
-                        ) : (
-                            <span>{getInitials(name)}</span>
-                        )}
+                <div className="settings-profile__wrapper">
+                    <div className="settings-profile-icon">
+                        <img src={pencil} alt="Rediger" className="settings-profile__edit-icon" />
                     </div>
-
-                    <div className="profile-info-aligner">
-                        <div className="profile-info-left">
-                            <div className="name">{name}</div>
-                            <div className="email">e-post: {email}</div>
-                            <div className="phone">Tel: 90 90 90 99</div>
-                        </div>
-
-                        <div className="profile-info-right">
-                            <div className="role-org">
-                                <div className="role">Rolle: Admin</div>
-                                <div className="org">Tilhører organisasjon: HelseInn</div>
+                    <div className="settings-profile__body">
+                        <div className="settings-profile__avatar-wrapper">
+                            <div className="settings-profile__avatar">
+                                {profileImage ? (
+                                    <img src={profileImage} alt="Profilbilde" />
+                                ) : (
+                                    <span>{getInitials(name)}</span>
+                                )}
                             </div>
                         </div>
-                        <img src={pencil} alt="Rediger" className="edit-icon" />
+                        <div className="settings-profile__info-left">
+                            <div className="settings-profile__name">{name}</div>
+                            <div className="settings-profile__email">e-post: {email}</div>
+                            <div className="settings-profile__phone">Tel: 90 90 90 99</div>
+                        </div>
+
+                        <div className="settings-profile__right">
+                            <div className="settings-profile__role-org">
+                                <div className="settings-profile__role">Rolle: Admin</div>
+                                <div className="settings-profile__org">Tilhører organisasjon: HelseInn</div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
             )}
         </section>
