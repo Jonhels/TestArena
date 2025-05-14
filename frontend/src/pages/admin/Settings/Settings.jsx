@@ -16,18 +16,18 @@ const Settings = () => {
   const [users, setUsers] = useState([]);
   const [language, setLanguage] = useState("norsk");
 
-const fetchUsers = async () => {
-  try {
-    const res = await api.get("/users/profiles");
-    setUsers(res.data.admins);
-  } catch (err) {
-    console.error("Error fetching users:", err);
-  }
-};
+  const fetchUsers = async () => {
+    try {
+      const res = await api.get("/users/profiles");
+      setUsers(res.data.admins);
+    } catch (err) {
+      console.error("Error fetching users:", err);
+    }
+  };
 
-useEffect(() => {
-  fetchUsers();
-}, []);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
 
   const updateProfile = async (updates) => {
@@ -38,6 +38,7 @@ useEffect(() => {
       console.error("Error updating profile:", err);
     }
   };
+
 
   const toggleNotifications = async (value) => {
     try {

@@ -31,8 +31,8 @@
 
 /* Avatar */
 .settings-profile__avatar-small {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background-color: #9f1239;
   color: white;
   font-weight: bold;
@@ -58,15 +58,30 @@
   flex-direction: column;
   justify-content: center;
   margin: 1rem;
-  
+
 }
 
 .settings-profile__avatar-actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.3rem;
+  flex-direction: column;      /* stack vertically */
+  align-items: flex-start;     /* left-align both */
+  gap: 0.5rem;                 /* spacing between them */
   margin-top: 0.5rem;
+}
+
+.upload-label,
+.remove-btn {
+  font-size: 0.875rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.remove-btn {
+  color: #dc2626;
 }
 
 .upload-label {
@@ -225,22 +240,23 @@
   .settings-profile__grid {
     grid-template-columns: 1fr;
   }
-.settings-profile__info-right{
-  margin-left: 0;
-}
-  
-.settings-profile__readmode-content {
+
+  .settings-profile__info-right {
+    margin-left: 0;
+  }
+
+  .settings-profile__readmode-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 1rem;
   }
 
-    .settings-profile__avatar-wrapper {
+  .settings-profile__avatar-wrapper {
     align-items: center;
   }
 
-   .settings-profile__info-block {
+  .settings-profile__info-block {
     align-items: center;
     text-align: center;
     gap: 0.5rem;

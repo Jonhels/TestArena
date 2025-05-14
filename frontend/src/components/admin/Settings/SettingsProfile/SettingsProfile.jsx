@@ -16,6 +16,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   const [localProfileImage, setLocalProfileImage] = useState(profileImage);
   const [editedOrganization, setEditedOrganization] = useState(organization || "");
   const [editedEmail, setEditedEmail] = useState(email);
+  const [selectedImageFile, setSelectedImageFile] = useState(null);
 
 
 
@@ -36,10 +37,6 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
     setEditedEmail(email);
   }, [email]);
 
-
-  useEffect(() => {
-    setLocalProfileImage(profileImage);
-  }, [profileImage]);
 
   const getInitials = (fullName) => {
     if (!fullName) return "";
@@ -91,14 +88,29 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
       setErrors(newErrors);
       return;
     }
+    let uploadedImageUrl = profileImage;
 
     try {
+      if (selectedImageFile) {
+        const formData = new FormData();
+        formData.append("profileImage", selectedImageFile);
+
+        const res = await api.post("/users/profile-image", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+
+        const relativePath = res.data.imageUrl;
+        const base = api.defaults.baseURL.replace(/\/api$/, "");
+        uploadedImageUrl = `${base}${relativePath}`;
+      }
+
       await updateProfile({
         name: editedName.trim(),
         phone: editedPhone.trim(),
         role: editedRole,
         organization: editedOrganization.trim(),
-        email: editedEmail.trim()
+        email: editedEmail.trim(),
+        profileImage: uploadedImageUrl,
       });
       setErrors({});
       setIsEditing(false);
@@ -109,29 +121,31 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   };
 
 
-  const handleImageUpload = async (e) => {
+  const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append("profileImage", file);
-
-    try {
-      const res = await api.post("/users/profile-image", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      setLocalProfileImage(res.data.imageUrl);
-      updateProfile({ profileImage: res.data.imageUrl });
-    } catch (error) {
-      console.error("Error uploading profile image", error);
-    }
+    const previewURL = URL.createObjectURL(file);
+    setLocalProfileImage(previewURL); // show preview
+    setSelectedImageFile(file);       // save file for later
   };
+
+
+
+
 
   const handleRemoveImage = async () => {
     try {
       await api.delete("/users/profile-image");
       setLocalProfileImage("");
-      updateProfile({ profileImage: "" });
+      await updateProfile({
+        name: editedName.trim(),
+        phone: editedPhone.trim(),
+        role: editedRole,
+        organization: editedOrganization.trim(),
+        email: editedEmail.trim(),
+        profileImage: "",
+      });
     } catch (error) {
       console.error("Error removing profile image", error);
     }
@@ -284,7 +298,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                 </div>
                 <div className="settings-profile__info-block">
                   <div className="settings-profile__info-left">
-                    <strong>{name}</strong>
+                    <span>{name}</span>
                     <div>e-post: {email}</div>
                     <div>Tel: {phone}</div>
                   </div>
