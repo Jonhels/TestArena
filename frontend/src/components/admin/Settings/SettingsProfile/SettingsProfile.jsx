@@ -236,7 +236,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                   )}
                 </div>
                 <div className="settings-profile__info-block">
-                  <div>
+                  <div className="settings-profile__info-left">
                     <strong>{name}</strong>
                     <div>e-post: {email}</div>
                     <div>Tel: {phone}</div>
@@ -246,6 +246,7 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
                     <div>Tilhører organisasjon: {organization}</div>
                   </div>
                 </div>
+
               </div>
               <img
                 src={pencil}

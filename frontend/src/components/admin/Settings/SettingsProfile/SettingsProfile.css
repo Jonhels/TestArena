@@ -103,11 +103,24 @@
 .settings-profile__info-block {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   flex: 1;
   font-size: 0.95rem;
   line-height: 1.5;
   gap: 2rem;
+  flex-wrap: wrap;
 }
+
+
+.settings-profile__info-right {
+  flex: 1;
+  margin-left: 10%;
+}
+
+.settings-profile__info-left {
+  min-width: 200px;
+}
+
 
 .settings-profile__info-block strong {
   font-size: 1rem;
@@ -210,7 +223,10 @@
   .settings-profile__grid {
     grid-template-columns: 1fr;
   }
-
+.settings-profile__info-right{
+  margin-left: 0;
+}
+  
 .settings-profile__readmode-content {
     flex-direction: column;
     align-items: center;
@@ -241,11 +257,7 @@
     text-align: center;
   }
 
-  .settings-profile__edit-icon {
-    position: static;
-    margin-top: -1.5rem;
-    align-self: flex-end;
-  }
+ 
 
   .settings-profile__avatar-small {
     margin: 0 auto;
