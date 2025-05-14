@@ -63,9 +63,9 @@
 
 .settings-profile__avatar-actions {
   display: flex;
-  flex-direction: column;      /* stack vertically */
-  align-items: flex-start;     /* left-align both */
-  gap: 0.5rem;                 /* spacing between them */
+  flex-direction: column;     
+  align-items: flex-start;     
+  gap: 0.5rem;                 
   margin-top: 0.5rem;
 }
 
@@ -239,6 +239,10 @@
 @media screen and (max-width: 768px) {
   .settings-profile__grid {
     grid-template-columns: 1fr;
+  }
+
+  .settings-profile__avatar-actions{
+    align-items: center;
   }
 
   .settings-profile__info-right {
