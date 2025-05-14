@@ -1,0 +1,134 @@
+.settings-users {
+  background-color: #f8fafc;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.settings-users__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #38bdf8;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.settings-users__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.settings-users__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pencilholder{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 5px;
+}
+
+.pencilholder img {
+    height: 20px;
+}
+.settings-users__toggle{
+    height: 17px;
+    width: 17px;
+}
+
+.settings-users__edit-icon{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.settings-users__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-users__row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.settings-users__header-row {
+  font-weight: bold;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.settings-users__user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.settings-users__avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #334155;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.settings-users__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-users__footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.settings-users__add-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+  .settings-users__row {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .settings-users__header-row {
+    display: none;
+  }
+
+  .settings-users__row > div {
+    padding: 0.25rem 0;
+  }
+
+  .settings-users__user {
+    flex-direction: row;
+  }
+
+  .settings-users__footer {
+    justify-content: center;
+  }
+}
