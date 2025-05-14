@@ -5,7 +5,6 @@ import arrowup from "../../../../assets/icons/arrow-up.svg";
 import arrowdown from "../../../../assets/icons/arrow-down.svg";
 import pencil from "../../../../assets/icons/pencil.svg";
 import api from "../../../../api/api.js";
-import UserModal from "./UserModal";
 
 
 const SettingsUsers = ({ users = [], refetchUsers }) => {
@@ -64,6 +63,7 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                         <div>Navn:</div>
                         <div>Lagt til:</div>
                         <div>Sist aktiv:</div>
+                        <div>Rolle:</div>
                     </div>
 
                     {users.map((user) => (
@@ -102,17 +102,6 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                         </button>
                     </div>
                 </div>
-            )}
-
-            {(selectedUser || isAddModalOpen) && (
-                <UserModal
-                    user={selectedUser}
-                    onClose={() => {
-                        setSelectedUser(null);
-                        setIsAddModalOpen(false);
-                    }}
-                    onSave={handleSaveUser}
-                />
             )}
         </section>
     );
