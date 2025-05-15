@@ -16,6 +16,10 @@
     align-items: center;
 }
 
+.settings-users__form-title{
+    font-size: var(--font-sm);
+    margin-bottom: 10px;
+}
 .edit-user-form__warning {
     display: flex;
     flex-direction: row;
