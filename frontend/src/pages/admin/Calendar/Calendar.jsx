@@ -1,11 +1,13 @@
-import React from "react";
-import "../../admin/Dashboard/Dashboard.css";
+import AddEventForm from "../../../components/admin/Calendar/AddEventForm";
+import CalendarView from "../../../components/admin/Calendar/CalendarView";
+import "./Calendar.css";
 
 const Calendar = () => {
   return (
     <div className="dashboard-container">
-      <h1 className="dashboard-heading">Calendar</h1>
-      <p>This page is a work in progress.</p>
+      <h1 className="dashboard-heading">Kalender</h1>
+      <CalendarView />
+      <AddEventForm />
     </div>
   );
 };
