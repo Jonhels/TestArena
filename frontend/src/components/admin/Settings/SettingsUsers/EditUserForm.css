@@ -1,3 +1,31 @@
+.edit-user-form__delete {
+    background-color: #e53e3e;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.edit-user-form__delete-confirm {
+    background-color: #c53030;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.edit-user-form__confirm-delete {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
 .edit-user-form {
     background-color: #ffffff;
     display: flex;
@@ -6,8 +34,8 @@
 }
 
 /* Info and warning messages */
-.edit-user-form__bluewarning{
-     display: flex;
+.edit-user-form__bluewarning {
+    display: flex;
     flex-direction: row;
     align-items: center;
     color: #0f172a;
@@ -16,10 +44,11 @@
     align-items: center;
 }
 
-.settings-users__form-title{
+.settings-users__form-title {
     font-size: var(--font-sm);
     margin-bottom: 10px;
 }
+
 .edit-user-form__warning {
     display: flex;
     flex-direction: row;
@@ -30,13 +59,14 @@
     align-items: center;
 }
 
-.edit-user-form__warning-wrapper{
+.edit-user-form__warning-wrapper {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.edit-user-form__warning img, .edit-user-form__bluewarning img {
+.edit-user-form__warning img,
+.edit-user-form__bluewarning img {
     margin-right: 10px;
 }
 
@@ -82,10 +112,10 @@
 
 /* Buttons */
 .edit-user-form__actions {
- display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
 
 }
 
@@ -110,6 +140,13 @@
     background-color: #e2e8f0;
 }
 
+.edit-user-form__delete-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 🔥 Right-align the section */
+  margin-top: 2rem;
+}
+
 .edit-user-form__save {
     background-color: var(--lightblue-800);
     color: white;
@@ -119,15 +156,38 @@
     background-color: var(--lightblue-900);
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
-    .edit-user-form__grid {
-        grid-template-columns: 1fr;
-    }
+  /* Stack input fields vertically */
+  .edit-user-form__grid {
+    grid-template-columns: 1fr;
+  }
 
-    .edit-user-form__cancel,
-    .edit-user-form__save {
-        width: 100%;
-        text-align: center;
-    }
+  /* Optional: Make buttons full width */
+  .edit-user-form__cancel,
+  .edit-user-form__save,
+  .edit-user-form__delete,
+  .edit-user-form__delete-confirm {
+    width: 100%;
+    text-align: center;
+  }
+
+  .edit-user-form__confirm-delete {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .edit-user-form__confirm-delete > button {
+    margin-top: 0.5rem;
+  }
+
+  .edit-user-form__delete-section {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-user-form__delete-confirm{
+    margin: 0;
+  }
+
 }
