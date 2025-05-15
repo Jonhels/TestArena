@@ -11,6 +11,8 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
     const [isOpen, setIsOpen] = useState(true);
     const [selectedUser, setSelectedUser] = useState(null);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [editingUserId, setEditingUserId] = useState(null);
+
 
     const getInitials = (fullName) => {
         if (!fullName) return "";
@@ -71,6 +73,9 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                             key={user._id}
                             className="settings-users__row settings-users__clickable"
                             onClick={() => setSelectedUser(user)}
+                            tabIndex={0}
+                            role="button"
+                            onKeyDown={(e) => e.key === "Enter" && setSelectedUser(user)}
                         >
                             <div className="settings-users__user">
                                 <div className="settings-users__avatar">{getInitials(user.name)}</div>
@@ -82,7 +87,7 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                                     <div className="settings-users__information-small">
                                         <div >
                                             <small>Email: {user.email}</small>
-                                            
+
                                         </div>
                                         <div>
                                             <small>Telefon: {user.phone}</small>

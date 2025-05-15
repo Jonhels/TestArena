@@ -221,12 +221,12 @@
 }
 
 .save-btn {
-  background-color: #0f172a;
+   background-color: var(--lightblue-800);
   color: white;
 }
 
 .save-btn:hover {
-  background-color: #1e293b;
+   background-color: var(--lightblue-900);
 }
 
 /* Errors */
