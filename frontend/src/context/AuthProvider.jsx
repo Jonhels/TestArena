@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const response = await api.get("/users/profile");
-        console.log("Fetched user:", response.data.user);
+        
         setUser(response.data.user);
       } catch (err) {
         console.error("No user logged in or error fetching user:", err);

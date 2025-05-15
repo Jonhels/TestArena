@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./EditUserForm.css";
 import warning from "../../../../assets/icons/warning.svg"
 import bluewarning from "../../../../assets/icons/bluewarning.svg"
+import api from "../../../../api/api";
 
 
-const EditUserForm = ({ user, onCancel, onSave }) => {
+const EditUserForm = ({ user, onCancel, onSave, refetchUsers }) => {
     const [name, setName] = useState(user.name || "");
     const [email, setEmail] = useState(user.email || "");
     const [phone, setPhone] = useState(user.phone || "");
@@ -12,6 +13,7 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
     const [role, setRole] = useState(user.role || "guest");
     const [timestamp] = useState(user.timestamp);
     const [errors, setErrors] = useState({});
+    const [confirmDelete, setConfirmDelete] = useState(false);
 
     const handleSubmit = () => {
         const newErrors = {};
@@ -57,6 +59,20 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
 
     };
 
+
+    const handleDelete = async () => {
+        try {
+            const res = await api.delete(`/users/${user._id}`);
+            if (res.status !== 200) throw new Error("Sletting feilet");
+
+            await refetchUsers?.();
+            alert("Bruker slettet.");
+            onCancel();
+        } catch (err) {
+            console.error(err);
+            alert("Kunne ikke slette bruker.");
+        }
+    };
 
     const formatDate = (dateString) =>
         new Date(dateString).toLocaleDateString("nb-NO", {
@@ -158,8 +174,37 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
 
 
             <div className="edit-user-form__actions">
-                <button onClick={onCancel} className="edit-user-form__cancel">Avbryt</button>
-                <button onClick={handleSubmit} className="edit-user-form__save">Lagre</button>
+                <button onClick={onCancel} className="edit-user-form__cancel">
+                    Avbryt
+                </button>
+                <button onClick={handleSubmit} className="edit-user-form__save">
+                    Lagre
+                </button>
+            </div>
+
+            {/* Bottom row: Delete logic */}
+            <div className="edit-user-form__delete-section">
+                {!confirmDelete ? (
+                    <button
+                        onClick={() => setConfirmDelete(true)}
+                        className="edit-user-form__delete"
+                    >
+                        Slett bruker
+                    </button>
+                ) : (
+                    <div className="edit-user-form__confirm-delete">
+                        <p>Er du sikker?</p>
+                        <button onClick={handleDelete} className="edit-user-form__delete-confirm">
+                            Ja, slett
+                        </button>
+                        <button
+                            onClick={() => setConfirmDelete(false)}
+                            className="edit-user-form__cancel"
+                        >
+                            Avbryt
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     );

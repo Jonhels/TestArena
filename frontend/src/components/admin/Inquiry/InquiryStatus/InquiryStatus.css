@@ -39,7 +39,7 @@
   -moz-appearance: none;
 
   /* Custom arrow */
-  background-image: url("../../assets/images/arrow-down.svg"), linear-gradient(to bottom, #fff, #fff);
+  background-image: url("../../../../assets/icons/arrow-down.svg"), linear-gradient(to bottom, #fff, #fff);
   background-repeat: no-repeat, repeat;
   background-position: right 12px center;
   background-size: 16px, 100%;

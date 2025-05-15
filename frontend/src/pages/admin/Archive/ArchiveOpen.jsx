@@ -19,7 +19,7 @@ const ArchiveOpen = () => {
       try {
         const response = await api.get(`/inquiries/${id}`);
         setInquiryData(response.data.inquiry);
-        console.log(response.data.inquiry);
+       
       } catch (error) {
         console.error("Kunne ikke hente henvendelse:", error);
       }

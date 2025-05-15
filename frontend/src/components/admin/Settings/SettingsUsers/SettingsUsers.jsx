@@ -66,6 +66,7 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                         setEditingUserId(null);
                         await refetchUsers();
                       }}
+                      refetchUsers={refetchUsers}
                     />
                   </>
                 );

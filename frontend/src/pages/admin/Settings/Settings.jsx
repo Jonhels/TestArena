@@ -19,7 +19,7 @@ const Settings = () => {
   const fetchUsers = async () => {
     try {
       const res = await api.get("/users/profiles");
-      console.log("Fetched users:", res.data.users);
+      
       setUsers(res.data.users);
     } catch (err) {
       console.error("Error fetching users:", err);
