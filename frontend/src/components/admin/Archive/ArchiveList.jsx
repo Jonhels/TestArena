@@ -300,7 +300,6 @@ function ArchiveList({
   <div className="inquiry-avatar">
     {inq.assignedTo?.profileImage ? (
       <>
-        {console.log("Resolved image path:", resolveProfileImage(inq.assignedTo.profileImage))}
         <img
           src={resolveProfileImage(inq.assignedTo.profileImage)}
           alt={inq.assignedTo.name}
