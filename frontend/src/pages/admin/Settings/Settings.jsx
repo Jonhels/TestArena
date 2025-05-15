@@ -19,7 +19,8 @@ const Settings = () => {
   const fetchUsers = async () => {
     try {
       const res = await api.get("/users/profiles");
-      setUsers(res.data.admins);
+      console.log("Fetched users:", res.data.users);
+      setUsers(res.data.users);
     } catch (err) {
       console.error("Error fetching users:", err);
     }
@@ -30,7 +31,7 @@ const Settings = () => {
   }, []);
 
 
-  
+
 
   const updateProfile = async (updates) => {
     try {

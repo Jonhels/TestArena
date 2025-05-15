@@ -75,14 +75,28 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                             <div className="settings-users__user">
                                 <div className="settings-users__avatar">{getInitials(user.name)}</div>
                                 <div className="settings-users__info">
-                                    <div>{user.name}</div>
+
+                                    <div>
+                                        <span className="settings-mobile__title">Navn:</span>
+                                        {user.name}
+                                    </div>
                                     <small>Email: {user.email}</small>
                                     {user.phone && <small>Telefon: {user.phone}</small>}
                                 </div>
                             </div>
-                            <div>{formatDate(user.lastActive)}</div>
-                            <div>{formatDate(user.timestamp)}</div>
-                            <div>{user.role === "admin" ? "Admin" : "Gjesterolle"}</div>
+                            <div>
+                                <span className="settings-mobile__title">Lagt til:</span>
+
+                                {formatDate(user.timestamp)}
+                            </div>
+                            <div>
+                                <span className="settings-mobile__title">Sist aktiv:</span>
+                                {formatDate(user.lastActive)}
+                            </div>
+                            <div>
+                                <span className="settings-mobile__title">Rolle:</span>
+                                {user.role === "admin" ? "Admin" : "Gjesterolle"}
+                            </div>
                             <div>
                                 <img
                                     src={pencil}

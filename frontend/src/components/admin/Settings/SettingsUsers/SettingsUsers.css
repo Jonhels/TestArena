@@ -100,17 +100,25 @@
   background-color: var(--lightblue-900);
 }
 
-@media screen and (max-width: 768px) {
-  .settings-users__row {
-    grid-template-columns: 1fr;
-    align-items: flex-start;
-  }
+.settings-mobile__title{
+  display: none;
+}
 
-  .settings-users__header-row {
+@media screen and (max-width: 900px) {
+
+   .settings-users .settings-users__header-row {
     display: none;
   }
 
-  .settings-users__footer {
-    justify-content: center;
+  .settings-mobile__title{
+    display: block;
   }
+
+  .settings-users__row {
+  display: flex;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+  justify-content: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
 }
