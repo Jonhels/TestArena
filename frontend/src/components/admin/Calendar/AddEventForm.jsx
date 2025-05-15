@@ -22,6 +22,7 @@ const AddEventForm = () => {
   };
 
   return (
+    <div className="form-wrapper">  
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -48,6 +49,7 @@ const AddEventForm = () => {
       />
       <button type="submit">Opprett hendelse</button>
     </form>
+    </div>
   );
 };
 

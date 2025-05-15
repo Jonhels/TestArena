@@ -10,26 +10,34 @@ const locales = { "nb-NO": nbNO };
 const localizer = dateFnsLocalizer({
   format,
   parse,
-  startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }), // Mandag
+  startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
   getDay,
   locales,
 });
 
 const CalendarView = () => {
   const [events, setEvents] = useState([]);
+  const [upcoming, setUpcoming] = useState(null);
 
   useEffect(() => {
     api
       .get("/calendar")
       .then((response) => {
-        const formattedEvents = response.data.events.map((event) => ({
+        const formatted = response.data.events.map((event) => ({
           title: event.title,
           start: new Date(event.startTime),
           end: new Date(event.endTime),
           allDay: false,
         }));
 
-        setEvents(formattedEvents);
+        setEvents(formatted);
+
+        // Optional: show next upcoming event summary
+        const future = formatted.filter((e) => e.start > new Date());
+        if (future.length > 0) {
+          const next = future.sort((a, b) => a.start - b.start)[0];
+          setUpcoming(next);
+        }
       })
       .catch((err) => console.error(err));
   }, []);
@@ -52,6 +60,21 @@ const CalendarView = () => {
           agenda: "Agenda",
         }}
       />
+
+      {upcoming && (
+        <div className="event-card">
+          <strong>
+            {upcoming.start.toLocaleDateString("nb-NO", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+            })}
+            , klokken {upcoming.start.toLocaleTimeString("nb-NO", { hour: "2-digit", minute: "2-digit" })}
+          </strong>
+          <br />
+          {upcoming.title}
+        </div>
+      )}
     </div>
   );
 };
