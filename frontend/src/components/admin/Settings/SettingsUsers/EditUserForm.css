@@ -6,15 +6,14 @@
 }
 
 /* Info and warning messages */
-.edit-user-form__info {
-    font-size: 0.95rem;
+.edit-user-form__bluewarning{
+     display: flex;
+    flex-direction: row;
+    align-items: center;
     color: #0f172a;
-}
-
-.edit-user-form__info .info-icon {
-    color: #2563eb;
-    font-weight: bold;
+    font-size: 0.9rem;
     margin-right: 0.3rem;
+    align-items: center;
 }
 
 .edit-user-form__warning {
@@ -33,7 +32,7 @@
     margin-top: 10px;
 }
 
-.edit-user-form__warning img {
+.edit-user-form__warning img, .edit-user-form__bluewarning img {
     margin-right: 10px;
 }
 

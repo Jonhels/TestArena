@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./EditUserForm.css";
 import warning from "../../../../assets/icons/warning.svg"
+import bluewarning from "../../../../assets/icons/bluewarning.svg"
+
 
 const EditUserForm = ({ user, onCancel, onSave }) => {
     const [name, setName] = useState(user.name || "");
@@ -43,9 +45,10 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
     return (
         <div className="edit-user-form">
             <div className="edit-user-form__info">
-                <p>
-                    <span className="info-icon">ℹ️</span> Administratorer har tilgang til alle funksjoner. Gjester har kun leserettigheter.
-                </p>
+                <div className="edit-user-form__bluewarning">
+                    <img src={bluewarning}></img>
+                    <p>Administratorer har tilgang til alle funksjoner. Gjester har kun leserettigheter.</p>
+                </div>
             </div>
 
             <div className="edit-user-form__grid">
@@ -55,6 +58,9 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className="edit-user-form__input"
+                        placeholder="Navn"
+                        maxLength={50}
+                        type="text"
                     />
                     {errors.name && <div className="edit-user-form__error">{errors.name}</div>}
                 </div>
@@ -62,6 +68,8 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
                 <div className="edit-user-form__group">
                     <label>E-post:</label>
                     <input
+                        type="email"
+                        placeholder="E-post"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="edit-user-form__input"
@@ -81,6 +89,8 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
                 <div className="edit-user-form__group">
                     <label>Mobil:</label>
                     <input
+                        type="text"
+                        placeholder="Telefon"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="edit-user-form__input"
@@ -99,17 +109,17 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
                         <option value="guest">Gjest</option>
                         <option value="admin">Administrator</option>
                     </select>
-                      {role === "guest" && (
-                    <div className="edit-user-form__warning-wrapper">
-                        <div className="edit-user-form__warning">
-                            <img src={warning}></img>
-                            <p>Obs! Gjester har bare lesetilgang.</p>
+                    {role === "guest" && (
+                        <div className="edit-user-form__warning-wrapper">
+                            <div className="edit-user-form__warning">
+                                <img src={warning}></img>
+                                <p>Obs! Gjester har bare lesetilgang.</p>
+                            </div>
                         </div>
-                    </div>
 
-                )}
+                    )}
                 </div>
-              
+
                 <div className="edit-user-form__group">
                     <label>Lagt til:</label>
                     <input value={formatDate(timestamp)} disabled className="edit-user-form__input" />
