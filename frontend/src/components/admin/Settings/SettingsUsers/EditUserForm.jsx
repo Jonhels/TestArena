@@ -15,10 +15,31 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
 
     const handleSubmit = () => {
         const newErrors = {};
-        if (!name.trim()) newErrors.name = "Navn er påkrevd.";
-        if (!email.trim()) newErrors.email = "E-post er påkrevd.";
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = "Ugyldig e-post.";
-        if (phone && !/^\d{8,15}$/.test(phone)) newErrors.phone = "Ugyldig telefonnummer.";
+
+        // Name validation
+        if (!name.trim()) {
+            newErrors.name = "Navn er påkrevd.";
+        } else if (name.length > 50) {
+            newErrors.name = "Navnet kan ikke være lengre enn 50 tegn.";
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.trim()) {
+            newErrors.email = "E-post er påkrevd.";
+        } else if (!emailRegex.test(email)) {
+            newErrors.email = "Ugyldig e-postadresse.";
+        }
+
+        // Phone validation
+        if (phone && !/^\d{8,15}$/.test(phone)) {
+            newErrors.phone = "Telefonnummer må være 8 sifre.";
+        }
+
+        // Organization validation
+        if (organization && organization.length > 50) {
+            newErrors.organization = "Organisasjon kan ikke være lengre enn 50 tegn.";
+        }
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -26,14 +47,16 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
         }
 
         onSave({
-            ...user,
             name: name.trim(),
             email: email.trim(),
-            phone: phone.trim(),
+            phone: phone.trim() || "",
             organization: organization.trim(),
             role,
+            ...user,
         });
+
     };
+
 
     const formatDate = (dateString) =>
         new Date(dateString).toLocaleDateString("nb-NO", {
@@ -83,6 +106,8 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
                         className="edit-user-form__input"
+                        placeholder="Organisasjon"
+                        maxLength={50}
                     />
                 </div>
 
@@ -92,9 +117,13 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
                         type="text"
                         placeholder="Telefon"
                         value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            if (/^\d{0,15}$/.test(value)) setPhone(value);
+                        }}
                         className="edit-user-form__input"
-                        maxLength={15}
+                        maxLength={8}
                     />
                     {errors.phone && <div className="edit-user-form__error">{errors.phone}</div>}
                 </div>

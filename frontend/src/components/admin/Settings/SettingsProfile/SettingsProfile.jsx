@@ -18,12 +18,12 @@ const SettingsProfile = ({ name, email, profileImage, phone, updateProfile, role
   const [editedEmail, setEditedEmail] = useState(email);
   const [selectedImageFile, setSelectedImageFile] = useState(null);
 
-useEffect(() => {
-  if (!profileImage) return setLocalProfileImage("");
-  const base = api.defaults.baseURL.replace(/\/api$/, "");
-  const isAbsolute = profileImage.startsWith("http");
-  setLocalProfileImage(isAbsolute ? profileImage : `${base}${profileImage}`);
-}, [profileImage]);
+  useEffect(() => {
+    if (!profileImage) return setLocalProfileImage("");
+    const base = api.defaults.baseURL.replace(/\/api$/, "");
+    const isAbsolute = profileImage.startsWith("http");
+    setLocalProfileImage(isAbsolute ? profileImage : `${base}${profileImage}`);
+  }, [profileImage]);
 
 
 
@@ -42,7 +42,7 @@ useEffect(() => {
   useEffect(() => {
     setEditedEmail(email);
   }, [email]);
-  
+
 
 
   const getInitials = (fullName) => {
@@ -61,71 +61,72 @@ useEffect(() => {
     setErrors({});
   };
 
-  const handleSave = async () => {
-    const newErrors = {};
+ const handleSave = async () => {
+  const newErrors = {};
 
-    // Name validation
-    if (!editedName.trim()) {
-      newErrors.name = "Navn er påkrevd.";
-    } else if (editedName.length > 50) {
-      newErrors.name = "Navnet kan ikke være lengre enn 50 tegn.";
-    }
+  // Name validation
+  if (!editedName.trim()) {
+    newErrors.name = "Navn er påkrevd.";
+  } else if (editedName.length > 50) {
+    newErrors.name = "Navnet kan ikke være lengre enn 50 tegn.";
+  }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!editedEmail.trim()) {
-      newErrors.email = "E-post er påkrevd.";
-    } else if (!emailRegex.test(editedEmail)) {
-      newErrors.email = "Ugyldig e-postadresse.";
-    }
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!editedEmail.trim()) {
+    newErrors.email = "E-post er påkrevd.";
+  } else if (!emailRegex.test(editedEmail)) {
+    newErrors.email = "Ugyldig e-postadresse.";
+  }
 
-    // Phone validation
-    if (!/^\d{8,15}$/.test(editedPhone)) {
-      newErrors.phone = "Telefonnummer må være 8 sifre.";
-    }
+  // ✅ Updated phone validation
+  if (editedPhone.trim() && !/^\d{8,15}$/.test(editedPhone.trim())) {
+    newErrors.phone = "Telefonnummer må være mellom 8 og 15 sifre.";
+  }
 
-    // Organization validation
-    if (editedOrganization && editedOrganization.length > 50) {
-      newErrors.organization = "Organisasjon kan ikke være lengre enn 50 tegn.";
-    }
+  // Organization validation
+  if (editedOrganization && editedOrganization.length > 50) {
+    newErrors.organization = "Organisasjon kan ikke være lengre enn 50 tegn.";
+  }
 
+  if (Object.keys(newErrors).length > 0) {
+    setErrors(newErrors);
+    return;
+  }
 
-    // If errors exist, stop save
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-    let uploadedImageUrl = profileImage;
+  let uploadedImageUrl = profileImage;
 
-    try {
-      if (selectedImageFile) {
-        const formData = new FormData();
-        formData.append("profileImage", selectedImageFile);
+  try {
+    if (selectedImageFile) {
+      const formData = new FormData();
+      formData.append("profileImage", selectedImageFile);
 
-        const res = await api.post("/users/profile-image", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-
-        const relativePath = res.data.imageUrl;
-        const base = api.defaults.baseURL.replace(/\/api$/, "");
-        uploadedImageUrl = `${base}${relativePath}`;
-      }
-
-      await updateProfile({
-        name: editedName.trim(),
-        phone: editedPhone.trim(),
-        role: editedRole,
-        organization: editedOrganization.trim(),
-        email: editedEmail.trim(),
-        profileImage: uploadedImageUrl,
+      const res = await api.post("/users/profile-image", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      setErrors({});
-      setIsEditing(false);
-    } catch (error) {
-      console.error("Failed to update user:", error.response?.data || error.message);
-      setErrors({ api: "Kunne ikke lagre endringer. Prøv igjen senere." });
+
+      const relativePath = res.data.imageUrl;
+      const base = api.defaults.baseURL.replace(/\/api$/, "");
+      uploadedImageUrl = `${base}${relativePath}`;
     }
-  };
+
+    await updateProfile({
+      name: editedName.trim(),
+      phone: editedPhone.trim() || "",
+      role: editedRole,
+      organization: editedOrganization.trim(),
+      email: editedEmail.trim(),
+      profileImage: uploadedImageUrl,
+    });
+
+    setErrors({});
+    setIsEditing(false);
+  } catch (error) {
+    console.error("Failed to update user:", error.response?.data || error.message);
+    setErrors({ api: "Kunne ikke lagre endringer. Prøv igjen senere." });
+  }
+};
+
 
 
   const handleImageUpload = (e) => {
