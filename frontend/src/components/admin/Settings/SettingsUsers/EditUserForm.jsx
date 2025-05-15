@@ -47,12 +47,12 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
         }
 
         onSave({
+            ...user,
             name: name.trim(),
             email: email.trim(),
-            phone: phone.trim() || "",
+            phone: phone.trim() === "" ? undefined : phone.trim(),
             organization: organization.trim(),
             role,
-            ...user,
         });
 
     };
