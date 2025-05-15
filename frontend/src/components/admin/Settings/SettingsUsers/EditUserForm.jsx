@@ -50,7 +50,7 @@ const EditUserForm = ({ user, onCancel, onSave }) => {
             ...user,
             name: name.trim(),
             email: email.trim(),
-            phone: phone.trim() === "" ? undefined : phone.trim(),
+            phone: phone.trim() || "",
             organization: organization.trim(),
             role,
         });
