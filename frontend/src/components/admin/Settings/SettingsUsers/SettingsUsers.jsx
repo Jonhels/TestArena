@@ -76,25 +76,25 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                                 <div className="settings-users__avatar">{getInitials(user.name)}</div>
                                 <div className="settings-users__info">
 
-                                    <div>
-                                        <span className="settings-mobile__title">Navn:</span>
+                                    <div className="settings-users__information-item-wrap settings-users_name" >
                                         {user.name}
                                     </div>
-                                    <small>Email: {user.email}</small>
-                                    {user.phone && <small>Telefon: {user.phone}</small>}
+                                    <div className="settings-users__information-item-wrap">
+                                        <small>Email: {user.email}</small>
+                                        {user.phone && <small>Telefon: {user.phone}</small>}
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <span className="settings-mobile__title">Lagt til:</span>
-
+                            <div className="settings-users__information-item-wrap">
+                                <span className="settings-mobile__title">Lagt til: </span>
                                 {formatDate(user.timestamp)}
                             </div>
-                            <div>
-                                <span className="settings-mobile__title">Sist aktiv:</span>
+                            <div className="settings-users__information-item-wrap">
+                                <span className="settings-mobile__title">Sist aktiv: </span>
                                 {formatDate(user.lastActive)}
                             </div>
-                            <div>
-                                <span className="settings-mobile__title">Rolle:</span>
+                            <div className="settings-users__information-item-wrap">
+                                <span className="settings-mobile__title">Rolle: </span>
                                 {user.role === "admin" ? "Admin" : "Gjesterolle"}
                             </div>
                             <div>
