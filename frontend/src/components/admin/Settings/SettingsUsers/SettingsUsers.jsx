@@ -79,9 +79,14 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
                                     <div className="settings-users__information-item-wrap settings-users_name" >
                                         {user.name}
                                     </div>
-                                    <div className="settings-users__information-item-wrap">
-                                        <small>Email: {user.email}</small>
-                                        {user.phone && <small>Telefon: {user.phone}</small>}
+                                    <div className="settings-users__information-small">
+                                        <div >
+                                            <small>Email: {user.email}</small>
+                                            
+                                        </div>
+                                        <div>
+                                            <small>Telefon: {user.phone}</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -106,7 +106,7 @@
   display: none;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
   .settings-users .settings-users__header-row {
     display: none;
   }
@@ -150,6 +150,13 @@
     gap: 0.1rem;
     font-size: 0.95rem;
   }
+
+  .settings-users__information-small {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; 
+}
+
 
   .settings-mobile__title {
     display: block;
