@@ -106,6 +106,9 @@
   display: none;
 }
 
+/* edit */
+
+
 @media screen and (max-width: 950px) {
   .settings-users .settings-users__header-row {
     display: none;
