@@ -108,6 +108,14 @@
 
 /* edit */
 
+.settings-users__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
 
 @media screen and (max-width: 950px) {
   .settings-users .settings-users__header-row {

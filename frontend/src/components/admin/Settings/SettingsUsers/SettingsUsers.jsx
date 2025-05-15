@@ -7,6 +7,7 @@ import pencil from "../../../../assets/icons/pencil.svg";
 import api from "../../../../api/api.js";
 import EditUserForm from "./EditUserForm";
 import CreateUserForm from "./CreateUserForm.jsx";
+import resolveProfileImage from "../../../../utils/resolvedProfileImage.js";
 
 const SettingsUsers = ({ users = [], refetchUsers }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -96,7 +97,18 @@ const SettingsUsers = ({ users = [], refetchUsers }) => {
               {users.map((user) => (
                 <div key={user._id} className="settings-users__row">
                   <div className="settings-users__user">
-                    <div className="settings-users__avatar">{getInitials(user.name)}</div>
+                    <div className="settings-users__avatar">
+                      {user.profileImage ? (
+                        <img
+                          src={resolveProfileImage(user.profileImage)}
+                          alt={`${user.name} profilbilde`}
+                          onError={(e) => (e.currentTarget.style.display = "none")}
+                        />
+                      ) : (
+                        getInitials(user.name)
+                      )}
+                    </div>
+
                     <div className="settings-users__info">
                       <div className="settings-users__information-item-wrap settings-users_name">
                         {user.name}
