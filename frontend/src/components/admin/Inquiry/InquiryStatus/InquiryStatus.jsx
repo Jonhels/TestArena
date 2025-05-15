@@ -21,7 +21,7 @@ const InquiryStatus = ({ inquiryId, inquiryData, onUpdate }) => {
     const fetchAdmins = async () => {
       try {
         const res = await api.get("/users/profiles"); // Adjust endpoint if needed
-        setAdmins(res.data.admins || []);
+        setAdmins(res.data.users || []);
       } catch (err) {
         console.error("Failed to fetch admin users", err);
       }

@@ -1,0 +1,31 @@
+.settings-header-wrapper {
+  position: relative;
+  background: var(--bg-white);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+.settings-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.settings-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  margin: 0;
+}
+
+.settings-subtext {
+  font-size: var(--font-2xs);
+  color: #555;
+  margin-top: 6px;
+}
+@media screen and (max-width: 900px) {
+  .settings-header-wrapper {
+    margin: 20px 0;
+  }
+}

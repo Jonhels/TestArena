@@ -1,0 +1,133 @@
+.edit-user-form {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Info and warning messages */
+.edit-user-form__bluewarning{
+     display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #0f172a;
+    font-size: 0.9rem;
+    margin-right: 0.3rem;
+    align-items: center;
+}
+
+.settings-users__form-title{
+    font-size: var(--font-sm);
+    margin-bottom: 10px;
+}
+.edit-user-form__warning {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    align-items: center;
+}
+
+.edit-user-form__warning-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.edit-user-form__warning img, .edit-user-form__bluewarning img {
+    margin-right: 10px;
+}
+
+/* Grid layout */
+.edit-user-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+}
+
+/* Form field group */
+.edit-user-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.edit-user-form__group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #1e293b;
+}
+
+.edit-user-form__input {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    background-color: #fff;
+    width: 100%;
+}
+
+.edit-user-form__input:disabled {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+/* Error message style */
+.edit-user-form__error {
+    color: #dc2626;
+    font-size: 0.85rem;
+}
+
+/* Buttons */
+.edit-user-form__actions {
+ display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+
+}
+
+
+.edit-user-form__cancel,
+.edit-user-form__save {
+    border-radius: 999px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.edit-user-form__cancel {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.edit-user-form__cancel:hover {
+    background-color: #e2e8f0;
+}
+
+.edit-user-form__save {
+    background-color: var(--lightblue-800);
+    color: white;
+}
+
+.edit-user-form__save:hover {
+    background-color: var(--lightblue-900);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .edit-user-form__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-user-form__cancel,
+    .edit-user-form__save {
+        width: 100%;
+        text-align: center;
+    }
+}

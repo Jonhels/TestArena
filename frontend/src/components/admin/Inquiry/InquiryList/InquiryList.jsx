@@ -7,6 +7,8 @@ import arrowUp from "../../../../assets/icons/arrow-up.svg";
 import arrowDown from "../../../../assets/icons/arrow-down.svg";
 import filterIcon from "../../../../assets/icons/filter.svg";
 import searchIcon from "../../../../assets/icons/search.svg";
+import resolveProfileImage from "../../../../utils/resolvedProfileImage";
+
 
 function InquiryList({
   inquiries = [],
@@ -266,9 +268,8 @@ function InquiryList({
             {paginatedInquiries.map((inq) => (
               <div
                 key={inq._id}
-                className={`inquiry-row ${
-                  inq.status === "ulest" ? "new-inquiry" : ""
-                }`}
+                className={`inquiry-row ${inq.status === "ulest" ? "new-inquiry" : ""
+                  }`}
                 onClick={() => handleClick(inq._id)}
               >
                 <div title={inq.productTitle}>{inq.productTitle}</div>
@@ -283,7 +284,21 @@ function InquiryList({
                 <div>
                   {inq.assignedTo?.name && (
                     <div className="inquiry-avatar">
-                      {getInitials(inq.assignedTo.name)}
+                      {inq.assignedTo?.profileImage ? (
+                        <img
+                          src={resolveProfileImage(inq.assignedTo.profileImage)}
+                          alt={inq.assignedTo.name}
+                          onError={(e) => (e.currentTarget.style.display = "none")}
+                          style={{
+                            borderRadius: "50%",
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      ) : (
+                        getInitials(inq.assignedTo.name)
+                      )}
                     </div>
                   )}
                 </div>
@@ -329,9 +344,8 @@ function InquiryList({
                 {paginatedInquiries.map((inq) => (
                   <div
                     key={inq._id}
-                    className={`inquiry-card ${
-                      inq.status === "ulest" ? "new-inquiry" : ""
-                    }`}
+                    className={`inquiry-card ${inq.status === "ulest" ? "new-inquiry" : ""
+                      }`}
                     onClick={() => handleClick(inq._id)}
                   >
                     <div className="inquiry-card-body">
@@ -394,8 +408,8 @@ function InquiryList({
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                   (num) =>
                     num === 1 ||
-                    num === totalPages ||
-                    Math.abs(num - currentPage) <= 1 ? (
+                      num === totalPages ||
+                      Math.abs(num - currentPage) <= 1 ? (
                       <button
                         key={num}
                         onClick={() => handlePageChange(num)}
