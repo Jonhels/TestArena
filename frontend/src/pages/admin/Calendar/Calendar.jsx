@@ -4,8 +4,8 @@ import "./Calendar.css";
 
 const Calendar = () => {
   return (
-    <div className="dashboard-container">
-      <h1 className="dashboard-heading">Kalender</h1>
+    <div className="calendar-dashboard-container ">
+      <h1 className="calendar-dashboard-heading ">Kalender</h1>
       <CalendarView />
       <AddEventForm />
     </div>

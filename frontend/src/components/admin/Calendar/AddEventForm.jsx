@@ -22,33 +22,37 @@ const AddEventForm = () => {
   };
 
   return (
-    <div className="form-wrapper">  
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Tittel"
-        required
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-      />
-      <input
-        type="datetime-local"
-        required
-        onChange={(e) =>
-          setFormData({ ...formData, startTime: e.target.value })
-        }
-      />
-      <input
-        type="datetime-local"
-        required
-        onChange={(e) => setFormData({ ...formData, endTime: e.target.value })}
-      />
-      <input
-        type="text"
-        placeholder="Lokasjon"
-        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-      />
-      <button type="submit">Opprett hendelse</button>
-    </form>
+    <div className="calendar-form-wrapper">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Tittel"
+          required
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+        />
+        <input
+          type="datetime-local"
+          required
+          onChange={(e) =>
+            setFormData({ ...formData, startTime: e.target.value })
+          }
+        />
+        <input
+          type="datetime-local"
+          required
+          onChange={(e) =>
+            setFormData({ ...formData, endTime: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Lokasjon"
+          onChange={(e) =>
+            setFormData({ ...formData, location: e.target.value })
+          }
+        />
+        <button type="submit">Opprett hendelse</button>
+      </form>
     </div>
   );
 };

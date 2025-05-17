@@ -32,7 +32,6 @@ const CalendarView = () => {
 
         setEvents(formatted);
 
-        // Optional: show next upcoming event summary
         const future = formatted.filter((e) => e.start > new Date());
         if (future.length > 0) {
           const next = future.sort((a, b) => a.start - b.start)[0];
@@ -62,14 +61,18 @@ const CalendarView = () => {
       />
 
       {upcoming && (
-        <div className="event-card">
+        <div className="calendar-event-card">
           <strong>
             {upcoming.start.toLocaleDateString("nb-NO", {
               weekday: "long",
               day: "numeric",
               month: "long",
             })}
-            , klokken {upcoming.start.toLocaleTimeString("nb-NO", { hour: "2-digit", minute: "2-digit" })}
+            , klokken{" "}
+            {upcoming.start.toLocaleTimeString("nb-NO", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </strong>
           <br />
           {upcoming.title}

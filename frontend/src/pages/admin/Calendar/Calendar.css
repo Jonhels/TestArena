@@ -1,5 +1,5 @@
 /* Page wrapper */
-.dashboard-container {
+.calendar-dashboard-container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 1.5rem;
@@ -8,56 +8,44 @@
 }
 
 /* Heading */
-.dashboard-heading {
+.calendar-dashboard-heading {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-align: left;
   color: #222;
 }
+
 /* Make calendar scrollable on small screens */
 .calendar-container {
   width: 100%;
   overflow-x: auto;
   padding: 1rem;
   box-sizing: border-box;
-}
-
-/* Ensure the calendar doesn’t shrink too small */
-.rbc-calendar {
-  min-width: 700px;
-  width: 100%;
-}
-.calendar-container::-webkit-scrollbar {
-  display: none;
-}
-
-.calendar-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Main calendar area */
-.calendar-container {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  overflow-x: auto;
+.calendar-container::-webkit-scrollbar {
+  display: none;
 }
 
 /* react-big-calendar base */
-.rbc-calendar {
+.calendar-container .rbc-calendar {
+  min-width: 700px;
   width: 100%;
   font-size: 14px;
 }
 
-.rbc-month-view {
+.calendar-container .rbc-month-view {
   background-color: #f3f6f9;
   border-radius: 10px;
   padding: 1rem;
 }
 
-.rbc-toolbar {
+.calendar-container .rbc-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,12 +54,12 @@
   gap: 0.5rem;
 }
 
-.rbc-toolbar-label {
+.calendar-container .rbc-toolbar-label {
   font-size: 1rem;
   font-weight: 500;
 }
 
-.rbc-btn-group button {
+.calendar-container .rbc-btn-group button {
   background-color: #f0f0f0;
   border: 1px solid #d0d0d0;
   border-radius: 8px;
@@ -80,11 +68,11 @@
   cursor: pointer;
 }
 
-.rbc-btn-group button:hover {
+.calendar-container .rbc-btn-group button:hover {
   background-color: #e2e2e2;
 }
 
-.rbc-event {
+.calendar-container .rbc-event {
   background-color: #f28b82;
   color: #333;
   border-radius: 4px;
@@ -94,7 +82,7 @@
 }
 
 /* Event preview below calendar */
-.event-card {
+.calendar-event-card {
   margin-top: 1rem;
   font-size: 0.9rem;
   background-color: #fff;
@@ -105,7 +93,16 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.04);
 }
 
-form {
+/* Form */
+.calendar-form-wrapper {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-form-wrapper form {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -113,7 +110,7 @@ form {
   align-items: flex-start;
 }
 
-form input {
+.calendar-form-wrapper form input {
   padding: 0.5rem;
   font-size: 0.95rem;
   border: 1px solid #ccc;
@@ -123,7 +120,7 @@ form input {
   box-sizing: border-box;
 }
 
-form button {
+.calendar-form-wrapper form button {
   background-color: #0099ff;
   color: white;
   border: none;
@@ -135,60 +132,52 @@ form button {
   white-space: nowrap;
 }
 
-form button:hover {
+.calendar-form-wrapper form button:hover {
   background-color: #007fd4;
 }
 
-.form-wrapper {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 1.5rem;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
-}
-
-
 /* Responsive layout */
 @media (max-width: 600px) {
-  form {
+  .calendar-form-wrapper form {
     flex-direction: column;
   }
 
-  
-  form input,
-  form button {
+  .calendar-form-wrapper form input,
+  .calendar-form-wrapper form button {
     width: 100%;
   }
 }
+
 @media (max-width: 768px) {
-  .dashboard-heading {
+  .calendar-dashboard-heading {
     font-size: 1.5rem;
     text-align: center;
   }
 
-  .rbc-calendar {
+  .calendar-container .rbc-calendar {
     font-size: 12px;
   }
 
-  .rbc-toolbar {
+  .calendar-container .rbc-toolbar {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .rbc-btn-group {
+  .calendar-container .rbc-btn-group {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
-  .rbc-btn-group button {
+  .calendar-container .rbc-btn-group button {
     flex: 1;
     min-width: 80px;
   }
 
-  .event-card {
+  .calendar-event-card {
     font-size: 0.85rem;
   }
 
-  form input {
+  .calendar-form-wrapper form input {
     flex: 1 1 50px;
+  }
 }
